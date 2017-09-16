@@ -7,9 +7,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuPopupHelper;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
@@ -25,13 +29,14 @@ public class HomeActivity extends AppCompatActivity {
     ViewPager mViewPager;
     TabLayout mTabs;
     HomePagerAdapter mPagerAdapter;
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mTabs = (TabLayout) findViewById(R.id.tabs);
@@ -47,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         int elevation = getResources().getDimensionPixelSize(R.dimen.tabbar_elevation);
         ViewCompat.setElevation(mTabs, elevation);
         // apply elevation to homeToolbar too, otherwise the tabbar hides it
-        ViewCompat.setElevation(toolbar, elevation);
+        ViewCompat.setElevation(mToolbar, elevation);
     }
 
     @Override
@@ -61,8 +66,19 @@ public class HomeActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.switch_language) {
-            // TODO : change locale
-            return true;
+            View switchLanguageIconView = mToolbar.findViewById(R.id.switch_language);
+            PopupMenu menu = new PopupMenu(this, switchLanguageIconView);
+            menu.inflate(R.menu.menu_language);
+            menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    // TODO: change locale
+                    return false;
+                }
+            });
+            MenuPopupHelper menuHelper = new MenuPopupHelper(this, (MenuBuilder) menu.getMenu(), switchLanguageIconView);
+            menuHelper.setForceShowIcon(true);
+            menuHelper.show();
         }
 
         return super.onOptionsItemSelected(item);

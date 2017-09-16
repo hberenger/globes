@@ -2,4 +2,6 @@
     <string name="app_name">Globes</string>
     <string name="exhibition_map">Plan de l\'exposition</string>
     <string name="switch_language">Changer la langue</string>
+    <string name="french">Français</string>
+    <string name="english">Anglais</string>
 </resources>
