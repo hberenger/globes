@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Globes</string>
+    <string name="exhibition_map">Exhibition map</string>
+    <string name="switch_language">Switch language</string>
+    <string name="french">French</string>
+    <string name="english">English</string>
+    <string name="tab_architects">Architects</string>
+    <string name="tab_map">Itinerary</string>
+</resources>

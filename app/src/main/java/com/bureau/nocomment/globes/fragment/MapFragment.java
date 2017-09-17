@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.application.Globes;
 
 public class MapFragment extends BaseFragment {
     @Override
     public String getTabName() {
-        return "Parcours";
+        return Globes.getAppContext().getResources().getString(R.string.tab_map);
     }
 
     @Nullable
