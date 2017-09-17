@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+
+    <color name="buttonPlay">@color/white</color>
+    <color name="buttonPause">@color/white</color>
+
+    <color name="buttonBackground">@color/colorAccent</color>
+    <color name="buttonBackgroundPressed">#d6a207</color>
+    <color name="buttonShadow">#CCCCCC</color>
 </resources>

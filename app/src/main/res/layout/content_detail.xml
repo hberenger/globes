@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.bureau.nocomment.globes.activity.DetailActivity"
+    tools:showIn="@layout/activity_detail">
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/item_image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/item_detail"
+        android:layout_marginBottom="@dimen/detail_page_element_margin"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/detail_page_element_margin"
+        android:layout_below="@id/item_image"/>
+
+    <TextView
+        android:id="@+id/item_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/Detail.Photo.Subtitle"
+        android:layout_marginBottom="@dimen/detail_page_element_margin"
+        android:layout_below="@id/item_title"/>
+
+    <TextView
+        android:id="@+id/item_description"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_height="0dp"
+        android:maxLines="20"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="@dimen/detail_page_element_margin"
+        android:layout_below="@id/item_subtitle"
+        android:layout_alignParentBottom="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/player_background">
+
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="@dimen/detail_page_button_size"
+            android:layout_height="@dimen/detail_page_button_size"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_play_button"
+            android:contentDescription="@string/play_button"
+            android:background="@drawable/round_button"
+            android:tint="@color/buttonPlay" />
+
+        <ImageButton
+            android:id="@+id/pause_button"
+            android:visibility="gone"
+            android:layout_width="@dimen/detail_page_button_size"
+            android:layout_height="@dimen/detail_page_button_size"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_pause_button"
+            android:contentDescription="@string/pause_button"
+            android:background="@drawable/round_button"
+            android:tint="@color/buttonPause" />
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="50"
+            android:max="100"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>
