@@ -1,5 +1,6 @@
 package com.bureau.nocomment.globes.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.common.ForegroundDispatcher;
 import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
@@ -31,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     TabLayout mTabs;
     HomePagerAdapter mPagerAdapter;
     Toolbar mToolbar;
+    ForegroundDispatcher mForegroundDispatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,31 @@ public class HomeActivity extends AppCompatActivity {
         ViewCompat.setElevation(mTabs, elevation);
         // apply elevation to homeToolbar too, otherwise the tabbar hides it
         ViewCompat.setElevation(mToolbar, elevation);
+
+        mForegroundDispatcher = new ForegroundDispatcher(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mForegroundDispatcher.start(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mForegroundDispatcher.stop(this);
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(mForegroundDispatcher.isNfcIntent(intent)) {
+            Intent detailActivityIntent = new Intent(this, DetailActivity.class);
+            detailActivityIntent.setAction(intent.getAction());
+            detailActivityIntent.putExtras(intent);
+            startActivity(detailActivityIntent);
+        }
     }
 
     @Override
