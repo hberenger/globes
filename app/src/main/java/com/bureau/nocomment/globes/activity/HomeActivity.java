@@ -67,33 +67,43 @@ public class HomeActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.switch_language) {
-            View switchLanguageIconView = mToolbar.findViewById(R.id.switch_language);
-            PopupMenu menu = new PopupMenu(this, switchLanguageIconView);
-            menu.inflate(R.menu.menu_language);
-            menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    if (item.getItemId() == Locale.FRENCH.getMenuId()) {
-                        if (!Locale.FRENCH.setAsCurrent(HomeActivity.this)) {
-                            HomeActivity.this.recreate();
-                        }
-                    } else if (item.getItemId() == Locale.ENGLISH.getMenuId()) {
-                        if (!Locale.ENGLISH.setAsCurrent(HomeActivity.this)) {
-                            HomeActivity.this.recreate();
-                        }
-                    }
-                    return false;
-                }
-            });
-            MenuItem selectedMenuItem = menu.getMenu().findItem(Locale.getCurrent(this).getMenuId());
-            selectedMenuItem.setChecked(true);
-            MenuPopupHelper menuHelper = new MenuPopupHelper(this, (MenuBuilder) menu.getMenu(), switchLanguageIconView);
-            menuHelper.setForceShowIcon(true);
-            menuHelper.show();
+            presentLanguageMenu();
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    // Private
+
+    private void presentLanguageMenu() {
+        View switchLanguageIconView = mToolbar.findViewById(R.id.switch_language);
+        PopupMenu menu = new PopupMenu(this, switchLanguageIconView);
+        menu.inflate(R.menu.menu_language);
+        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == Locale.FRENCH.getMenuId()) {
+                    changeLocale(Locale.FRENCH);
+                } else if (item.getItemId() == Locale.ENGLISH.getMenuId()) {
+                    changeLocale(Locale.ENGLISH);
+                }
+                return false;
+            }
+        });
+        MenuItem selectedMenuItem = menu.getMenu().findItem(Locale.getCurrent(this).getMenuId());
+        selectedMenuItem.setChecked(true);
+        MenuPopupHelper menuHelper = new MenuPopupHelper(this, (MenuBuilder) menu.getMenu(), switchLanguageIconView);
+        menuHelper.setForceShowIcon(true);
+        menuHelper.show();
+    }
+
+    private void changeLocale(Locale locale) {
+        if (!locale.setAsCurrent(this)) {
+            this.recreate();
+        }
+    }
+
+    // HomePageAdapter
 
     private static class HomePagerAdapter extends FragmentStatePagerAdapter {
 
