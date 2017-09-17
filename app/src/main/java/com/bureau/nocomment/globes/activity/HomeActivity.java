@@ -73,7 +73,15 @@ public class HomeActivity extends AppCompatActivity {
             menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    // TODO: change locale
+                    if (item.getItemId() == Locale.FRENCH.getMenuId()) {
+                        if (!Locale.FRENCH.setAsCurrent(HomeActivity.this)) {
+                            HomeActivity.this.recreate();
+                        }
+                    } else if (item.getItemId() == Locale.ENGLISH.getMenuId()) {
+                        if (!Locale.ENGLISH.setAsCurrent(HomeActivity.this)) {
+                            HomeActivity.this.recreate();
+                        }
+                    }
                     return false;
                 }
             });

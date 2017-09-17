@@ -43,9 +43,10 @@ public enum Locale {
         return current;
     }
 
-    public void setAsCurrent(Context context) {
+    // returns false when no error occured
+    public Boolean setAsCurrent(Context context) {
         if (Locale.current == this) {
-            return;
+            return true;
         }
         java.util.Locale newLocale = new java.util.Locale(code);
         java.util.Locale.setDefault(newLocale);
@@ -55,5 +56,6 @@ public enum Locale {
         conf.setLocale(newLocale);
         res.updateConfiguration(conf, dm);
         Locale.current = this;
+        return false;
     }
 }
