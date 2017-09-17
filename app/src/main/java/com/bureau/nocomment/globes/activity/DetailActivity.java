@@ -1,10 +1,14 @@
 package com.bureau.nocomment.globes.activity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.nfc.NdefMessage;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -57,6 +61,10 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent currentIntent = getIntent();
+        loadFromIntent(currentIntent);
+
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
 
@@ -103,6 +111,12 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        loadFromIntent(intent);
     }
 
     @Override
@@ -181,5 +195,15 @@ public class DetailActivity extends AppCompatActivity {
         final SpannableString str = new SpannableString(text);
         str.setSpan(style, 0, text.length(), 0);
         return str;
+    }
+
+    private void loadFromIntent(Intent intent) {
+        if (intent != null && NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+            Parcelable[] rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+            if (rawMessages != null && rawMessages.length > 0) {
+                NdefMessage message = (NdefMessage) rawMessages[0];
+                // TODO : parse message and load activity
+            }
+        }
     }
 }
