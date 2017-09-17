@@ -24,6 +24,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.common.ForegroundDispatcher;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.Bind;
@@ -57,10 +58,13 @@ public class DetailActivity extends AppCompatActivity {
     MediaPlayer player;
     private Handler  progressUpdateHandler;
     private Runnable progressUpdater;
+    private ForegroundDispatcher nfcDispatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        nfcDispatcher = new ForegroundDispatcher(this);
 
         Intent currentIntent = getIntent();
         loadFromIntent(currentIntent);
@@ -133,12 +137,14 @@ public class DetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         playSoundtrack();
+        nfcDispatcher.start(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         pauseSoundtrack();
+        nfcDispatcher.stop(this);
     }
 
     @Override
@@ -198,7 +204,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void loadFromIntent(Intent intent) {
-        if (intent != null && NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+        if (nfcDispatcher.isNfcIntent(intent)) {
             Parcelable[] rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             if (rawMessages != null && rawMessages.length > 0) {
                 NdefMessage message = (NdefMessage) rawMessages[0];
