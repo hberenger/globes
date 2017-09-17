@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
@@ -76,6 +77,8 @@ public class HomeActivity extends AppCompatActivity {
                     return false;
                 }
             });
+            MenuItem selectedMenuItem = menu.getMenu().findItem(Locale.getCurrent(this).getMenuId());
+            selectedMenuItem.setChecked(true);
             MenuPopupHelper menuHelper = new MenuPopupHelper(this, (MenuBuilder) menu.getMenu(), switchLanguageIconView);
             menuHelper.setForceShowIcon(true);
             menuHelper.show();
