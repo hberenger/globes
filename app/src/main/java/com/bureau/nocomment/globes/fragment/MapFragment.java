@@ -12,7 +12,11 @@ import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.application.Globes;
 import com.cisco.cmx.model.CMXDimension;
 import com.cisco.cmx.model.CMXFloor;
+import com.cisco.cmx.model.CMXPoi;
+import com.cisco.cmx.model.CMXPoint;
 import com.cisco.cmx.ui.CMXFloorView;
+
+import java.util.Arrays;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,6 +52,17 @@ public class MapFragment extends BaseFragment {
         mMapView.setDisplayType(ImageViewTouchBase.DisplayType.FIT_IF_BIGGER);
         mMapView.setFloor(floor, mapImage);
 
+        // Add marker for testing purposes
+        addMarker(3.f, 80.f);
+
         return rootView;
+    }
+
+    private void addMarker(float x, float y) {
+        Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_project_marker_36dp);
+        CMXPoint point = new CMXPoint(x, y);
+        CMXPoi poi = new CMXPoi();
+        poi.setPoints(Arrays.asList(point));
+        mMapView.showPoi(poi, poiBitmap);
     }
 }
