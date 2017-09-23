@@ -52,6 +52,17 @@ public class MapFragment extends BaseFragment {
         mMapView.setDisplayType(ImageViewTouchBase.DisplayType.FIT_IF_BIGGER);
         mMapView.setFloor(floor, mapImage);
 
+        mMapView.setMarkerScalingTransform(new CMXFloorView.MarkerScalingFactorTransform() {
+            @Override
+            public float scalingFactorForScale(float scale) {
+                // scale factor varies between 1.0 (full map) and ~21 (max zoom)
+                // we want marker to be twice their intrinsic size at max zoom,
+                // and half of intrinsic size at full scale
+                float scalingFactor = (2.f - 0.5f) / (21.f - 1.f) * (scale - 1.f) + 0.5f;
+                return scalingFactor;
+            }
+        });
+
         // Add marker for testing purposes
         addMarker(3.f, 80.f);
 
