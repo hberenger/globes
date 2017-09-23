@@ -54,6 +54,8 @@ public class CMXFloorView extends ImageViewTouch {
     // Handler FeedbackView new user location chosen
     private FeedbackViewHandler mFeedbackViewHandler;
 
+    private MarkerScalingFactorTransform mMarkerScalingTransform;
+
     private Paint mPaint = new Paint();
 
     private Paint mPathPaint = new Paint();
@@ -426,7 +428,10 @@ public class CMXFloorView extends ImageViewTouch {
                     //mTransformMatrix.postTranslate(-bitmapWidth / 2.0f, -bitmapHeight / 2.0f);
                     //mTransformMatrix.postTranslate(-bitmapWidth, -bitmapHeight);
                     mTransformMatrix.postTranslate(-tag.bitmap.getWidth() / 2.0f, -tag.bitmap.getHeight() / 2.0f);
-                    //mTransformMatrix.postScale(1.5f, 1.5f);
+                    if (mMarkerScalingTransform != null) {
+                        float markerScalingFactor = mMarkerScalingTransform.scalingFactorForScale(getScale());
+                        mTransformMatrix.postScale(markerScalingFactor, markerScalingFactor);
+                    }
                     mTransformMatrix.postTranslate(target[0], target[1]);
                     canvas.drawBitmap(tag.bitmap, mTransformMatrix, mPaint);
                 }
@@ -804,6 +809,10 @@ public class CMXFloorView extends ImageViewTouch {
         this.mFeedbackViewHandler = feedbackViewHandler;
     }
 
+    public void setMarkerScalingTransform(MarkerScalingFactorTransform markerScalingTransform) {
+        this.mMarkerScalingTransform = markerScalingTransform;
+    }
+
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
 
@@ -960,6 +969,14 @@ public class CMXFloorView extends ImageViewTouch {
          *            y position of the feedback view
          */
         public void onFeedbackViewChosen(float x, float y);
+    }
+
+    /**
+     * Classes wishing to control the size of markers with respect to the current scaling factor implement this.
+     * Default marker scaling factor is a constant (1.f), meaning that the marker has always the same size
+     */
+    public interface MarkerScalingFactorTransform {
+        public float scalingFactorForScale(float scale);
     }
 
     private static android.graphics.Path makeArrowPathDash() {
