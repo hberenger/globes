@@ -237,6 +237,7 @@ public class DetailActivity extends AppCompatActivity {
     private void loadFromProjectId(int testProjectId) {
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(testProjectId);
 
+        // TODO : faudra peut-être songer à trouver mieux que ce hack '\r\n'
         itemDescription.setText(project.getDescription() + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n");
     }
 }
