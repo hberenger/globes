@@ -5,6 +5,7 @@ import java.util.List;
 public class Project {
     private int id;
     private String description;
+    private String subtitle;
     private String audioFile;
     private List<String> images;
 
@@ -14,6 +15,10 @@ public class Project {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
     }
 
     public String getAudioFile() {
