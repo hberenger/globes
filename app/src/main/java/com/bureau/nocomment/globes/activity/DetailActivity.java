@@ -99,7 +99,6 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         itemImage.setMaximumScale(10);
-        itemImage.setImageResource(R.drawable.weininger);
         actionBar.setTitle("Théâtre sphérique");
         itemTitle.setVisibility(View.GONE);
 
@@ -235,6 +234,15 @@ public class DetailActivity extends AppCompatActivity {
 
     private void loadFromProjectId(int testProjectId) {
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(testProjectId);
+
+        if (project.getImages().size() > 0) {
+            String imageName = project.getImages().get(0); // TODO : handle more than one pic
+
+            // TODO handle assets... like assets !!
+            imageName = imageName.split("\\.")[0];
+            int imageId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            itemImage.setImageResource(imageId);
+        }
 
         itemSubtitle.setText(italicCharSequenceFrom(project.getSubtitle()));
 
