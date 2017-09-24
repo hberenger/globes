@@ -3,6 +3,7 @@ package com.bureau.nocomment.globes.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.nfc.NdefMessage;
@@ -30,12 +31,17 @@ import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.github.chrisbanes.photoview.PhotoView;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
 public class DetailActivity extends AppCompatActivity {
+
+    private final static String IMAGE_FOLDER = "images";
 
     @Bind(R.id.item_image)
     PhotoView itemImage;
@@ -237,16 +243,34 @@ public class DetailActivity extends AppCompatActivity {
 
         if (project.getImages().size() > 0) {
             String imageName = project.getImages().get(0); // TODO : handle more than one pic
-
-            // TODO handle assets... like assets !!
-            imageName = imageName.split("\\.")[0];
-            int imageId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-            itemImage.setImageResource(imageId);
+            Drawable drawable = loadImageAsset(imageName);
+            itemImage.setImageDrawable(drawable);
         }
 
         itemSubtitle.setText(italicCharSequenceFrom(project.getSubtitle()));
 
         // TODO : faudra peut-être songer à trouver mieux que ce hack '\r\n'
         itemDescription.setText(project.getDescription() + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n");
+    }
+
+    private Drawable loadImageAsset(String filename) {
+        InputStream inputStream = null;
+        Drawable drawable = null;
+        try {
+            inputStream = getAssets().open(IMAGE_FOLDER + "/" + filename);
+            drawable = Drawable.createFromStream(inputStream, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return drawable;
     }
 }
