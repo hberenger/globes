@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Detail.Photo.Subtitle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">#a0a0a0</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
 </resources>

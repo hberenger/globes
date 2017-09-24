@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/menu_language_french"
+            android:title="@string/french"
+            android:icon="@mipmap/ic_french"/>
+
+        <item android:id="@+id/menu_language_english"
+            android:title="@string/english"
+            android:icon="@mipmap/ic_english"/>
+    </group>
+</menu>
+

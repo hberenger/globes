@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // Fix problem with jackson libs
+    // https://code.google.com/p/android/issues/detail?id=61573
+    packagingOptions {
+        pickFirst 'META-INF/NOTICE'
+        pickFirst 'META-INF/LICENSE'
+    }
 }
 
 dependencies {
@@ -27,5 +33,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
+
     testCompile 'junit:junit:4.12'
+    compile files('libs/imageviewtouch.jar')
 }
