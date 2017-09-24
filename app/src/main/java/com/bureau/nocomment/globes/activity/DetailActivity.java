@@ -103,8 +103,7 @@ public class DetailActivity extends AppCompatActivity {
         actionBar.setTitle("Théâtre sphérique");
         itemTitle.setVisibility(View.GONE);
         itemSubtitle.setText(italicCharSequenceFrom("Andor Weininger, 1926"));
-        String msg = this.getString(R.string.lorem_ipsum);
-        itemDescription.setText(msg + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n");
+
         itemDescription.setMovementMethod(new ScrollingMovementMethod());
 
         progressUpdateHandler = new Handler();
@@ -237,5 +236,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void loadFromProjectId(int testProjectId) {
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(testProjectId);
+
+        itemDescription.setText(project.getDescription() + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n");
     }
 }
