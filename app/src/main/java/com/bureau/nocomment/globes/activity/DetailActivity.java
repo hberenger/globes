@@ -1,5 +1,6 @@
 package com.bureau.nocomment.globes.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
@@ -59,6 +60,15 @@ public class DetailActivity extends AppCompatActivity {
     private Handler  progressUpdateHandler;
     private Runnable progressUpdater;
     private ForegroundDispatcher nfcDispatcher;
+
+    private static final String TEST_PROJECT_ID_EXTRA =
+            DetailActivity.class.getCanonicalName().concat("project_id");
+
+    public static Intent makeTestIntent(Context context, int projectId) {
+        Intent intent = new Intent(context, DetailActivity.class);
+        intent.putExtra(TEST_PROJECT_ID_EXTRA, projectId);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,6 +211,10 @@ public class DetailActivity extends AppCompatActivity {
         final SpannableString str = new SpannableString(text);
         str.setSpan(style, 0, text.length(), 0);
         return str;
+    }
+
+    private int getTestProjectId() {
+        return getIntent().getIntExtra(TEST_PROJECT_ID_EXTRA, -1);
     }
 
     private void loadFromIntent(Intent intent) {
