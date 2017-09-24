@@ -26,6 +26,8 @@ import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.common.ForegroundDispatcher;
+import com.bureau.nocomment.globes.model.ModelRepository;
+import com.bureau.nocomment.globes.model.Project;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.Bind;
@@ -76,9 +78,6 @@ public class DetailActivity extends AppCompatActivity {
 
         nfcDispatcher = new ForegroundDispatcher(this);
 
-        Intent currentIntent = getIntent();
-        loadFromIntent(currentIntent);
-
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
 
@@ -125,6 +124,9 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
+
+        Intent currentIntent = getIntent();
+        loadFromIntent(currentIntent);
     }
 
     @Override
@@ -223,7 +225,17 @@ public class DetailActivity extends AppCompatActivity {
             if (rawMessages != null && rawMessages.length > 0) {
                 NdefMessage message = (NdefMessage) rawMessages[0];
                 // TODO : parse message and load activity
+                return;
             }
         }
+        int testProjectId = getTestProjectId();
+        if (testProjectId > 0) {
+            loadFromProjectId(testProjectId);
+            return;
+        }
+    }
+
+    private void loadFromProjectId(int testProjectId) {
+        Project project = ModelRepository.getInstance().getItemLibrary().findProject(testProjectId);
     }
 }
