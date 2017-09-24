@@ -2,6 +2,7 @@ package com.bureau.nocomment.globes.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
@@ -42,6 +43,7 @@ import butterknife.OnClick;
 public class DetailActivity extends AppCompatActivity {
 
     private final static String IMAGE_FOLDER = "images";
+    private final static String SOUND_FOLDER = "sound";
 
     @Bind(R.id.item_image)
     PhotoView itemImage;
@@ -94,7 +96,7 @@ public class DetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        player = MediaPlayer.create(this, R.raw.weininger);
+        player = new MediaPlayer();
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -112,7 +114,6 @@ public class DetailActivity extends AppCompatActivity {
 
         progressUpdateHandler = new Handler();
         progressUpdater = createUpdater();
-        progressBar.setMax(player.getDuration()); // in ms
         progressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -251,6 +252,34 @@ public class DetailActivity extends AppCompatActivity {
 
         // TODO : faudra peut-être songer à trouver mieux que ce hack '\r\n'
         itemDescription.setText(project.getDescription() + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n");
+
+        loadAudioAsset(project.getAudioFile());
+        // update progress bar
+        progressBar.setMax(player.getDuration()); // in ms
+    }
+
+    private void loadAudioAsset(String audioFile) {
+        AssetFileDescriptor descriptor = null;
+        try {
+            descriptor = getAssets().openFd(SOUND_FOLDER + "/" + audioFile);
+            if (descriptor != null) {
+                long offset = descriptor.getStartOffset();
+                long length = descriptor.getLength();
+                player.reset();
+                player.setDataSource(descriptor.getFileDescriptor(), offset, length);
+                player.prepare();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (descriptor != null) {
+                    descriptor.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private Drawable loadImageAsset(String filename) {
