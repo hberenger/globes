@@ -296,6 +296,8 @@ public class DetailActivity extends AppCompatActivity {
     private Drawable loadImageAsset(String filename) {
         InputStream inputStream = null;
         Drawable drawable = null;
+        // TODO : this try/catch/finally/try/if/catch skeletton is common to loadImage and loadAudio
+        // => try to leverage if (kinda closure) to leverage the common Closeable interface
         try {
             inputStream = getAssets().open(IMAGE_FOLDER + "/" + filename);
             drawable = Drawable.createFromStream(inputStream, null);
