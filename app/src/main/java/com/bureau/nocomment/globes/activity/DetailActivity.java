@@ -102,7 +102,6 @@ public class DetailActivity extends AppCompatActivity {
         itemImage.setImageResource(R.drawable.weininger);
         actionBar.setTitle("Théâtre sphérique");
         itemTitle.setVisibility(View.GONE);
-        itemSubtitle.setText(italicCharSequenceFrom("Andor Weininger, 1926"));
 
         itemDescription.setMovementMethod(new ScrollingMovementMethod());
 
@@ -236,6 +235,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private void loadFromProjectId(int testProjectId) {
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(testProjectId);
+
+        itemSubtitle.setText(italicCharSequenceFrom(project.getSubtitle()));
 
         // TODO : faudra peut-être songer à trouver mieux que ce hack '\r\n'
         itemDescription.setText(project.getDescription() + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n");
