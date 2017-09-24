@@ -27,6 +27,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.common.ClassicNfcTextRecordParser;
 import com.bureau.nocomment.globes.common.ForegroundDispatcher;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
@@ -41,6 +42,10 @@ import butterknife.OnClick;
 
 
 public class DetailActivity extends AppCompatActivity {
+
+    public interface NfcTagMessageParser {
+        public int readProjectIdFromNdefMessage(NdefMessage message);
+    }
 
     private final static String IMAGE_FOLDER = "images";
     private final static String SOUND_FOLDER = "sound";
@@ -70,6 +75,7 @@ public class DetailActivity extends AppCompatActivity {
     private Handler  progressUpdateHandler;
     private Runnable progressUpdater;
     private ForegroundDispatcher nfcDispatcher;
+    private NfcTagMessageParser tagParser;
 
     private static final String TEST_PROJECT_ID_EXTRA =
             DetailActivity.class.getCanonicalName().concat("project_id");
@@ -85,6 +91,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         nfcDispatcher = new ForegroundDispatcher(this);
+        tagParser = new ClassicNfcTextRecordParser();
 
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
@@ -228,7 +235,11 @@ public class DetailActivity extends AppCompatActivity {
             Parcelable[] rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             if (rawMessages != null && rawMessages.length > 0) {
                 NdefMessage message = (NdefMessage) rawMessages[0];
-                // TODO : parse message and load activity
+                int projectId = tagParser.readProjectIdFromNdefMessage(message);
+                // When a tag is detected by the ForegroundDispatcher, onNewIntent is called between
+                // onPause and onResume (which pause and start the player). So we can hot-swap the
+                // player source without bothering about threading or the progress refresher
+                loadFromProjectId(projectId);
                 return;
             }
         }
