@@ -26,7 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 
-public class MapFragment extends BaseFragment {
+public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler {
 
     private static final int kMAP_ID = R.drawable.plan2d;
 
@@ -55,6 +55,7 @@ public class MapFragment extends BaseFragment {
 
         mMapView.setDisplayType(ImageViewTouchBase.DisplayType.FIT_IF_BIGGER);
         mMapView.setFloor(floor, mapImage);
+        mMapView.setSelectionHandler(this);
 
         mMapView.setMarkerScalingTransform(new CMXFloorView.MarkerScalingFactorTransform() {
             @Override
@@ -91,5 +92,22 @@ public class MapFragment extends BaseFragment {
         poi.setId(Integer.toString(id));
         return poi;
     }
+
+    @Override
+    public void onPoiSelected(String poiIdentifier) {
+        if (poiIdentifier == null) {
+            // TODO : disable selected color ?
+            return;
+        }
+        int id = Integer.parseInt(poiIdentifier);
+        Project project = ModelRepository.getInstance().getItemLibrary().findProject(id);
+        if (project != null) {
+            // TODO : change color ?
+        }
+
+        // TODO at some point :
+        // if (id > 0) {
+        // startActivity(DetailActivity.makeTestIntent(getContext(), id));
+        // }
     }
 }
