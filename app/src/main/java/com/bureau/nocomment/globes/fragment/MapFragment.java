@@ -3,6 +3,7 @@ package com.bureau.nocomment.globes.fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,18 +70,26 @@ public class MapFragment extends BaseFragment {
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
         for (Project project : projects) {
             if (project.hasValidCoordinates()) {
-                addMarker(project.getX(), project.getY());
+                addMarker(project.getId(), project.getX(), project.getY());
             }
         }
 
         return rootView;
     }
 
-    private void addMarker(float x, float y) {
+    private void addMarker(int id, float x, float y) {
         Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_project_marker_36dp);
+        CMXPoi poi = makeCMXPoi(id, x, y);
+        mMapView.showPoi(poi, poiBitmap);
+    }
+
+    @NonNull
+    private CMXPoi makeCMXPoi(int id, float x, float y) {
         CMXPoint point = new CMXPoint(x, y);
         CMXPoi poi = new CMXPoi();
         poi.setPoints(Arrays.asList(point));
-        mMapView.showPoi(poi, poiBitmap);
+        poi.setId(Integer.toString(id));
+        return poi;
+    }
     }
 }
