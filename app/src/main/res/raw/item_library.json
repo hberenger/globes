@@ -7,6 +7,9 @@
         "audio_file" : "weininger.mp3",
         "images" : [
           "weininger.jpg"
+        ],
+        "coordinates" : [
+          3.0, 40.0
         ]
       },
       {
@@ -16,6 +19,9 @@
         "audio_file" : "pass-the-peas.mp3",
         "images" : [
           "weininger.jpg"
+        ],
+        "coordinates" : [
+          8.0, 80.0
         ]
       }
     ],

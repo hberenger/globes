@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.application.Globes;
+import com.bureau.nocomment.globes.model.ModelRepository;
+import com.bureau.nocomment.globes.model.Project;
 import com.cisco.cmx.model.CMXDimension;
 import com.cisco.cmx.model.CMXFloor;
 import com.cisco.cmx.model.CMXPoi;
@@ -17,6 +19,7 @@ import com.cisco.cmx.model.CMXPoint;
 import com.cisco.cmx.ui.CMXFloorView;
 
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,8 +66,12 @@ public class MapFragment extends BaseFragment {
             }
         });
 
-        // Add marker for testing purposes
-        addMarker(3.f, 80.f);
+        List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
+        for (Project project : projects) {
+            if (project.hasValidCoordinates()) {
+                addMarker(project.getX(), project.getY());
+            }
+        }
 
         return rootView;
     }
