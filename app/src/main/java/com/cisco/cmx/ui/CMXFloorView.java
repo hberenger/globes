@@ -18,6 +18,7 @@ import android.graphics.PathEffect;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.NinePatchDrawable;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -131,6 +132,15 @@ public class CMXFloorView extends ImageViewTouch {
     private int mHeightBubble = 50;
 
     private int mOffsetYText = 4;
+
+    /* Corona current poi marker */
+    private float mCoronaAngle = 0.0f;
+
+    private Handler mCoronaHandler = new Handler();
+
+    private Paint mCoronaPaint;
+    private static final float CORONA_STROKE = 12.f;
+    private static final float CORONA_APPEARANCE_DURATION = 200.f; // ms
 
     public CMXFloorView(Context context) {
         super(context);
@@ -427,9 +437,24 @@ public class CMXFloorView extends ImageViewTouch {
         return output_bitmap;
     }
 
+    private Paint getCoronaPaint() {
+        if (mCoronaPaint == null) {
+            mCoronaPaint = new Paint();
+            mCoronaPaint.setStyle(Style.STROKE);
+            mCoronaPaint.setColor(Color.GREEN);
+            mCoronaPaint.setAntiAlias(true);
+        }
+        return mCoronaPaint;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        float markerScalingFactor = 1.f;
+        if (mMarkerScalingTransform != null) {
+            markerScalingFactor = mMarkerScalingTransform.scalingFactorForScale(getScale());
+        }
 
         if (mPoiTags.size() > 0 && mShowPOIs) {
             for (ImageTag tag : mPoiTags) {
@@ -444,8 +469,8 @@ public class CMXFloorView extends ImageViewTouch {
                     //mTransformMatrix.postTranslate(-bitmapWidth / 2.0f, -bitmapHeight / 2.0f);
                     //mTransformMatrix.postTranslate(-bitmapWidth, -bitmapHeight);
                     mTransformMatrix.postTranslate(-tag.bitmap.getWidth() / 2.0f, -tag.bitmap.getHeight() / 2.0f);
+
                     if (mMarkerScalingTransform != null) {
-                        float markerScalingFactor = mMarkerScalingTransform.scalingFactorForScale(getScale());
                         mTransformMatrix.postScale(markerScalingFactor, markerScalingFactor);
                     }
                     mTransformMatrix.postTranslate(target[0], target[1]);
@@ -536,7 +561,42 @@ public class CMXFloorView extends ImageViewTouch {
 
                 // draw text on bubble
                 canvas.drawText(getActivePoi().getName(), mActivePoiCenter[0] + mOffsetXBubble, mActivePoiCenter[1] + mOffsetYBubble + mOffsetYText, mPaint);
+            } else if (mActivePoiMode == CORONA && mActiveTag != null) {
+                Paint paint = getCoronaPaint();
+                paint.setStrokeWidth(CORONA_STROKE * markerScalingFactor);
+                float radius = mActiveTag.bitmap.getWidth() * markerScalingFactor;
+
+                drawCorona(canvas, mActiveTag.center, radius, paint);
             }
+        }
+    }
+
+    private void drawCorona(Canvas canvas, CMXPoint center, float radius, Paint paint) {
+        float[] target = {
+                center.getX() * mMapBitmapWidth / mDimension.getLength(),
+                center.getY() * mMapBitmapHeight / mDimension.getWidth() };
+        getImageMatrix().mapPoints(target);
+
+        RectF rect = new RectF(
+                target[0] - radius/2,
+                target[1] - radius/2,
+                target[0] + radius/2,
+                target[1] + radius/2);
+        canvas.drawArc(rect, 0.f, mCoronaAngle, false, paint);
+
+        if (mCoronaAngle < 360.f) {
+
+            float stepDuration = 1000.f/50.f; // 50hz
+            float numberOfSteps = (float) Math.ceil(CORONA_APPEARANCE_DURATION / stepDuration);
+            final float angularStep = 360.f / numberOfSteps;
+
+            mCoronaHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mCoronaAngle += angularStep;
+                    invalidate();
+                }
+            }, (long) stepDuration);
         }
     }
 
