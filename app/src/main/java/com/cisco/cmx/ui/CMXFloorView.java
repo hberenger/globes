@@ -108,6 +108,8 @@ public class CMXFloorView extends ImageViewTouch {
 
     private CMXPoi mActivePoi = null;
 
+    private ImageTag mActiveTag = null;
+
     public enum ActivePoiMode {
         CORONA,
         BUBBLE
@@ -556,21 +558,28 @@ public class CMXFloorView extends ImageViewTouch {
      */
     public void setActivePoi(CMXPoi activePoi) {
         mActivePoi = activePoi;
+        mActiveTag = null;
 
         mOffsetYBubble = 0;
         mOffsetXBubble = 0;
 
-        int heightPoi = 0;
-        int widthPoi = 0;
-
         if (activePoi != null) {
+
+            for (ImageTag tag : mPoiTags) {
+                if (tag.poiId.equals(activePoi.getId())) {
+                    mActiveTag = tag;
+                }
+            }
+
             if (mActivePoiMode == BUBBLE) {
-                for (ImageTag tag : mPoiTags) {
-                    if (tag.poiId.equals(activePoi.getId())) {
-                        heightPoi = tag.bitmap.getHeight();
-                        widthPoi = tag.bitmap.getWidth();
-                        mOffsetYBubble = -heightPoi;
-                    }
+
+                int heightPoi = 0;
+                int widthPoi = 0;
+
+                if (mActiveTag != null) {
+                    heightPoi = mActiveTag.bitmap.getHeight();
+                    widthPoi = mActiveTag.bitmap.getWidth();
+                    mOffsetYBubble = -heightPoi;
                 }
 
                 // create the bitmap bubble
@@ -631,6 +640,7 @@ public class CMXFloorView extends ImageViewTouch {
      */
     public void clearPois() {
         mPoiTags.clear();
+        mActiveTag = null;
         invalidate();
     }
 
