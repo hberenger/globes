@@ -100,6 +100,8 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
     private Animator mCurrentAnimation;
     private OnDrawableChangeListener mDrawableChangeListener;
     private OnLayoutChangeListener mOnLayoutChangeListener;
+    private float mTopMargin = 0.f;
+    private float mBottomMargin = 0.f;
 
     public ImageViewTouchBase(Context context) {
         this(context, null);
@@ -175,6 +177,14 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
             Log.d(TAG, "setMaxZoom: " + value);
         }
         mMaxZoom = value;
+    }
+
+    public void setTopMargin(float topMargin) {
+        mTopMargin = topMargin;
+    }
+
+    public void setBottomMargin(float bottomMargin) {
+        mBottomMargin = bottomMargin;
     }
 
     protected void onViewPortChanged(float left, float top, float right, float bottom) {
@@ -784,10 +794,10 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
         if (vertical) {
             if (height < mViewPort.height()) {
                 deltaY = (mViewPort.height() - height) / 2 - (rect.top - mViewPort.top);
-            } else if (rect.top > mViewPort.top) {
-                deltaY = -(rect.top - mViewPort.top);
-            } else if (rect.bottom < mViewPort.bottom) {
-                deltaY = mViewPort.bottom - rect.bottom;
+            } else if (rect.top > (mViewPort.top + mTopMargin)) {
+                deltaY = -(rect.top - (mViewPort.top + mTopMargin));
+            } else if (rect.bottom < (mViewPort.bottom - mBottomMargin)) {
+                deltaY = (mViewPort.bottom - mBottomMargin) - rect.bottom;
             }
         }
         if (horizontal) {
