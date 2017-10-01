@@ -56,6 +56,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setDisplayType(ImageViewTouchBase.DisplayType.FIT_IF_BIGGER);
         mMapView.setFloor(floor, mapImage);
         mMapView.setSelectionHandler(this);
+        mMapView.setActivePoiMode(CMXFloorView.ActivePoiMode.CORONA);
 
         mMapView.setMarkerScalingTransform(new CMXFloorView.MarkerScalingFactorTransform() {
             @Override
@@ -102,7 +103,8 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         int id = Integer.parseInt(poiIdentifier);
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(id);
         if (project != null) {
-            // TODO : change color ?
+            CMXPoi activePoi = makeCMXPoi(project.getId(), project.getX(), project.getY());
+            mMapView.setActivePoi(activePoi);
         }
 
         // TODO at some point :
