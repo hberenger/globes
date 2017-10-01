@@ -40,6 +40,9 @@ import java.util.List;
 import it.sephiroth.android.library.imagezoom.ImageViewTouch;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 
+import static com.cisco.cmx.ui.CMXFloorView.ActivePoiMode.BUBBLE;
+import static com.cisco.cmx.ui.CMXFloorView.ActivePoiMode.CORONA;
+
 /**
  * Displays an arbitrary map with POIs, with zoom & scrolling.
  */
@@ -104,6 +107,13 @@ public class CMXFloorView extends ImageViewTouch {
     private ValueAnimator mClientLocationAnimation = null;
 
     private CMXPoi mActivePoi = null;
+
+    public enum ActivePoiMode {
+        CORONA,
+        BUBBLE
+    }
+
+    private ActivePoiMode mActivePoiMode = CORONA;
 
     /* Bubbles poi marker */
     private Bitmap mBubbleActivePoi;
@@ -395,6 +405,10 @@ public class CMXFloorView extends ImageViewTouch {
     	mArrowPathPaint.setAlpha(alpha);
     }
 
+    public void setActivePoiMode(ActivePoiMode mode) {
+        mActivePoiMode = mode;
+    }
+
     public Bitmap getNinepatch(int id, int x, int y) {
         // id is a resource id for a valid ninepatch
 
@@ -506,21 +520,21 @@ public class CMXFloorView extends ImageViewTouch {
             }
         }
 
-        // draw bubble poi marker
-        if (getActivePoi() != null && mBubbleActivePoi != null) {
+        if (getActivePoi() != null) {
+            if (mActivePoiMode == BUBBLE && mBubbleActivePoi != null) {
+                // draw bubble poi marker
+                float[] mActivePoiCenter = new float[] { getActivePoi().getCenter().getX() * mMapBitmapWidth / mDimension.getLength(), getActivePoi().getCenter().getY() * mMapBitmapHeight / mDimension.getWidth() };
 
-            float[] mActivePoiCenter = new float[] { getActivePoi().getCenter().getX() * mMapBitmapWidth / mDimension.getLength(), getActivePoi().getCenter().getY() * mMapBitmapHeight / mDimension.getWidth() };
+                getImageMatrix().mapPoints(mActivePoiCenter);
+                mTransformMatrix.reset();
+                mTransformMatrix.postTranslate(-mBubbleActivePoi.getWidth() / 2.0f, -mBubbleActivePoi.getHeight() / 2.0f);
+                // transformMatrix.postScale(0.5f, 0.5f);
+                mTransformMatrix.postTranslate(mActivePoiCenter[0] + mOffsetXBubble, mActivePoiCenter[1] + mOffsetYBubble);
+                canvas.drawBitmap(mBubbleActivePoi, mTransformMatrix, mPaint);
 
-            getImageMatrix().mapPoints(mActivePoiCenter);
-            mTransformMatrix.reset();
-            mTransformMatrix.postTranslate(-mBubbleActivePoi.getWidth() / 2.0f, -mBubbleActivePoi.getHeight() / 2.0f);
-            // transformMatrix.postScale(0.5f, 0.5f);
-            mTransformMatrix.postTranslate(mActivePoiCenter[0] + mOffsetXBubble, mActivePoiCenter[1] + mOffsetYBubble);
-            canvas.drawBitmap(mBubbleActivePoi, mTransformMatrix, mPaint);
-
-            // draw text on bubble
-            canvas.drawText(getActivePoi().getName(), mActivePoiCenter[0] + mOffsetXBubble, mActivePoiCenter[1] + mOffsetYBubble + mOffsetYText, mPaint);
-
+                // draw text on bubble
+                canvas.drawText(getActivePoi().getName(), mActivePoiCenter[0] + mOffsetXBubble, mActivePoiCenter[1] + mOffsetYBubble + mOffsetYText, mPaint);
+            }
         }
     }
 
@@ -550,26 +564,28 @@ public class CMXFloorView extends ImageViewTouch {
         int widthPoi = 0;
 
         if (activePoi != null) {
-            for (ImageTag tag : mPoiTags) {
-                if (tag.poiId.equals(activePoi.getId())) {
-                    heightPoi = tag.bitmap.getHeight();
-                    widthPoi = tag.bitmap.getWidth();
-                    mOffsetYBubble = -heightPoi;
+            if (mActivePoiMode == BUBBLE) {
+                for (ImageTag tag : mPoiTags) {
+                    if (tag.poiId.equals(activePoi.getId())) {
+                        heightPoi = tag.bitmap.getHeight();
+                        widthPoi = tag.bitmap.getWidth();
+                        mOffsetYBubble = -heightPoi;
+                    }
+                }
+
+                // create the bitmap bubble
+                mBubbleActivePoi = getNinepatch(R.drawable.cmx_poi_bubble_marker_on_map, mActivePoi.getName().length() * 12, mHeightBubble);
+
+                if (activePoi.getCenter().getX() * mMapBitmapWidth / mDimension.getLength() <= mPaddingXMapBubbles)
+                    mOffsetXBubble = mBubbleActivePoi.getWidth() / 2 - widthPoi / 2;
+                else if (activePoi.getCenter().getX() * mMapBitmapWidth / mDimension.getLength() >= (mMapBitmapWidth - mPaddingXMapBubbles)) {
+                    mOffsetXBubble = -mBubbleActivePoi.getWidth() / 2 + widthPoi / 2;
+                }
+
+                if (activePoi.getCenter().getY() * mMapBitmapHeight / mDimension.getWidth() <= mPaddingYMapBubbles) {
+                    mOffsetYBubble = heightPoi;
                 }
             }
-
-            // create the bitmap bubble
-            mBubbleActivePoi = getNinepatch(R.drawable.cmx_poi_bubble_marker_on_map, mActivePoi.getName().length() * 12, mHeightBubble);
-
-            if (activePoi.getCenter().getX() * mMapBitmapWidth / mDimension.getLength() <= mPaddingXMapBubbles)
-                mOffsetXBubble = mBubbleActivePoi.getWidth() / 2 - widthPoi / 2;
-            else if (activePoi.getCenter().getX() * mMapBitmapWidth / mDimension.getLength() >= (mMapBitmapWidth - mPaddingXMapBubbles)) {
-                mOffsetXBubble = -mBubbleActivePoi.getWidth() / 2 + widthPoi / 2;
-            }
-
-            if (activePoi.getCenter().getY() * mMapBitmapHeight / mDimension.getWidth() <= mPaddingYMapBubbles)
-                mOffsetYBubble = heightPoi;
-
         }
     }
 
@@ -828,16 +844,18 @@ public class CMXFloorView extends ImageViewTouch {
                 boolean somethingTouched = false;
 
                 // on bubble tap
-                if (getActivePoi() != null && mBubbleActivePoi != null) {
-                    float bitmapSize[] = { mBubbleActivePoi.getWidth(), mBubbleActivePoi.getHeight() };
-                    float offsets[] = { mOffsetXBubble, mOffsetYBubble };
+                if (getActivePoi() != null) {
+                    if (mActivePoiMode == BUBBLE && mBubbleActivePoi != null) {
+                        float bitmapSize[] = { mBubbleActivePoi.getWidth(), mBubbleActivePoi.getHeight() };
+                        float offsets[] = { mOffsetXBubble, mOffsetYBubble };
 
-                    RectF r = getViewBoundingRect(invImgMatrix, bitmapSize, getActivePoi().getCenter(), offsets);
+                        RectF r = getViewBoundingRect(invImgMatrix, bitmapSize, getActivePoi().getCenter(), offsets);
 
-                    if (r.contains(pt[0], pt[1])) {
-                        somethingTouched = true;
-                        if (mActiveSelectionHandler != null) {
-                            mActiveSelectionHandler.onActivePoiSelected(getActivePoi().getId());
+                        if (r.contains(pt[0], pt[1])) {
+                            somethingTouched = true;
+                            if (mActiveSelectionHandler != null) {
+                                mActiveSelectionHandler.onActivePoiSelected(getActivePoi().getId());
+                            }
                         }
                     }
                 }
