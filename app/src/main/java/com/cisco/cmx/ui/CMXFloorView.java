@@ -617,6 +617,9 @@ public class CMXFloorView extends ImageViewTouch {
      *            the active poi
      */
     public void setActivePoi(CMXPoi activePoi) {
+        if (mActivePoi == null || activePoi == null || !activePoi.getId().equals(mActivePoi.getId())) {
+            mCoronaAngle = 0.f;
+        }
         mActivePoi = activePoi;
         mActiveTag = null;
 
