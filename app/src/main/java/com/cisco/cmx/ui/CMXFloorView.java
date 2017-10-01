@@ -655,6 +655,8 @@ public class CMXFloorView extends ImageViewTouch {
                     mOffsetYBubble = heightPoi;
                 }
             }
+
+            invalidate();
         }
     }
 
@@ -954,6 +956,9 @@ public class CMXFloorView extends ImageViewTouch {
                         mActiveSelectionHandler.onActivePoiSelected(null);
                     }
                     setActivePoi(null);
+                    if (mActivePoiMode == CORONA) {
+                        invalidate();
+                    }
                 }
             }
         }
