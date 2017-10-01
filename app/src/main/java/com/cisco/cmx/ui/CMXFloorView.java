@@ -830,23 +830,9 @@ public class CMXFloorView extends ImageViewTouch {
                 // on bubble tap
                 if (getActivePoi() != null && mBubbleActivePoi != null) {
                     float bitmapSize[] = { mBubbleActivePoi.getWidth(), mBubbleActivePoi.getHeight() };
-                    invImgMatrix.mapVectors(bitmapSize);
-                    float bitmapWidth = bitmapSize[0];
-                    float bitmapHeight = bitmapSize[1];
-
-                    float centerX = (getActivePoi().getCenter().getX()) * mMapBitmapWidth / mDimension.getLength();
-                    float centerY = getActivePoi().getCenter().getY() * mMapBitmapHeight / mDimension.getWidth();
-
                     float offsets[] = { mOffsetXBubble, mOffsetYBubble };
-                    invImgMatrix.mapVectors(offsets);
-                    float mOffsetXBubbleOnMap = offsets[0];
-                    float mOffsetYBubbleOnMap = offsets[1];
 
-                    float left = centerX - bitmapWidth / 2.0f;
-                    float top = centerY - bitmapHeight / 2.0f;
-                    float right = centerX + bitmapWidth / 2.0f;
-                    float bottom = centerY + bitmapHeight / 2.0f;
-                    RectF r = new RectF(left + mOffsetXBubbleOnMap, top + mOffsetYBubbleOnMap, right + mOffsetXBubbleOnMap, bottom + mOffsetYBubbleOnMap);
+                    RectF r = getViewBoundingRect(invImgMatrix, bitmapSize, getActivePoi().getCenter(), offsets);
 
                     if (r.contains(pt[0], pt[1])) {
                         somethingTouched = true;
@@ -862,18 +848,8 @@ public class CMXFloorView extends ImageViewTouch {
 
                         if (tag.bitmap != null) {
                             float bitmapSize[] = { Math.max(48, tag.bitmap.getWidth()), Math.max(48, tag.bitmap.getHeight()) };
-                            invImgMatrix.mapVectors(bitmapSize);
-                            float bitmapWidth = bitmapSize[0];
-                            float bitmapHeight = bitmapSize[1];
 
-                            float centerX = tag.center.getX() * mMapBitmapWidth / mDimension.getLength();
-                            float centerY = tag.center.getY() * mMapBitmapHeight / mDimension.getWidth();
-
-                            float left = centerX - bitmapWidth / 2.0f;
-                            float top = centerY - bitmapHeight / 2.0f;
-                            float right = centerX + bitmapWidth / 2.0f;
-                            float bottom = centerY + bitmapHeight / 2.0f;
-                            RectF r = new RectF(left, top, right, bottom);
+                            RectF r = getViewBoundingRect(invImgMatrix, bitmapSize, tag.center, null);
 
                             if (r.contains(pt[0], pt[1])) {
                                 somethingTouched = true;
@@ -895,6 +871,32 @@ public class CMXFloorView extends ImageViewTouch {
         }
         return true;
 
+    }
+
+    private RectF getViewBoundingRect(Matrix invImgMatrix, float bitmapSize[], CMXPoint center, float offsets[]) {
+
+        invImgMatrix.mapVectors(bitmapSize);
+        float bitmapWidth = bitmapSize[0];
+        float bitmapHeight = bitmapSize[1];
+
+        float centerX = center.getX() * mMapBitmapWidth / mDimension.getLength();
+        float centerY = center.getY() * mMapBitmapHeight / mDimension.getWidth();
+
+        float offsetXOnMap = 0.f;
+        float offsetYOnMap = 0.f;
+        if (offsets != null) {
+            invImgMatrix.mapVectors(offsets);
+            offsetXOnMap = offsets[0];
+            offsetYOnMap = offsets[1];
+        }
+
+        float left = centerX - bitmapWidth / 2.0f;
+        float top = centerY - bitmapHeight / 2.0f;
+        float right = centerX + bitmapWidth / 2.0f;
+        float bottom = centerY + bitmapHeight / 2.0f;
+        RectF r = new RectF(left + offsetXOnMap, top + offsetYOnMap, right + offsetXOnMap, bottom + offsetYOnMap);
+
+        return r;
     }
 
     private class ImageTag {
@@ -1022,18 +1024,8 @@ public class CMXFloorView extends ImageViewTouch {
                         bitmapSize = new float[] { mTargetBitmap.getWidth(), mTargetBitmap.getHeight() };
                     }
 
-                    invImgMatrix.mapVectors(bitmapSize);
-                    float bitmapWidth = bitmapSize[0];
-                    float bitmapHeight = bitmapSize[1];
-
-                    float centerX = mClientCoordinate.getX() * mMapBitmapWidth / mDimension.getLength();
-                    float centerY = mClientCoordinate.getY() * mMapBitmapHeight / mDimension.getWidth();
-
-                    float left = centerX - bitmapWidth / 2.0f;
-                    float top = centerY - bitmapHeight / 2.0f;
-                    float right = centerX + bitmapWidth / 2.0f;
-                    float bottom = centerY + bitmapHeight / 2.0f;
-                    RectF r = new RectF(left, top, right, bottom);
+                    CMXPoint center = new CMXPoint(mClientCoordinate.getX(), mClientCoordinate.getY());
+                    RectF r = getViewBoundingRect(invImgMatrix, bitmapSize, center, null);
                     // r.inset(-32, -32);
 
                     if (r.contains(pt[0], pt[1])) {
