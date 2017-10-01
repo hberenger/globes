@@ -241,7 +241,7 @@ public class ImageViewTouch extends ImageViewTouchBase {
     }
 
     public boolean canScroll() {
-        if (getScale() > 1) {
+        if (getScale() >= 1) {
             return true;
         }
         RectF bitmapRect = getBitmapRect();
