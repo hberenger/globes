@@ -26,12 +26,15 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 
-public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler {
+public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler {
 
     private static final int kMAP_ID = R.drawable.plan2d;
 
     @Bind(R.id.map)
     CMXFloorView mMapView;
+
+    @Bind(R.id.quick_view)
+    ViewGroup mQuickView;
 
     @Override
     public String getTabName() {
@@ -56,6 +59,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setDisplayType(ImageViewTouchBase.DisplayType.FIT_IF_BIGGER);
         mMapView.setFloor(floor, mapImage);
         mMapView.setSelectionHandler(this);
+        mMapView.setActiveSelectionHandler(this);
         mMapView.setActivePoiMode(CMXFloorView.ActivePoiMode.CORONA);
 
         mMapView.setMarkerScalingTransform(new CMXFloorView.MarkerScalingFactorTransform() {
@@ -97,7 +101,6 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @Override
     public void onPoiSelected(String poiIdentifier) {
         if (poiIdentifier == null) {
-            // TODO : disable selected color ?
             return;
         }
         int id = Integer.parseInt(poiIdentifier);
@@ -105,11 +108,21 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         if (project != null) {
             CMXPoi activePoi = makeCMXPoi(project.getId(), project.getX(), project.getY());
             mMapView.setActivePoi(activePoi);
+
+            mQuickView.setVisibility(View.VISIBLE);
         }
 
         // TODO at some point :
         // if (id > 0) {
         // startActivity(DetailActivity.makeTestIntent(getContext(), id));
         // }
+    }
+
+    @Override
+    public void onActivePoiSelected(String poiIdentifier) {
+        if (poiIdentifier == null) {
+            mQuickView.setVisibility(View.GONE);
+            return;
+        }
     }
 }
