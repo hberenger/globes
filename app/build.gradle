@@ -41,5 +41,4 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
 
     testCompile 'junit:junit:4.12'
-    compile files('libs/imageviewtouch.jar')
 }

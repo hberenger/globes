@@ -143,7 +143,7 @@ public class CMXFloorView extends ImageViewTouch {
     private static final float CORONA_APPEARANCE_DURATION = 200.f; // ms
 
     public CMXFloorView(Context context) {
-        super(context);
+        super(context, (AttributeSet)null);
     }
 
     public CMXFloorView(Context context, AttributeSet attrs, int defStyle) {
