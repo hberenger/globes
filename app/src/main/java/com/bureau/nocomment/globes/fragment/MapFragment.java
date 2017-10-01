@@ -62,6 +62,9 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setActiveSelectionHandler(this);
         mMapView.setActivePoiMode(CMXFloorView.ActivePoiMode.CORONA);
 
+        float bottomMargin = (float) getResources().getDimensionPixelSize(R.dimen.quickview_height);
+        mMapView.setBottomMargin(bottomMargin);
+
         mMapView.setMarkerScalingTransform(new CMXFloorView.MarkerScalingFactorTransform() {
             @Override
             public float scalingFactorForScale(float scale) {

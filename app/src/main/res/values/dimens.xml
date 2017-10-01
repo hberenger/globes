@@ -5,4 +5,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="detail_page_element_margin">10dp</dimen>
     <dimen name="detail_page_button_size">36dp</dimen>
+    <dimen name="quickview_height">100dp</dimen>
 </resources>
