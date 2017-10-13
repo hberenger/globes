@@ -15,6 +15,8 @@ import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
 import android.view.ViewConfiguration;
 
+import java.util.Date;
+
 public class ImageViewTouch extends ImageViewTouchBase {
     static final float SCROLL_DELTA_THRESHOLD = 1.0f;
     /**
@@ -33,6 +35,7 @@ public class ImageViewTouch extends ImageViewTouchBase {
     protected boolean mScrollEnabled = true;
     private OnImageViewTouchDoubleTapListener mDoubleTapListener;
     private OnImageViewTouchSingleTapListener mSingleTapListener;
+    private Date mScaleTimeStamp;
 
     public ImageViewTouch(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -385,6 +388,13 @@ public class ImageViewTouch extends ImageViewTouchBase {
         }
     }
 
+    // Number of milliseconds since last Scale gesture
+    // returns Long.MAX_Value if no scale ever occured.
+    public final long getDurationSinceLastScale() {
+        Date now = new Date();
+        return (mScaleTimeStamp != null) ? now.getTime() - mScaleTimeStamp.getTime() : Long.MAX_VALUE;
+    }
+
     public class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         protected boolean mScaled = false;
 
@@ -399,6 +409,7 @@ public class ImageViewTouch extends ImageViewTouchBase {
                     targetScale = Math.min(getMaxScale(), Math.max(targetScale, getMinScale() - MIN_SCALE_DIFF));
                     zoomTo(targetScale, detector.getFocusX(), detector.getFocusY());
                     mDoubleTapDirection = 1;
+                    mScaleTimeStamp = new Date();
                     invalidate();
                     return true;
                 }

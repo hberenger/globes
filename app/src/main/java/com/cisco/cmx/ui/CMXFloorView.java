@@ -955,12 +955,18 @@ public class CMXFloorView extends ImageViewTouch {
                 }
 
                 if (!somethingTouched) {
-                    if (mActiveSelectionHandler != null) {
-                        mActiveSelectionHandler.onActivePoiSelected(null);
-                    }
-                    setActivePoi(null);
-                    if (mActivePoiMode == CORONA) {
-                        invalidate();
+                    long durationSinceLastScale = getDurationSinceLastScale();
+                    // A phantom "touch" event is sent soon after scale in / scale out
+                    // => we check that touch events don't occur within a short window
+                    // after scale, do avoid unexpected poi deselection.
+                    if (durationSinceLastScale > 300) {
+                        if (mActiveSelectionHandler != null) {
+                            mActiveSelectionHandler.onActivePoiSelected(null);
+                        }
+                        setActivePoi(null);
+                        if (mActivePoiMode == CORONA) {
+                            invalidate();
+                        }
                     }
                 }
             }
