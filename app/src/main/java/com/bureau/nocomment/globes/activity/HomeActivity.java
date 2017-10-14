@@ -22,6 +22,7 @@ import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
+import com.bureau.nocomment.globes.fragment.TabFragment;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -136,19 +137,19 @@ public class HomeActivity extends AppCompatActivity {
     private static class HomePagerAdapter extends FragmentStatePagerAdapter {
 
         private interface HomeFragmentFactory {
-            BaseFragment make();
+            TabFragment make();
         }
 
         private enum HomeFragmentsEnum {
             MAP(new HomeFragmentFactory() {
                 @Override
-                public BaseFragment make() {
+                public TabFragment make() {
                     return new MapFragment();
                 }
             }),
             ARCHITECTS(new HomeFragmentFactory() {
                 @Override
-                public  BaseFragment make() {
+                public  TabFragment make() {
                     return new ArchitectsFragment();
                 }
             });
@@ -159,18 +160,18 @@ public class HomeActivity extends AppCompatActivity {
                 this.homeFragmentFactory = homeFragmentFactory;
             }
 
-            public static BaseFragment homeFragmentInstance(int enumIndex) {
+            public static TabFragment homeFragmentInstance(int enumIndex) {
                 return HomeFragmentsEnum.values()[enumIndex].homeFragmentFactory.make();
             }
         }
 
-        List<WeakReference<BaseFragment>> homeFragments;
+        List<WeakReference<TabFragment>> homeFragments;
 
         public HomePagerAdapter(FragmentManager fm) {
             super(fm);
             homeFragments = new ArrayList<>(getCount());
             for (int i = 0; i < getCount(); i++) {
-                homeFragments.add(new WeakReference<BaseFragment>(null));
+                homeFragments.add(new WeakReference<TabFragment>(null));
             }
         }
 
@@ -180,11 +181,11 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         @Override
-        public BaseFragment getItem(int position) {
+        public TabFragment getItem(int position) {
             if (fragmentExists(position)) {
                 return homeFragments.get(position).get();
             } else {
-                BaseFragment newFragment = HomeFragmentsEnum.homeFragmentInstance(position);
+                TabFragment newFragment = HomeFragmentsEnum.homeFragmentInstance(position);
                 putIntoCache(position, newFragment);
                 return newFragment;
             }
@@ -195,7 +196,7 @@ public class HomeActivity extends AppCompatActivity {
             return getItem(position).getTabName();
         }
 
-        private void putIntoCache(int position, BaseFragment newFragment) {
+        private void putIntoCache(int position, TabFragment newFragment) {
             homeFragments.set(position, new WeakReference<>(newFragment));
         }
 

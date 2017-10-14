@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.application.Globes;
 
-public class ArchitectsFragment extends BaseFragment {
+public class ArchitectsFragment extends TabFragment {
     @Override
     public String getTabName() {
         return Globes.getAppContext().getResources().getString(R.string.tab_architects);

@@ -67,5 +67,4 @@ abstract public class BaseFragment extends Fragment {
         // Add tagging later
     }
 
-    abstract public String getTabName();
 }

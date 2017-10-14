@@ -26,7 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 
-public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler {
+public class MapFragment extends TabFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler {
 
     private static final int kMAP_ID = R.drawable.plan2d;
 
