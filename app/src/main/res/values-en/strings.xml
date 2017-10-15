@@ -11,4 +11,5 @@
     <string name="pause_button">Pause button</string>
     <string name="item_detail">Project image</string>
     <string name="title_activity_detail">Detail</string>
+    <string name="go_top">Go to top</string>
 </resources>

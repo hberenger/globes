@@ -35,13 +35,16 @@ public class ArchitectsFragment extends TabFragment {
         final ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_architects, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.architects_list);
 
+        View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_footer, listView, false);
+        listView.addFooterView(footer);
+
         mArchitectsAdapter = new ArchitectsAdapter(getContext());
         listView.setAdapter(mArchitectsAdapter);
 
         ButterKnife.bind(this, rootView);
         return rootView;
     }
-    
+
     @Override
     public void onStart() {
         super.onStart();
@@ -55,4 +58,10 @@ public class ArchitectsFragment extends TabFragment {
         mArchitectsAdapter.clear();
         mArchitectsAdapter.addAll(projects);
     }
+
+    @OnClick(R.id.gotop)
+    void onGoTop() {
+        // TODO : go top
+    }
+
 }
