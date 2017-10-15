@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:animateLayoutChanges="true">
+    android:layout_height="match_parent">
 
     <com.cisco.cmx.ui.CMXFloorView
         android:id="@+id/map"
@@ -26,7 +25,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white"
-        android:visibility="gone">
+        android:translationY="0dp"
+        android:visibility="invisible">
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

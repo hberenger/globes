@@ -1,5 +1,6 @@
 package com.bureau.nocomment.globes.fragment;
 
+import android.animation.Animator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class MapFragment extends TabFragment implements CMXFloorView.SelectionHa
 
     @Bind(R.id.quick_view)
     ViewGroup mQuickView;
+    int mQuickViewHeight;
 
     @Override
     public String getTabName() {
@@ -96,6 +98,13 @@ public class MapFragment extends TabFragment implements CMXFloorView.SelectionHa
         transaction.add(R.id.quick_view, childFragment).commit();
     }
 
+    @Override
+    protected void onViewDrawn() {
+        super.onViewDrawn();
+        mQuickViewHeight = mQuickView.getHeight();
+        hideMiniDetails(false);
+    }
+
     private void addMarker(int id, float x, float y) {
         Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_project_marker_36dp);
         CMXPoi poi = makeCMXPoi(id, x, y);
@@ -122,7 +131,7 @@ public class MapFragment extends TabFragment implements CMXFloorView.SelectionHa
             CMXPoi activePoi = makeCMXPoi(project.getId(), project.getX(), project.getY());
             mMapView.setActivePoi(activePoi);
 
-            mQuickView.setVisibility(View.VISIBLE);
+            showMiniDetails();
         }
 
         // TODO at some point :
@@ -134,8 +143,37 @@ public class MapFragment extends TabFragment implements CMXFloorView.SelectionHa
     @Override
     public void onActivePoiSelected(String poiIdentifier) {
         if (poiIdentifier == null) {
-            mQuickView.setVisibility(View.GONE);
+            hideMiniDetails(true);
             return;
         }
+    }
+
+    private void hideMiniDetails(boolean animated) {
+        if (animated) {
+            mQuickView.animate().translationY(mQuickViewHeight).setListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animator) {}
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    mQuickView.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) {}
+
+                @Override
+                public void onAnimationRepeat(Animator animator) {}
+            }).start();
+
+        } else {
+            mQuickView.setTranslationY(mQuickViewHeight);
+            mQuickView.setVisibility(View.GONE);
+        }
+    }
+
+    private void showMiniDetails() {
+        mQuickView.setVisibility(View.VISIBLE);
+        mQuickView.animate().translationY(0.f).setListener(null).start();
     }
 }
