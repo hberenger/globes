@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
@@ -19,14 +20,24 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ArchitectsFragment extends TabFragment {
+public class ArchitectsFragment extends TabFragment implements AdapterView.OnItemClickListener {
+
+    public interface ProjectSelectedObserver {
+        void onProjectSelected(Project p);
+    }
 
     @Bind(R.id.architects_list) ListView          mArchitectsList;
     private                     ArchitectsAdapter mArchitectsAdapter;
 
+    private ProjectSelectedObserver mProjectSelectedObserver;
+
     @Override
     public String getTabName() {
         return Globes.getAppContext().getResources().getString(R.string.tab_architects);
+    }
+
+    public void setProjectSelectedObserver(ProjectSelectedObserver projectSelectedObserver) {
+        mProjectSelectedObserver = projectSelectedObserver;
     }
 
     @Nullable
@@ -41,6 +52,8 @@ public class ArchitectsFragment extends TabFragment {
         mArchitectsAdapter = new ArchitectsAdapter(getContext());
         listView.setAdapter(mArchitectsAdapter);
 
+        listView.setOnItemClickListener(this);
+
         ButterKnife.bind(this, rootView);
         return rootView;
     }
@@ -50,6 +63,8 @@ public class ArchitectsFragment extends TabFragment {
         super.onStart();
         populate();
     }
+
+    // Private
 
     private void populate() {
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
@@ -64,4 +79,12 @@ public class ArchitectsFragment extends TabFragment {
         // TODO : go top
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
+        Project p = projects.get(i - 1); // minus one because of header
+        if (mProjectSelectedObserver != null) {
+            mProjectSelectedObserver.onProjectSelected(p);
+        }
+    }
 }
