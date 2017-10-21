@@ -37,7 +37,7 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
                     .inflate(R.layout.view_architects_cell_root, parent, false);
         }
 
-        ((ArchitectCell) convertView).configure(project);
+        ((ArchitectCell) convertView).configure(project, getContext());
         return convertView;
     }
 }
