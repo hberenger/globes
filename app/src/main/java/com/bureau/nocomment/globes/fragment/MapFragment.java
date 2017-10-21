@@ -90,6 +90,11 @@ public class MapFragment extends TabFragment implements CMXFloorView.SelectionHa
         return rootView;
     }
 
+    public void focusOnProject(Project project) {
+        CMXPoi poi = makeCMXPoi(project.getId(), project.getX(), project.getY());
+        mMapView.centerOnPoi(poi);
+    }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
