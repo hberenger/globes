@@ -1,17 +1,71 @@
 package com.bureau.nocomment.globes.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+@JsonIgnoreProperties({"countryLabel"})
 public class Project {
-    private int id;
-    private String description;
-    private String subtitle;
-    private String audioFile;
+    private int          id;
+    private String       name;
+    private String       author;
+    private String       localization; // optional
+    private String       countryCode;  // mandatory
+    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "yyyy")
+    public  Date         date;         // mandatory
+    private String       dateDesc;     // optional
+    private Float        diameter;
+    private String       description;
+    private String       subtitle;
+    private String       audioFile;
     private List<String> images;
-    private List<Float> coordinates;
+    private List<Float>  coordinates;
+
+    // computed properties
+    private String       countryLabel;
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getLocalizationDescription() {
+        if (localization != null) {
+            return localization;
+        }
+        if (countryLabel == null) {
+            Locale loc = new Locale("", countryCode);
+            countryLabel = loc.getDisplayCountry();
+        }
+        return countryLabel;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getDateDescription() {
+        if(dateDesc != null) {
+            return dateDesc;
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String year = formatter.format(date);
+        return year;
+    }
+
+    public Float getDiameter() {
+        return diameter;
     }
 
     public String getDescription() {
