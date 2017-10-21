@@ -191,6 +191,29 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
 
+        int getMapIndex() {
+            return HomeFragmentsEnum.MAP.ordinal();
+        }
+
+        MapFragment getMap() {
+            return getExistingFragmentAt(getMapIndex());
+        }
+
+        int getArchitectsIndex() {
+            return HomeFragmentsEnum.ARCHITECTS.ordinal();
+        }
+
+        ArchitectsFragment getArchitects() {
+            return getExistingFragmentAt(getArchitectsIndex());
+        }
+
+        private <T> T getExistingFragmentAt(int index) {
+            if (index >= homeFragments.size()) {
+                return null;
+            }
+            return (T) homeFragments.get(index).get();
+        }
+
         @Override
         public CharSequence getPageTitle(int position) {
             return getItem(position).getTabName();
