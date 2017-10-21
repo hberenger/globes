@@ -23,12 +23,13 @@ import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
 import com.bureau.nocomment.globes.fragment.TabFragment;
+import com.bureau.nocomment.globes.model.Project;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver {
 
     ViewPager mViewPager;
     TabLayout mTabs;
@@ -53,6 +54,8 @@ public class HomeActivity extends AppCompatActivity {
         mTabs.setupWithViewPager(mViewPager);
 
         // mViewPager.setCurrentItem(0, false);
+
+        mPagerAdapter.getArchitects().setProjectSelectedObserver(this);
 
         int elevation = getResources().getDimensionPixelSize(R.dimen.tabbar_elevation);
         ViewCompat.setElevation(mTabs, elevation);
@@ -130,6 +133,12 @@ public class HomeActivity extends AppCompatActivity {
         if (!locale.setAsCurrent(this)) {
             this.recreate();
         }
+    }
+
+    @Override
+    public void onProjectSelected(Project p) {
+        mViewPager.setCurrentItem(mPagerAdapter.getMapIndex(), true);
+        mPagerAdapter.getMap().focusOnProject(p);
     }
 
     // HomePageAdapter
