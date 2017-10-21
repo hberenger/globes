@@ -133,6 +133,8 @@ public class CMXFloorView extends ImageViewTouch {
 
     private int mOffsetYText = 4;
 
+    static final long kScrollDuraton = 550;
+
     /* Corona current poi marker */
     private float mCoronaAngle = 0.0f;
 
@@ -855,7 +857,7 @@ public class CMXFloorView extends ImageViewTouch {
         float xp = getCenter().x - target[0];
         float yp = getCenter().y - target[1];
 
-        scrollBy(xp, yp, 350);
+        scrollBy(xp, yp, kScrollDuraton);
     }
 
     /**
