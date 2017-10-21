@@ -1,10 +1,8 @@
 package com.bureau.nocomment.globes.view;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
@@ -14,10 +12,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class ArchitectCell extends RelativeLayout {
+public class ArchitectCell extends ConstraintLayout {
 
-     @Bind(R.id.name)    TextView nameTextView;
-     @Bind(R.id.country) TextView countryTextView;
+     @Bind(R.id.architect_name)    TextView nameTextView;
+     @Bind(R.id.place) TextView placeTextView;
 
     public ArchitectCell(Context context) {
         super(context);
@@ -31,14 +29,6 @@ public class ArchitectCell extends RelativeLayout {
 
     public ArchitectCell(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public ArchitectCell(
-            Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes
-    ) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
 
