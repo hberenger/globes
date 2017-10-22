@@ -55,8 +55,6 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
         // mViewPager.setCurrentItem(0, false);
 
-        mPagerAdapter.getArchitects().setProjectSelectedObserver(this);
-
         int elevation = getResources().getDimensionPixelSize(R.dimen.tabbar_elevation);
         ViewCompat.setElevation(mTabs, elevation);
         // apply elevation to homeToolbar too, otherwise the tabbar hides it

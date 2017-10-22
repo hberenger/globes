@@ -1,7 +1,9 @@
 package com.bureau.nocomment.globes.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,8 @@ import butterknife.OnClick;
 
 public class ArchitectsFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
+    static final String LOGTAG = "ArchitectsFragment";
+
     public interface ProjectSelectedObserver {
         void onProjectSelected(Project p);
     }
@@ -29,10 +33,6 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
     private                     ArchitectsAdapter mArchitectsAdapter;
 
     private ProjectSelectedObserver mProjectSelectedObserver;
-
-    public void setProjectSelectedObserver(ProjectSelectedObserver projectSelectedObserver) {
-        mProjectSelectedObserver = projectSelectedObserver;
-    }
 
     @Nullable
     @Override
@@ -50,6 +50,17 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            mProjectSelectedObserver = (ProjectSelectedObserver) context;
+        } catch (ClassCastException e) {
+            Log.d(LOGTAG, "Could not attach context as ProjectSelected observer");
+        }
     }
 
     @Override
