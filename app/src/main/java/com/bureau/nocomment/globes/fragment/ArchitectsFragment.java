@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
@@ -25,12 +26,21 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     static final String LOGTAG = "ArchitectsFragment";
 
+    private Boolean mInverseSort = false;
+    private int     mLastSortField = 0;
+
     public interface ProjectSelectedObserver {
         void onProjectSelected(Project p);
     }
 
     @Bind(R.id.architects_list) ListView          mArchitectsList;
     private                     ArchitectsAdapter mArchitectsAdapter;
+
+    @Bind(R.id.sort_by_name)    Button     mSortByName;
+    @Bind(R.id.sort_by_date)    Button     mSortByDate;
+    @Bind(R.id.sort_by_size)    Button     mSortBySize;
+    @Bind(R.id.sort_by_index)   Button     mSortByNumber;
+    @Bind(R.id.sort_by_country) Button     mSortByCountry;
 
     private ProjectSelectedObserver mProjectSelectedObserver;
 
@@ -89,5 +99,44 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         if (mProjectSelectedObserver != null) {
             mProjectSelectedObserver.onProjectSelected(p);
         }
+    }
+
+    @OnClick(R.id.sort_by_name)
+    void onSortByName() {
+        updateSortDirection(R.id.sort_by_name);
+        mArchitectsAdapter.sort(mArchitectsAdapter.getNameComparator(mInverseSort));
+    }
+
+    @OnClick(R.id.sort_by_size)
+    void onSortBySize() {
+        updateSortDirection(R.id.sort_by_size);
+        mArchitectsAdapter.sort(mArchitectsAdapter.getSizeComparator(mInverseSort));
+    }
+
+    @OnClick(R.id.sort_by_country)
+    void onSortByCountry() {
+        updateSortDirection(R.id.sort_by_country);
+        mArchitectsAdapter.sort(mArchitectsAdapter.getCountryComparator(mInverseSort));
+    }
+
+    @OnClick(R.id.sort_by_index)
+    void onSortByNumber() {
+        updateSortDirection(R.id.sort_by_index);
+        mArchitectsAdapter.sort(mArchitectsAdapter.getNumberComparator(mInverseSort));
+    }
+
+    @OnClick(R.id.sort_by_date)
+    void onSortByDate() {
+        updateSortDirection(R.id.sort_by_date);
+        mArchitectsAdapter.sort(mArchitectsAdapter.getDateComparator(mInverseSort));
+    }
+
+    private void updateSortDirection(int tappedFieldId) {
+        if (mLastSortField == tappedFieldId) {
+            mInverseSort = !mInverseSort;
+        } else {
+            mInverseSort = false;
+        }
+        mLastSortField = tappedFieldId;
     }
 }
