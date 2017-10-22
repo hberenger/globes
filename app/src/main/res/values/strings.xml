@@ -22,4 +22,5 @@
     <string name="architect">Architecte</string>
     <string name="number">Numéro</string>
     <string name="sort_by">Trier par:</string>
+    <string name="recherche">recherche</string>
 </resources>

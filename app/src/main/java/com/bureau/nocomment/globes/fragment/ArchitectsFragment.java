@@ -50,6 +50,8 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         final ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_architects, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.architects_list);
 
+        View header = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_header, listView, false);
+        listView.addHeaderView(header, "BandeauTitle", false);
         View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_footer, listView, false);
         listView.addFooterView(footer);
 
