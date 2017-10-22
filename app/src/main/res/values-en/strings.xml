@@ -12,4 +12,10 @@
     <string name="item_detail">Project image</string>
     <string name="title_activity_detail">Detail</string>
     <string name="go_top">Go to top</string>
+    <string name="taille">Size</string>
+    <string name="pays">Country</string>
+    <string name="date">Date</string>
+    <string name="architect">Architect</string>
+    <string name="number">Number</string>
+    <string name="sort_by">Sort by:</string>
 </resources>

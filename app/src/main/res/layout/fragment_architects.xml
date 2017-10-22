@@ -16,15 +16,51 @@
         app:layout_constraintRight_toRightOf="parent"
         android:background="@color/colorPrimaryDark"
         android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+        android:paddingBottom="5dp"
+        android:gravity="center">
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Architectes!"
-            android:layout_marginStart="5dp"
-            android:minHeight="20dip"
-            android:minWidth="20dip"
+            android:layout_gravity="start"
+            android:text="@string/sort_by"
+            android:enabled="false"
+            style="@style/SortLabels"/>
+
+        <Button
+            android:id="@+id/sort_by_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number"
+            style="@style/SortLabels"/>
+
+        <Button
+            android:id="@+id/sort_by_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/architect"
+            style="@style/SortLabels"/>
+
+        <Button
+            android:id="@+id/sort_by_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            style="@style/SortLabels"/>
+
+        <Button
+            android:id="@+id/sort_by_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pays"
+            android:textAllCaps="false"
+            style="@style/SortLabels"/>
+
+        <Button
+            android:id="@+id/sort_by_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/taille"
             android:textAllCaps="false"
             style="@style/SortLabels"/>
 

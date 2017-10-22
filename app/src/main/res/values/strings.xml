@@ -16,4 +16,10 @@
         \r\n
         Aliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.</string>
     <string name="go_top">Remonter en haut de la liste</string>
+    <string name="taille">Taille</string>
+    <string name="pays">Pays</string>
+    <string name="date">Date</string>
+    <string name="architect">Architecte</string>
+    <string name="number">Numéro</string>
+    <string name="sort_by">Trier par:</string>
 </resources>
