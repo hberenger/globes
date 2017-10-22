@@ -10,7 +10,6 @@ import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.adapter.ArchitectsAdapter;
-import com.bureau.nocomment.globes.application.Globes;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 
@@ -20,7 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ArchitectsFragment extends TabFragment implements AdapterView.OnItemClickListener {
+public class ArchitectsFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     public interface ProjectSelectedObserver {
         void onProjectSelected(Project p);
@@ -30,11 +29,6 @@ public class ArchitectsFragment extends TabFragment implements AdapterView.OnIte
     private                     ArchitectsAdapter mArchitectsAdapter;
 
     private ProjectSelectedObserver mProjectSelectedObserver;
-
-    @Override
-    public String getTabName() {
-        return Globes.getAppContext().getResources().getString(R.string.tab_architects);
-    }
 
     public void setProjectSelectedObserver(ProjectSelectedObserver projectSelectedObserver) {
         mProjectSelectedObserver = projectSelectedObserver;

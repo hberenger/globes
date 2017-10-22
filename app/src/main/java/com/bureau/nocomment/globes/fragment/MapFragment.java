@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bureau.nocomment.globes.R;
-import com.bureau.nocomment.globes.application.Globes;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.cisco.cmx.model.CMXDimension;
@@ -29,7 +28,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 
-public class MapFragment extends TabFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler {
+public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler {
 
     private static final int kMAP_ID = R.drawable.plan2d;
 
@@ -39,11 +38,6 @@ public class MapFragment extends TabFragment implements CMXFloorView.SelectionHa
     @Bind(R.id.quick_view)
     ViewGroup mQuickView;
     int mQuickViewHeight;
-
-    @Override
-    public String getTabName() {
-        return Globes.getAppContext().getResources().getString(R.string.tab_map);
-    }
 
     @Nullable
     @Override

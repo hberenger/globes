@@ -17,12 +17,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.application.Globes;
 import com.bureau.nocomment.globes.common.ForegroundDispatcher;
 import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
-import com.bureau.nocomment.globes.fragment.TabFragment;
 import com.bureau.nocomment.globes.model.Project;
 
 import java.lang.ref.WeakReference;
@@ -146,20 +146,31 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     private static class HomePagerAdapter extends FragmentStatePagerAdapter {
 
         private interface HomeFragmentFactory {
-            TabFragment make();
+            BaseFragment make();
+            String getTitle();
         }
 
         private enum HomeFragmentsEnum {
             MAP(new HomeFragmentFactory() {
                 @Override
-                public TabFragment make() {
+                public BaseFragment make() {
                     return new MapFragment();
+                }
+
+                @Override
+                public String getTitle() {
+                    return Globes.getAppContext().getResources().getString(R.string.tab_map);
                 }
             }),
             ARCHITECTS(new HomeFragmentFactory() {
                 @Override
-                public  TabFragment make() {
+                public  BaseFragment make() {
                     return new ArchitectsFragment();
+                }
+
+                @Override
+                public String getTitle() {
+                    return Globes.getAppContext().getResources().getString(R.string.tab_architects);
                 }
             });
 
@@ -169,18 +180,22 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                 this.homeFragmentFactory = homeFragmentFactory;
             }
 
-            public static TabFragment homeFragmentInstance(int enumIndex) {
+            public static BaseFragment makeHomeFragmentInstance(int enumIndex) {
                 return HomeFragmentsEnum.values()[enumIndex].homeFragmentFactory.make();
+            }
+
+            public static String getFragmentTitle(int enumIndex) {
+                return HomeFragmentsEnum.values()[enumIndex].homeFragmentFactory.getTitle();
             }
         }
 
-        List<WeakReference<TabFragment>> homeFragments;
+        List<WeakReference<BaseFragment>> homeFragments;
 
         public HomePagerAdapter(FragmentManager fm) {
             super(fm);
             homeFragments = new ArrayList<>(getCount());
             for (int i = 0; i < getCount(); i++) {
-                homeFragments.add(new WeakReference<TabFragment>(null));
+                homeFragments.add(new WeakReference<BaseFragment>(null));
             }
         }
 
@@ -190,11 +205,11 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         }
 
         @Override
-        public TabFragment getItem(int position) {
+        public BaseFragment getItem(int position) {
             if (fragmentExists(position)) {
                 return homeFragments.get(position).get();
             } else {
-                TabFragment newFragment = HomeFragmentsEnum.homeFragmentInstance(position);
+                BaseFragment newFragment = HomeFragmentsEnum.makeHomeFragmentInstance(position);
                 putIntoCache(position, newFragment);
                 return newFragment;
             }
@@ -225,10 +240,10 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return getItem(position).getTabName();
+            return HomeFragmentsEnum.getFragmentTitle(position);
         }
 
-        private void putIntoCache(int position, TabFragment newFragment) {
+        private void putIntoCache(int position, BaseFragment newFragment) {
             homeFragments.set(position, new WeakReference<>(newFragment));
         }
 
