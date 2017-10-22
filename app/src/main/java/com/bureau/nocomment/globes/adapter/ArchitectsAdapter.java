@@ -13,6 +13,7 @@ import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.view.ArchitectCell;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ArchitectsAdapter extends ArrayAdapter<Project> {
@@ -42,5 +43,60 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
 
         ((ArchitectCell) convertView).configure(project, getContext());
         return convertView;
+    }
+
+    public Comparator<Project> getDateComparator(final boolean inverted) {
+        return new Comparator<Project>() {
+            @Override
+            public int compare(Project lhs, Project rhs) {
+                return (!inverted) ?
+                        lhs.getDate().compareTo(rhs.getDate()) :
+                        rhs.getDate().compareTo(lhs.getDate());
+            }
+        };
+    }
+
+    public Comparator<Project> getNameComparator(final boolean inverted) {
+        return new Comparator<Project>() {
+            @Override
+            public int compare(Project lhs, Project rhs) {
+                return (!inverted) ?
+                        lhs.getAuthor().compareTo(rhs.getAuthor()) :
+                        rhs.getAuthor().compareTo(lhs.getAuthor());
+            }
+        };
+    }
+
+    public Comparator<Project> getSizeComparator(final boolean inverted) {
+        return new Comparator<Project>() {
+            @Override
+            public int compare(Project lhs, Project rhs) {
+                return (!inverted) ?
+                        lhs.getDiameter().compareTo(rhs.getDiameter()) :
+                        rhs.getDiameter().compareTo(lhs.getDiameter());
+            }
+        };
+    }
+
+    public Comparator<Project> getCountryComparator(final boolean inverted) {
+        return new Comparator<Project>() {
+            @Override
+            public int compare(Project lhs, Project rhs) {
+                return (!inverted) ?
+                        lhs.getLocalizationDescription().compareTo(rhs.getLocalizationDescription()) :
+                        rhs.getLocalizationDescription().compareTo(lhs.getLocalizationDescription());
+            }
+        };
+    }
+
+    public Comparator<Project> getNumberComparator(final boolean inverted) {
+        return new Comparator<Project>() {
+            @Override
+            public int compare(Project lhs, Project rhs) {
+                return (!inverted) ?
+                        lhs.getId() - rhs.getId() :
+                        rhs.getId() - lhs.getId();
+            }
+        };
     }
 }
