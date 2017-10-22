@@ -12,6 +12,7 @@ import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.view.ArchitectCell;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArchitectsAdapter extends ArrayAdapter<Project> {
@@ -20,12 +21,14 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
 
     public ArchitectsAdapter(Context context) {
         super(context, 0);
+        mProjects = new ArrayList<>();
     }
 
     public void setProjects(List<Project> projects) {
-        this.mProjects = projects;
+        this.mProjects.addAll(projects);
+        clear();
+        addAll(mProjects);
     }
-
 
     @NonNull
     @Override

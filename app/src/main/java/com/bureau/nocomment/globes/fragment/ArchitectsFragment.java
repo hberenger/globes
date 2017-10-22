@@ -75,8 +75,6 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
 
         mArchitectsAdapter.setProjects(projects);
-        mArchitectsAdapter.clear();
-        mArchitectsAdapter.addAll(projects);
     }
 
     @OnClick(R.id.gotop)
