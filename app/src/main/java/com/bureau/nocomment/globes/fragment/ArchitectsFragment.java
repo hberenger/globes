@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
@@ -41,6 +42,8 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
     @Bind(R.id.sort_by_size)    Button     mSortBySize;
     @Bind(R.id.sort_by_index)   Button     mSortByNumber;
     @Bind(R.id.sort_by_country) Button     mSortByCountry;
+
+    @Bind(R.id.search_text)     EditText   mSearchString;
 
     private ProjectSelectedObserver mProjectSelectedObserver;
 
@@ -140,5 +143,10 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
             mInverseSort = false;
         }
         mLastSortField = tappedFieldId;
+    }
+
+    @OnClick(R.id.search_close)
+    void onDismissSearch() {
+        // TODO
     }
 }
