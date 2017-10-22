@@ -3,6 +3,7 @@ package com.bureau.nocomment.globes.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewCompat;
@@ -46,10 +47,9 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mTabs = (TabLayout) findViewById(R.id.tabs);
-        mPagerAdapter = new HomePagerAdapter(getSupportFragmentManager());
 
-        mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.setOffscreenPageLimit(mPagerAdapter.getCount());
+        mViewPager.setAdapter(getPagerAdapter());
+        mViewPager.setOffscreenPageLimit(getPagerAdapter().getCount());
 
         mTabs.setupWithViewPager(mViewPager);
 
@@ -134,9 +134,23 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     }
 
     @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+        getPagerAdapter().updateCacheWithFragment(fragment);
+    }
+
+    @Override
     public void onProjectSelected(Project p) {
-        mViewPager.setCurrentItem(mPagerAdapter.getMapIndex(), true);
-        mPagerAdapter.getMap().focusOnProject(p);
+        mViewPager.setCurrentItem(getPagerAdapter().getMapIndex(), true);
+        getPagerAdapter().getMap().focusOnProject(p);
+    }
+
+    private HomePagerAdapter getPagerAdapter() {
+        if (mPagerAdapter != null) {
+            return mPagerAdapter;
+        }
+        mPagerAdapter = new HomePagerAdapter(getSupportFragmentManager());
+        return mPagerAdapter;
     }
 
     // HomePageAdapter
@@ -146,6 +160,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         private interface HomeFragmentFactory {
             BaseFragment make();
             String getTitle();
+            Class getFragmentClass();
         }
 
         private enum HomeFragmentsEnum {
@@ -159,6 +174,11 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                 public String getTitle() {
                     return Globes.getAppContext().getResources().getString(R.string.tab_map);
                 }
+
+                @Override
+                public Class getFragmentClass() {
+                    return MapFragment.class;
+                }
             }),
             ARCHITECTS(new HomeFragmentFactory() {
                 @Override
@@ -169,6 +189,11 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                 @Override
                 public String getTitle() {
                     return Globes.getAppContext().getResources().getString(R.string.tab_architects);
+                }
+
+                @Override
+                public Class getFragmentClass() {
+                    return ArchitectsFragment.class;
                 }
             });
 
@@ -184,6 +209,10 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
             public static String getFragmentTitle(int enumIndex) {
                 return HomeFragmentsEnum.values()[enumIndex].homeFragmentFactory.getTitle();
+            }
+
+            public static Class getFragmentClass(int enumIndex) {
+                return HomeFragmentsEnum.values()[enumIndex].homeFragmentFactory.getFragmentClass();
             }
         }
 
@@ -210,6 +239,16 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                 BaseFragment newFragment = HomeFragmentsEnum.makeHomeFragmentInstance(position);
                 putIntoCache(position, newFragment);
                 return newFragment;
+            }
+        }
+
+        public void updateCacheWithFragment(Fragment fragment) {
+            for(int pos = 0; pos < getCount(); ++pos) {
+                Class clazz = HomeFragmentsEnum.getFragmentClass(pos);
+                if (fragment.getClass() == clazz) {
+                    putIntoCache(pos, (BaseFragment) fragment);
+                    break;
+                }
             }
         }
 
