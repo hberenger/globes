@@ -24,6 +24,7 @@ import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
+import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 
 import java.lang.ref.WeakReference;
@@ -129,6 +130,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
     private void changeLocale(Locale locale) {
         if (!locale.setAsCurrent(this)) {
+            ModelRepository.getInstance().getItemLibrary().localeDidChange();
             this.recreate();
         }
     }

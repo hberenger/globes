@@ -108,4 +108,9 @@ public class Project {
     public List<String> getImages() {
         return images;
     }
+
+    public void resetLocalizedInfo() {
+        // reset locale-dependant computed properties
+        countryLabel = null;
+    }
 }

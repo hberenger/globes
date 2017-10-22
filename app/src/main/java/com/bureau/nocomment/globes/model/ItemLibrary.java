@@ -38,4 +38,10 @@ public class ItemLibrary {
         }
         return sortedProjects.get(testProjectId);
     }
+
+    public void localeDidChange() {
+        for(Project p : projects) {
+            p.resetLocalizedInfo();
+        }
+    }
 }
