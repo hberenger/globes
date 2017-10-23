@@ -18,6 +18,9 @@
         android:layout_height="0dp"
         app:cpv_barColor="@color/colorAccent"
         app:cpv_barColor1="@color/colorPrimaryDark"
+        app:cpv_barWidth="10dp"
+        app:cpv_rimWidth="10dp"
+        app:cpv_rimColor="@color/colorPrimary"
         app:cpv_seekMode="true"
         app:cpv_startAngle="270"
         app:cpv_maxValue="100"
@@ -26,8 +29,8 @@
 
     <ImageButton
         android:id="@+id/play_button"
-        android:layout_width="@dimen/detail_page_button_size"
-        android:layout_height="@dimen/detail_page_button_size"
+        android:layout_width="@dimen/minidetails_button_size"
+        android:layout_height="@dimen/minidetails_button_size"
         app:layout_constraintTop_toTopOf="@id/progress"
         app:layout_constraintBottom_toBottomOf="@id/progress"
         app:layout_constraintStart_toStartOf="@id/progress"
@@ -40,8 +43,8 @@
     <ImageButton
         android:id="@+id/pause_button"
         android:visibility="gone"
-        android:layout_width="@dimen/detail_page_button_size"
-        android:layout_height="@dimen/detail_page_button_size"
+        android:layout_width="@dimen/minidetails_button_size"
+        android:layout_height="@dimen/minidetails_button_size"
         app:layout_constraintTop_toTopOf="@id/progress"
         app:layout_constraintBottom_toBottomOf="@id/progress"
         app:layout_constraintStart_toStartOf="@id/progress"
