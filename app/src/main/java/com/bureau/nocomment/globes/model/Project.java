@@ -119,6 +119,16 @@ public class Project {
         countryLabel = null;
     }
 
+    public boolean matchesCompositePattern(String compositePattern) {
+        String[] patterns = compositePattern.split("\\s+");
+        for (String pattern : patterns) {
+            if (!matchesPattern(pattern)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean matchesPattern(String pattern) {
         if (pattern == null) {
             return true;

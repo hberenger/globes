@@ -127,7 +127,7 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
                 } else {
                     List<Project> filteredProjects = new ArrayList<>();
                     for (Project p : mProjects) {
-                        if (p.matchesPattern(pattern.toString())) {
+                        if (p.matchesCompositePattern(pattern.toString())) {
                             filteredProjects.add(p);
                         }
                     }
