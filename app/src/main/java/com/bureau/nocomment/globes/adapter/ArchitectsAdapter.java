@@ -3,10 +3,12 @@ package com.bureau.nocomment.globes.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.model.Project;
@@ -19,6 +21,7 @@ import java.util.List;
 public class ArchitectsAdapter extends ArrayAdapter<Project> {
 
     private List<Project> mProjects;
+    private List<Project> mFilteredProjects;
 
     public ArchitectsAdapter(Context context) {
         super(context, 0);
@@ -29,6 +32,17 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
         this.mProjects.addAll(projects);
         clear();
         addAll(mProjects);
+    }
+
+    @Override
+    public int getCount() {
+        return (mFilteredProjects == null) ? mProjects.size() : mFilteredProjects.size();
+    }
+
+    @Nullable
+    @Override
+    public Project getItem(int position) {
+        return (mFilteredProjects == null) ? mProjects.get(position) : mFilteredProjects.get(position);
     }
 
     @NonNull
@@ -96,6 +110,38 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
                 return (!inverted) ?
                         lhs.getId() - rhs.getId() :
                         rhs.getId() - lhs.getId();
+            }
+        };
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence pattern) {
+                FilterResults results = new FilterResults();
+
+                if (pattern == null || pattern.length() == 0) {
+                    results.count = mProjects.size();
+                    results.values = mProjects;
+                } else {
+                    List<Project> filteredProjects = new ArrayList<>();
+                    for (Project p : mProjects) {
+                        if (p.matchesPattern(pattern.toString())) {
+                            filteredProjects.add(p);
+                        }
+                    }
+                    results.count = filteredProjects.size();
+                    results.values = filteredProjects;
+                }
+
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                mFilteredProjects = (ArrayList<Project>) results.values;
+                notifyDataSetChanged();
             }
         };
     }
