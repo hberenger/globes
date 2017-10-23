@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,6 +68,18 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         listView.setOnItemClickListener(this);
 
         ButterKnife.bind(this, rootView);
+
+        mSearchString.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                mArchitectsAdapter.getFilter().filter(charSequence.toString());
+            }
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
         return rootView;
     }
 
