@@ -14,6 +14,7 @@ import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.view.ArchitectCell;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -31,6 +32,15 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
         this.mProjects.addAll(projects);
         clear();
         addAll(mProjects);
+    }
+
+    @Override
+    public void sort(@NonNull Comparator<? super Project> comparator) {
+        super.sort(comparator);
+        Collections.sort(mProjects, comparator);
+        if (mFilteredProjects != null) {
+            Collections.sort(mFilteredProjects, comparator);
+        }
     }
 
     @NonNull
