@@ -2,25 +2,35 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:background="#f1ff91">
 
-    <ImageView
-        android:id="@+id/quick_image"
-        android:layout_width="wrap_content"
-        android:layout_height="84dp"
+    <at.grabner.circleprogress.CircleProgressView
+        android:id="@+id/progress"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:src="@drawable/ic_play_button"
-        android:background="#ff0000"/>
+        app:layout_constraintDimensionRatio="1.0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cpv_barColor="@color/colorAccent"
+        app:cpv_barColor1="@color/colorPrimaryDark"
+        app:cpv_seekMode="true"
+        app:cpv_startAngle="270"
+        app:cpv_maxValue="100"
+        app:cpv_value="70"
+        tools:layout_editor_absoluteY="8dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="84dp"
-        app:layout_constraintLeft_toLeftOf="@+id/quick_image"
+        app:layout_constraintLeft_toLeftOf="@+id/progress"
         app:layout_constraintRight_toRightOf="parent"
         android:text="Short description"
-        android:background="#0000ff"/>
+        android:background="#0000ff"
+        tools:layout_editor_absoluteY="0dp"/>
 
 </android.support.constraint.ConstraintLayout>
