@@ -3,6 +3,7 @@ package com.bureau.nocomment.globes.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +45,10 @@ public class Project {
         if (localization != null) {
             return localization;
         }
+        return getCountryLabel();
+    }
+
+    private String getCountryLabel() {
         if (countryLabel == null) {
             Locale loc = new Locale("", countryCode);
             countryLabel = loc.getDisplayCountry();
@@ -112,5 +117,45 @@ public class Project {
     public void resetLocalizedInfo() {
         // reset locale-dependant computed properties
         countryLabel = null;
+    }
+
+    public boolean matchesPattern(String pattern) {
+        if (pattern == null) {
+            return true;
+        }
+
+        String s = normalize(pattern);
+
+        if (contains(getName(), s)) {
+            return true;
+        }
+        if (contains(getAuthor(), s)) {
+            return true;
+        }
+        if (contains(getLocalizationDescription(), s)) {
+            return true;
+        }
+        if (contains(getDateDescription(), s)) {
+            return true;
+        }
+        if (contains(getDescription(), s)) {
+            return true;
+        }
+        if (contains(getCountryLabel(), s)) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean contains(String searchString, String normalizedPattern) {
+        if (searchString == null) {
+            return false;
+        }
+        String normalizedSearchString = normalize(searchString);
+        return normalizedSearchString.contains(normalizedPattern);
+    }
+
+    private static String normalize(String s) {
+        return Normalizer.normalize(s.toLowerCase(), Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 }
