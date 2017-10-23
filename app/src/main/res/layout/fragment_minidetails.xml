@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:background="#f1ff91">
 
     <at.grabner.circleprogress.CircleProgressView
@@ -23,6 +23,33 @@
         app:cpv_maxValue="100"
         app:cpv_value="70"
         tools:layout_editor_absoluteY="8dp"/>
+
+    <ImageButton
+        android:id="@+id/play_button"
+        android:layout_width="@dimen/detail_page_button_size"
+        android:layout_height="@dimen/detail_page_button_size"
+        app:layout_constraintTop_toTopOf="@id/progress"
+        app:layout_constraintBottom_toBottomOf="@id/progress"
+        app:layout_constraintStart_toStartOf="@id/progress"
+        app:layout_constraintEnd_toEndOf="@id/progress"
+        android:src="@drawable/ic_play_button"
+        android:contentDescription="@string/play_button"
+        android:background="@drawable/round_button"
+        android:tint="@color/buttonPlay" />
+
+    <ImageButton
+        android:id="@+id/pause_button"
+        android:visibility="gone"
+        android:layout_width="@dimen/detail_page_button_size"
+        android:layout_height="@dimen/detail_page_button_size"
+        app:layout_constraintTop_toTopOf="@id/progress"
+        app:layout_constraintBottom_toBottomOf="@id/progress"
+        app:layout_constraintStart_toStartOf="@id/progress"
+        app:layout_constraintEnd_toEndOf="@id/progress"
+        android:src="@drawable/ic_pause_button"
+        android:contentDescription="@string/pause_button"
+        android:background="@drawable/round_button"
+        android:tint="@color/buttonPause" />
 
     <TextView
         android:layout_width="wrap_content"
