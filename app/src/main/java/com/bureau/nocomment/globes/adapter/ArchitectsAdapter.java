@@ -3,7 +3,6 @@ package com.bureau.nocomment.globes.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,17 +31,6 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
         this.mProjects.addAll(projects);
         clear();
         addAll(mProjects);
-    }
-
-    @Override
-    public int getCount() {
-        return (mFilteredProjects == null) ? mProjects.size() : mFilteredProjects.size();
-    }
-
-    @Nullable
-    @Override
-    public Project getItem(int position) {
-        return (mFilteredProjects == null) ? mProjects.get(position) : mFilteredProjects.get(position);
     }
 
     @NonNull
@@ -141,7 +129,8 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 mFilteredProjects = (ArrayList<Project>) results.values;
-                notifyDataSetChanged();
+                clear();
+                addAll(mFilteredProjects);
             }
         };
     }
