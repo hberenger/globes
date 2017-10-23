@@ -2,11 +2,13 @@ package com.bureau.nocomment.globes.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -84,6 +86,12 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         populate();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        hideSearchHeader();
+    }
+
     // Private
 
     private void populate() {
@@ -147,6 +155,29 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     @OnClick(R.id.search_close)
     void onDismissSearch() {
-        // TODO
+        hideSoftKeyboard();
+        mSearchString.setText("");
+        // Hacky but difficult to scroll correctly without it
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideSearchHeader();
+            }
+        }, 150);
+    }
+
+    private void hideSearchHeader() {
+        if (mSearchString.getText().toString().isEmpty()) {
+            mArchitectsList.smoothScrollToPositionFromTop(1, 0);
+        }
+    }
+
+    private void hideSoftKeyboard() {
+        View view = this.getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }
