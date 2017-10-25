@@ -1,7 +1,10 @@
 package com.bureau.nocomment.globes.fragment;
 
 import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,11 +28,28 @@ public class MiniDetailsFragment extends BaseFragment {
     @Bind(R.id.pause_button)
     ImageButton pauseButton;
 
+    MediaPlayer                  player;
+    private Handler              progressUpdateHandler;
+    private Runnable             progressUpdater;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_minidetails, container, false);
         ButterKnife.bind(this, rootView);
+
+        player = new MediaPlayer();
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                pauseSoundtrack();
+                player.seekTo(0);
+            }
+        });
+
+        progressUpdateHandler = new Handler();
+        progressUpdater = createUpdater();
         return rootView;
     }
 
@@ -41,20 +61,42 @@ public class MiniDetailsFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        playSoundtrack();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        pauseSoundtrack();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        progressUpdateHandler.removeCallbacks(progressUpdater);
+        if (player.isPlaying()) {
+            player.stop();
+        }
+        player.release();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
     }
 
     private void playSoundtrack() {
-//        progressUpdateHandler.post(progressUpdater);
-//        player.start();
+        progressUpdateHandler.post(progressUpdater);
+        player.start();
         playButton.setVisibility(View.GONE);
         pauseButton.setVisibility(View.VISIBLE);
     }
 
     private void pauseSoundtrack() {
-//        progressUpdateHandler.removeCallbacks(progressUpdater);
-//        player.pause();
+        progressUpdateHandler.removeCallbacks(progressUpdater);
+        player.pause();
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(View.GONE);
     }
@@ -67,5 +109,18 @@ public class MiniDetailsFragment extends BaseFragment {
     @OnClick(R.id.pause_button)
     void onPauseButton(ImageButton button) {
         pauseSoundtrack();
+    }
+
+    private Runnable createUpdater() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                if(player != null){
+                    int mCurrentPosition = player.getCurrentPosition();
+                    progressView.setValue((float)mCurrentPosition);
+                }
+                progressUpdateHandler.postDelayed(this, 1000);
+            }
+        };
     }
 }
