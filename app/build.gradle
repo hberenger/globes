@@ -40,7 +40,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
 
-    compile 'com.github.jakob-grabner:Circle-Progress-View:v1.3'
+    compile 'com.github.hberenger:Circle-Progress-View:45f74a8207706800df9ebd6e63fa0138344d498c'
 
     testCompile 'junit:junit:4.12'
 }
