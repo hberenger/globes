@@ -62,6 +62,16 @@ public class MiniDetailsFragment extends BaseFragment {
 
         progressUpdateHandler = new Handler();
         progressUpdater = createUpdater();
+
+        progressView.setOnProgressManualChangeListener(new CircleProgressView.OnProgressManualChangeListener() {
+            @Override
+            public void onUserDidChangeProgress(float value) {
+                if(player != null){
+                    player.seekTo((int)value);
+                }
+            }
+        });
+
         return rootView;
     }
 
