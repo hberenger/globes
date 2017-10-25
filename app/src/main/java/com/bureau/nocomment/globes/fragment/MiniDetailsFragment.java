@@ -1,6 +1,7 @@
 package com.bureau.nocomment.globes.fragment;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.model.ModelRepository;
+import com.bureau.nocomment.globes.model.Project;
+
+import java.io.IOException;
 
 import at.grabner.circleprogress.CircleProgressView;
 import butterknife.Bind;
@@ -18,6 +23,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MiniDetailsFragment extends BaseFragment {
+
+    private final static String SOUND_FOLDER = "sound";
 
     @Bind(R.id.progress)
     CircleProgressView progressView;
@@ -31,6 +38,11 @@ public class MiniDetailsFragment extends BaseFragment {
     MediaPlayer                  player;
     private Handler              progressUpdateHandler;
     private Runnable             progressUpdater;
+
+    public void playProject(int projectID) {
+        Project project = ModelRepository.getInstance().getItemLibrary().findProject(projectID);
+        loadFromProject(project);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -123,4 +135,35 @@ public class MiniDetailsFragment extends BaseFragment {
             }
         };
     }
+
+    private void loadFromProject(Project project) {
+        loadAudioAsset(project.getAudioFile());
+        // update progress bar
+        progressView.setMaxValue(player.getDuration()); // in ms
+    }
+
+    private void loadAudioAsset(String audioFile) {
+        AssetFileDescriptor descriptor = null;
+        try {
+            descriptor = getContext().getAssets().openFd(SOUND_FOLDER + "/" + audioFile);
+            if (descriptor != null) {
+                long offset = descriptor.getStartOffset();
+                long length = descriptor.getLength();
+                player.reset();
+                player.setDataSource(descriptor.getFileDescriptor(), offset, length);
+                player.prepare();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (descriptor != null) {
+                    descriptor.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
