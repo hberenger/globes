@@ -57,6 +57,7 @@ public class MiniDetailsFragment extends BaseFragment {
             public void onCompletion(MediaPlayer mp) {
                 pauseSoundtrack();
                 player.seekTo(0);
+                progressView.setValueAnimated(0, 800);
             }
         });
 
