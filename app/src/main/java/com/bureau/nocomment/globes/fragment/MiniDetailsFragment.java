@@ -9,11 +9,15 @@ import android.widget.ImageButton;
 
 import com.bureau.nocomment.globes.R;
 
+import at.grabner.circleprogress.CircleProgressView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MiniDetailsFragment extends BaseFragment {
+
+    @Bind(R.id.progress)
+    CircleProgressView progressView;
 
     @Bind(R.id.play_button)
     ImageButton playButton;
