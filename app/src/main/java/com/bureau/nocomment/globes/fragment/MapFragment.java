@@ -131,6 +131,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
             mMapView.setActivePoi(activePoi);
 
             showMiniDetails();
+            playProject(id);
         }
 
         // TODO at some point :
@@ -174,5 +175,11 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     private void showMiniDetails() {
         mQuickView.setVisibility(View.VISIBLE);
         mQuickView.animate().translationY(0.f).setListener(null).start();
+    }
+
+    private void playProject(int projectID) {
+        Fragment fragment = getChildFragmentManager().findFragmentById(R.id.quick_view);
+        MiniDetailsFragment miniDetails = (MiniDetailsFragment)fragment;
+        miniDetails.playProject(projectID);
     }
 }
