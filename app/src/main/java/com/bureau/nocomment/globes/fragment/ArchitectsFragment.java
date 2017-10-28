@@ -183,7 +183,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     private void hideSearchHeader() {
         if (mSearchString.getText().toString().isEmpty()) {
-            mArchitectsList.smoothScrollToPositionFromTop(1, 0);
+            mArchitectsList.smoothScrollToPositionFromTop(1, 0); // 1 because of the header
         }
     }
 

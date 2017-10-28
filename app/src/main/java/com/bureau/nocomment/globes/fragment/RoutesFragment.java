@@ -2,18 +2,13 @@ package com.bureau.nocomment.globes.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
@@ -29,7 +24,7 @@ import butterknife.OnClick;
 
 public class RoutesFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
-    static final String LOGTAG = "ArchitectsFragment";
+    static final String LOGTAG = "RoutesFragment";
 
     private Boolean mInverseSort = false;
     private int     mLastSortField = 0;
@@ -47,8 +42,6 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
     @Bind(R.id.sort_by_index)   Button     mSortByNumber;
     @Bind(R.id.sort_by_country) Button     mSortByCountry;
 
-    @Bind(R.id.search_text)     EditText   mSearchString;
-
     private ProjectSelectedObserver mProjectSelectedObserver;
 
     @Nullable
@@ -57,8 +50,6 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         final ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_architects, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.architects_list);
 
-        View header = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_header, listView, false);
-        listView.addHeaderView(header, "BandeauTitle", false);
         View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_footer, listView, false);
         listView.addFooterView(footer);
 
@@ -68,17 +59,6 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         listView.setOnItemClickListener(this);
 
         ButterKnife.bind(this, rootView);
-
-        mSearchString.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mArchitectsAdapter.getFilter().filter(charSequence.toString());
-            }
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-            @Override
-            public void afterTextChanged(Editable editable) {}
-        });
 
         return rootView;
     }
@@ -103,7 +83,6 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
     @Override
     public void onResume() {
         super.onResume();
-        hideSearchHeader();
     }
 
     // Private
@@ -122,7 +101,7 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
-        Project p = projects.get(i - 1); // minus one because of header
+        Project p = projects.get(i);
         if (mProjectSelectedObserver != null) {
             mProjectSelectedObserver.onProjectSelected(p);
         }
@@ -165,33 +144,5 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
             mInverseSort = false;
         }
         mLastSortField = tappedFieldId;
-    }
-
-    @OnClick(R.id.search_close)
-    void onDismissSearch() {
-        hideSoftKeyboard();
-        mSearchString.setText("");
-        // Hacky but difficult to scroll correctly without it
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hideSearchHeader();
-            }
-        }, 150);
-    }
-
-    private void hideSearchHeader() {
-        if (mSearchString.getText().toString().isEmpty()) {
-            mArchitectsList.smoothScrollToPositionFromTop(1, 0);
-        }
-    }
-
-    private void hideSoftKeyboard() {
-        View view = this.getActivity().getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
     }
 }
