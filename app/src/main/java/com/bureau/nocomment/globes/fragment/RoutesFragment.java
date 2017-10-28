@@ -11,9 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
-import com.bureau.nocomment.globes.adapter.ArchitectsAdapter;
+import com.bureau.nocomment.globes.adapter.RoutesAdapter;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
+import com.bureau.nocomment.globes.model.Route;
 
 import java.util.List;
 
@@ -32,8 +33,8 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         void onProjectSelected(Project p);
     }
 
-    @Bind(R.id.routes_list) ListView          mRouteList;
-    private                 ArchitectsAdapter mArchitectsAdapter;
+    @Bind(R.id.routes_list) ListView      mRouteList;
+    private                 RoutesAdapter mRoutesAdapter;
 
     private ProjectSelectedObserver mProjectSelectedObserver;
 
@@ -46,8 +47,8 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_list_go_top_footer, listView, false);
         listView.addFooterView(footer);
 
-        mArchitectsAdapter = new ArchitectsAdapter(getContext());
-        listView.setAdapter(mArchitectsAdapter);
+        mRoutesAdapter = new RoutesAdapter(getContext());
+        listView.setAdapter(mRoutesAdapter);
 
         listView.setOnItemClickListener(this);
 
@@ -81,9 +82,9 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
     // Private
 
     private void populate() {
-        List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
+        List<Route> routes = ModelRepository.getInstance().getItemLibrary().getRoutes();
 
-        mArchitectsAdapter.setProjects(projects);
+        mRoutesAdapter.setRoutes(routes);
     }
 
     @OnClick(R.id.gotop)
