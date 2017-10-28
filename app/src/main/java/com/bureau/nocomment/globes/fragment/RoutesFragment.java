@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
@@ -33,22 +32,16 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         void onProjectSelected(Project p);
     }
 
-    @Bind(R.id.architects_list) ListView          mArchitectsList;
-    private                     ArchitectsAdapter mArchitectsAdapter;
-
-    @Bind(R.id.sort_by_name)    Button     mSortByName;
-    @Bind(R.id.sort_by_date)    Button     mSortByDate;
-    @Bind(R.id.sort_by_size)    Button     mSortBySize;
-    @Bind(R.id.sort_by_index)   Button     mSortByNumber;
-    @Bind(R.id.sort_by_country) Button     mSortByCountry;
+    @Bind(R.id.routes_list) ListView          mRouteList;
+    private                 ArchitectsAdapter mArchitectsAdapter;
 
     private ProjectSelectedObserver mProjectSelectedObserver;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_architects, container, false);
-        ListView listView = (ListView) rootView.findViewById(R.id.architects_list);
+        final ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_routes, container, false);
+        ListView listView = (ListView) rootView.findViewById(R.id.routes_list);
 
         View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_list_go_top_footer, listView, false);
         listView.addFooterView(footer);
@@ -107,35 +100,6 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         }
     }
 
-    @OnClick(R.id.sort_by_name)
-    void onSortByName() {
-        updateSortDirection(R.id.sort_by_name);
-        mArchitectsAdapter.sort(mArchitectsAdapter.getNameComparator(mInverseSort));
-    }
-
-    @OnClick(R.id.sort_by_size)
-    void onSortBySize() {
-        updateSortDirection(R.id.sort_by_size);
-        mArchitectsAdapter.sort(mArchitectsAdapter.getSizeComparator(mInverseSort));
-    }
-
-    @OnClick(R.id.sort_by_country)
-    void onSortByCountry() {
-        updateSortDirection(R.id.sort_by_country);
-        mArchitectsAdapter.sort(mArchitectsAdapter.getCountryComparator(mInverseSort));
-    }
-
-    @OnClick(R.id.sort_by_index)
-    void onSortByNumber() {
-        updateSortDirection(R.id.sort_by_index);
-        mArchitectsAdapter.sort(mArchitectsAdapter.getNumberComparator(mInverseSort));
-    }
-
-    @OnClick(R.id.sort_by_date)
-    void onSortByDate() {
-        updateSortDirection(R.id.sort_by_date);
-        mArchitectsAdapter.sort(mArchitectsAdapter.getDateComparator(mInverseSort));
-    }
 
     private void updateSortDirection(int tappedFieldId) {
         if (mLastSortField == tappedFieldId) {
@@ -147,6 +111,6 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
     }
 
     private void goTop() {
-        mArchitectsList.smoothScrollToPositionFromTop(0, 0);
+        mRouteList.smoothScrollToPositionFromTop(0, 0);
     }
 }
