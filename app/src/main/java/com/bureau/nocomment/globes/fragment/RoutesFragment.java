@@ -50,7 +50,7 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         final ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_architects, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.architects_list);
 
-        View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_footer, listView, false);
+        View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_list_go_top_footer, listView, false);
         listView.addFooterView(footer);
 
         mArchitectsAdapter = new ArchitectsAdapter(getContext());
@@ -95,7 +95,7 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
 
     @OnClick(R.id.gotop)
     void onGoTop() {
-        // TODO : go top
+        goTop();
     }
 
     @Override
@@ -144,5 +144,9 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
             mInverseSort = false;
         }
         mLastSortField = tappedFieldId;
+    }
+
+    private void goTop() {
+        mArchitectsList.smoothScrollToPositionFromTop(0, 0);
     }
 }

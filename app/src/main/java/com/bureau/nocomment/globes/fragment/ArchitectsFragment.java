@@ -59,7 +59,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
         View header = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_header, listView, false);
         listView.addHeaderView(header, "BandeauTitle", false);
-        View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_architects_footer, listView, false);
+        View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_list_go_top_footer, listView, false);
         listView.addFooterView(footer);
 
         mArchitectsAdapter = new ArchitectsAdapter(getContext());
@@ -116,7 +116,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     @OnClick(R.id.gotop)
     void onGoTop() {
-        // TODO : go top
+        goTop();
     }
 
     @Override
@@ -183,7 +183,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     private void hideSearchHeader() {
         if (mSearchString.getText().toString().isEmpty()) {
-            mArchitectsList.smoothScrollToPositionFromTop(1, 0); // 1 because of the header
+            goTop();
         }
     }
 
@@ -193,5 +193,9 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
             InputMethodManager imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    private void goTop() {
+        mArchitectsList.smoothScrollToPositionFromTop(1, 0); // 1 because of the header
     }
 }
