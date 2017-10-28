@@ -35,6 +35,8 @@ public class MiniDetailsFragment extends BaseFragment {
     @Bind(R.id.pause_button)
     ImageButton pauseButton;
 
+    private int currentProjectId = -1; // to avoid loading issues with multiple taps
+
     MediaPlayer                  player;
     private Handler              progressUpdateHandler;
     private Runnable             progressUpdater;
@@ -124,6 +126,12 @@ public class MiniDetailsFragment extends BaseFragment {
         pauseButton.setVisibility(View.GONE);
     }
 
+    private void stopSoundtrack() {
+        pauseSoundtrack();
+        player.stop();
+        progressView.setValueAnimated(0, 400);
+    }
+
     @OnClick(R.id.play_button)
     void onPlayButton(ImageButton button) {
         playSoundtrack();
@@ -148,9 +156,13 @@ public class MiniDetailsFragment extends BaseFragment {
     }
 
     private void loadFromProject(Project project) {
+        if (currentProjectId == project.getId()) {
+            return;
+        }
         loadAudioAsset(project.getAudioFile());
         // update progress bar
         progressView.setMaxValue(player.getDuration()); // in ms
+        currentProjectId = project.getId();
     }
 
     private void loadAudioAsset(String audioFile) {
@@ -160,6 +172,9 @@ public class MiniDetailsFragment extends BaseFragment {
             if (descriptor != null) {
                 long offset = descriptor.getStartOffset();
                 long length = descriptor.getLength();
+                if (currentProjectId > 0) {
+                    stopSoundtrack();
+                }
                 player.reset();
                 player.setDataSource(descriptor.getFileDescriptor(), offset, length);
                 player.prepare();
