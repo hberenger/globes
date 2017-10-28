@@ -24,6 +24,7 @@ import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
+import com.bureau.nocomment.globes.fragment.RoutesFragment;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 
@@ -31,7 +32,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver {
+public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.ProjectSelectedObserver {
 
     ViewPager mViewPager;
     TabLayout mTabs;
@@ -197,6 +198,22 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                 public Class getFragmentClass() {
                     return ArchitectsFragment.class;
                 }
+            }),
+            ROUTES(new HomeFragmentFactory() {
+                @Override
+                public  BaseFragment make() {
+                    return new RoutesFragment();
+                }
+
+                @Override
+                public String getTitle() {
+                    return Globes.getAppContext().getResources().getString(R.string.tab_routes);
+                }
+
+                @Override
+                public Class getFragmentClass() {
+                    return RoutesFragment.class;
+                }
             });
 
             public HomeFragmentFactory homeFragmentFactory;
@@ -268,6 +285,14 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
         ArchitectsFragment getArchitects() {
             return getExistingFragmentAt(getArchitectsIndex());
+        }
+
+        int getRoutesIndex() {
+            return HomeFragmentsEnum.ROUTES.ordinal();
+        }
+
+        RoutesFragment getRoutes() {
+            return getExistingFragmentAt(getRoutesIndex());
         }
 
         private <T> T getExistingFragmentAt(int index) {

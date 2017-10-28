@@ -5,6 +5,7 @@
     <string name="french">Français</string>
     <string name="english">Anglais</string>
     <string name="tab_architects">Architectes</string>
+    <string name="tab_routes">Itinéraires</string>
     <string name="tab_map">Parcours</string>
     <string name="play_button">Bouton lecture</string>
     <string name="pause_button">Bouton pause</string>
