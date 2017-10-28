@@ -1,4 +1,19 @@
 {
+    "routes": [
+      {
+        "id": 100,
+        "title": "Lumières",
+        "description": "Les projets où la lumière joue un rôle important",
+        "projects" : []
+      },
+      {
+        "id": 101,
+        "title": "Planétariums",
+        "description": "Tous les planétariums !",
+        "projects" : []
+      }
+    ],
+
     "projects": [
       {
         "id" : 21,

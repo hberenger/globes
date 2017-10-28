@@ -10,6 +10,7 @@ public class ItemLibrary {
     // Json ppties
     private List<Project> projects;
     private List<Table> tables;
+    private List<Route> routes;
 
     // Computes ppties
     private Map<Integer, Project> sortedProjects;
@@ -20,6 +21,10 @@ public class ItemLibrary {
 
     public List<Table> getTables() {
         return tables;
+    }
+
+    public List<Route> getRoutes() {
+        return routes;
     }
 
     public Project findProject(int testProjectId) {
