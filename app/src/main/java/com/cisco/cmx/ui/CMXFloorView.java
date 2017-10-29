@@ -557,10 +557,21 @@ public class CMXFloorView extends ImageViewTouch {
 
             }
             getImageMatrix().mapPoints(target);
+
+            float[] offsets = computeCubicOffsets(target);
+
             mPath.reset();
             mPath.moveTo(target[0], target[1]);
             for (int j = 2; j < i; j += 2) {
-                mPath.lineTo(target[j], target[j + 1]);
+                //Linear :
+                //mPath.lineTo(target[j], target[j + 1]);
+
+                //Cubic :
+                float x = target[j];
+                float y = target[j + 1];
+                float prevx = target[j-2];
+                float prevy = target[j-1];
+                mPath.cubicTo(prevx + offsets[j-2], prevy + offsets[j-1], x - offsets[j], y - offsets[j+1], x, y);
             }
 
             // First draw on bitmap (without hardware acceleration) to avoid OpenGL issues when
@@ -588,6 +599,38 @@ public class CMXFloorView extends ImageViewTouch {
                 canvas.drawBitmap(mEndPointBitmap, mTransformMatrix, mPaint);
             }
         }
+    }
+
+    private float[] computeCubicOffsets(float[] target) {
+        float[] offsets = new float[target.length];
+        if(target.length > 1){
+            for(int n = 0; n < target.length; n+=2){
+                float x = target[n];
+                float y = target[n+1];
+
+                if(n == 0){
+                    float nextx = target[n+2];
+                    float nexty = target[n+3];
+                    offsets[n] = ((nextx - x) / 3);
+                    offsets[n+1] = ((nexty - y) / 3);
+                }
+                else if(n == target.length - 2){
+                    float prevx = target[n-2];
+                    float prevy = target[n-1];
+                    offsets[n] = ((x - prevx) / 3);
+                    offsets[n+1] = ((y - prevy) / 3);
+                }
+                else{
+                    float nextx = target[n+2];
+                    float nexty = target[n+3];
+                    float prevx = target[n-2];
+                    float prevy = target[n-1];
+                    offsets[n] = ((nextx - prevx) / 3);
+                    offsets[n+1] = ((nexty - prevy) / 3);
+                }
+            }
+        }
+        return offsets;
     }
 
     private void drawCorona(Canvas canvas, CMXPoint center, float radius, Paint paint) {
