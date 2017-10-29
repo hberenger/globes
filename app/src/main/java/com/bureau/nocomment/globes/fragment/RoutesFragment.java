@@ -13,7 +13,6 @@ import android.widget.ListView;
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.adapter.RoutesAdapter;
 import com.bureau.nocomment.globes.model.ModelRepository;
-import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
 
 import java.util.List;
@@ -29,14 +28,14 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
     private Boolean mInverseSort = false;
     private int     mLastSortField = 0;
 
-    public interface ProjectSelectedObserver {
-        void onProjectSelected(Project p);
+    public interface RouteSelectedObserver {
+        void onRouteSelected(Route route);
     }
 
     @Bind(R.id.routes_list) ListView      mRouteList;
     private                 RoutesAdapter mRoutesAdapter;
 
-    private ProjectSelectedObserver mProjectSelectedObserver;
+    private RouteSelectedObserver mRouteSelectedObserver;
 
     @Nullable
     @Override
@@ -62,7 +61,7 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         super.onAttach(context);
 
         try {
-            mProjectSelectedObserver = (ProjectSelectedObserver) context;
+            mRouteSelectedObserver = (RouteSelectedObserver) context;
         } catch (ClassCastException e) {
             Log.d(LOGTAG, "Could not attach context as ProjectSelected observer");
         }
@@ -94,13 +93,12 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
-        Project p = projects.get(i);
-        if (mProjectSelectedObserver != null) {
-            mProjectSelectedObserver.onProjectSelected(p);
+        List<Route> routes = ModelRepository.getInstance().getItemLibrary().getRoutes();
+        Route route = routes.get(i);
+        if (mRouteSelectedObserver != null && route.getLength() > 0) {
+            mRouteSelectedObserver.onRouteSelected(route);
         }
     }
-
 
     private void updateSortDirection(int tappedFieldId) {
         if (mLastSortField == tappedFieldId) {

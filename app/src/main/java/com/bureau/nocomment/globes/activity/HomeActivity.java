@@ -27,12 +27,13 @@ import com.bureau.nocomment.globes.fragment.MapFragment;
 import com.bureau.nocomment.globes.fragment.RoutesFragment;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
+import com.bureau.nocomment.globes.model.Route;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.ProjectSelectedObserver {
+public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.RouteSelectedObserver {
 
     ViewPager mViewPager;
     TabLayout mTabs;
@@ -146,6 +147,12 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     public void onProjectSelected(Project p) {
         mViewPager.setCurrentItem(getPagerAdapter().getMapIndex(), true);
         getPagerAdapter().getMap().focusOnProject(p);
+    }
+
+    @Override
+    public void onRouteSelected(Route route) {
+        mViewPager.setCurrentItem(getPagerAdapter().getMapIndex(), true);
+        getPagerAdapter().getMap().showRoute(route);
     }
 
     private HomePagerAdapter getPagerAdapter() {
