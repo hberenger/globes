@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
-import com.bureau.nocomment.globes.view.ArchitectCell;
+import com.bureau.nocomment.globes.view.RouteCell;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +38,12 @@ public class RoutesAdapter extends ArrayAdapter<Route> {
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.view_architects_cell_root, parent, false);
+                    .inflate(R.layout.view_routes_cell_root, parent, false);
         }
 
         Project project = new Project();
 
-        ((ArchitectCell) convertView).configure(project, getContext());
+        ((RouteCell) convertView).configure(project, getContext());
         return convertView;
     }
 }
