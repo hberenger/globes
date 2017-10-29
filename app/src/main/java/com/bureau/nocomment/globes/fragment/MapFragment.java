@@ -133,6 +133,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
             CMXPoint point = new CMXPoint(project.getX(), project.getY());
             path.add(point);
         }
+        path.sortByY();
         return path;
     }
 
