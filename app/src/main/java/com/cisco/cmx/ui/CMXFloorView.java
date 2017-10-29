@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ComposePathEffect;
 import android.graphics.CornerPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -13,7 +12,6 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Cap;
 import android.graphics.Paint.Join;
 import android.graphics.Paint.Style;
-import android.graphics.PathDashPathEffect;
 import android.graphics.PathEffect;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -172,11 +170,11 @@ public class CMXFloorView extends ImageViewTouch {
         mPathPaint.setStrokeJoin(Join.ROUND);
         mPathPaint.setStrokeCap(Cap.ROUND);
 
-        mArrowPathPaint.setARGB(255, 33, 0xAA, 0);
+        mArrowPathPaint.setARGB(255, 0x00, 0xFF, 0x00);
         mArrowPathPaint.setStrokeWidth(mPathPaint.getStrokeWidth() * 2);
         mArrowPathPaint.setStyle(Style.STROKE);
         mArrowPathPaint.setAntiAlias(true);
-        mArrowPathPaint.setPathEffect(new ComposePathEffect(new PathDashPathEffect(makeArrowPathDash(), 25, 0, PathDashPathEffect.Style.ROTATE), new CornerPathEffect(20)));
+        //mArrowPathPaint.setPathEffect(new ComposePathEffect(new PathDashPathEffect(makeArrowPathDash(), 25, 0, PathDashPathEffect.Style.ROTATE), new CornerPathEffect(20)));
         mArrowPathPaint.setStrokeJoin(Join.ROUND);
         mArrowPathPaint.setStrokeCap(Cap.ROUND);
         mArrowPathPaint.setAlpha(192);
@@ -449,6 +447,9 @@ public class CMXFloorView extends ImageViewTouch {
         return mCoronaPaint;
     }
 
+    private Bitmap pathBitmap;
+    private Canvas pathBitmapCanvas;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -481,36 +482,7 @@ public class CMXFloorView extends ImageViewTouch {
             }
         }
 
-        if (mPoints.size() > 0) {
-            // Note : path.transform doesn't work !!
-            // Transform each point
-            float[] target = new float[mPoints.size() * 2];
-            int i = 0;
-            for (PathPoint p : mPoints) {
-                target[i++] = p.getX() * mMapBitmapWidth / mDimension.getLength();
-                target[i++] = p.getY() * mMapBitmapHeight / mDimension.getWidth();
-
-            }
-            getImageMatrix().mapPoints(target);
-            mPath.reset();
-            mPath.moveTo(target[0], target[1]);
-            for (int j = 2; j < i; j += 2) {
-                mPath.lineTo(target[j], target[j + 1]);
-            }
-
-            // Draw path
-            canvas.drawPath(mPath, mArrowPathPaint);
-
-            // and end point
-            if (mEndPointBitmap != null) {
-                float endX = target[target.length - 2];
-                float endY = target[target.length - 1];
-                mTransformMatrix.reset();
-                mTransformMatrix.postTranslate(-mEndPointBitmap.getWidth() / 2.0f, -mEndPointBitmap.getHeight() / 2.0f);
-                mTransformMatrix.postTranslate(endX, endY);
-                canvas.drawBitmap(mEndPointBitmap, mTransformMatrix, mPaint);
-            }
-        }
+        drawPath(canvas);
 
         // Draw client location
         if (mClientCoordinate != null && getDrawable() != null && mMapBitmapWidth != 0 && mMapBitmapHeight != 0) {
@@ -569,6 +541,51 @@ public class CMXFloorView extends ImageViewTouch {
                 float radius = mActiveTag.bitmap.getWidth() * markerScalingFactor;
 
                 drawCorona(canvas, mActiveTag.center, radius, paint);
+            }
+        }
+    }
+
+    private void drawPath(Canvas canvas) {
+        if (mPoints.size() > 0) {
+            // Note : path.transform doesn't work !!
+            // Transform each point
+            float[] target = new float[mPoints.size() * 2];
+            int i = 0;
+            for (PathPoint p : mPoints) {
+                target[i++] = p.getX() * mMapBitmapWidth / mDimension.getLength();
+                target[i++] = p.getY() * mMapBitmapHeight / mDimension.getWidth();
+
+            }
+            getImageMatrix().mapPoints(target);
+            mPath.reset();
+            mPath.moveTo(target[0], target[1]);
+            for (int j = 2; j < i; j += 2) {
+                mPath.lineTo(target[j], target[j + 1]);
+            }
+
+            // First draw on bitmap (without hardware acceleration) to avoid OpenGL issues when
+            // the scaling factor is high ("Path too large to be rendered into a texture").
+            // Then draw bitmap onto canvas
+            if (pathBitmap == null) {
+                pathBitmap = Bitmap.createBitmap(this.getMeasuredWidth(), this.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+                pathBitmapCanvas = new Canvas(pathBitmap);
+            }
+
+            pathBitmap.eraseColor(Color.TRANSPARENT);
+
+            // Draw path
+            pathBitmapCanvas.drawPath(mPath, mArrowPathPaint);
+
+            canvas.drawBitmap(pathBitmap, 0, 0, mArrowPathPaint);
+
+            // and end point
+            if (mEndPointBitmap != null) {
+                float endX = target[target.length - 2];
+                float endY = target[target.length - 1];
+                mTransformMatrix.reset();
+                mTransformMatrix.postTranslate(-mEndPointBitmap.getWidth() / 2.0f, -mEndPointBitmap.getHeight() / 2.0f);
+                mTransformMatrix.postTranslate(endX, endY);
+                canvas.drawBitmap(mEndPointBitmap, mTransformMatrix, mPaint);
             }
         }
     }
