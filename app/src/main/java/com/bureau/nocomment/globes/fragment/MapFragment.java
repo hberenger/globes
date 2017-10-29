@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
+import com.bureau.nocomment.globes.model.Route;
 import com.cisco.cmx.model.CMXDimension;
 import com.cisco.cmx.model.CMXFloor;
+import com.cisco.cmx.model.CMXPath;
 import com.cisco.cmx.model.CMXPoi;
 import com.cisco.cmx.model.CMXPoint;
 import com.cisco.cmx.ui.CMXFloorView;
@@ -89,6 +91,11 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.centerOnPoi(poi);
     }
 
+    public void showRoute(Route route) {
+        CMXPath path = makeCMXPath(route);
+        mMapView.setPath(path);
+    }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -117,6 +124,16 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         poi.setPoints(Arrays.asList(point));
         poi.setId(Integer.toString(id));
         return poi;
+    }
+
+    private CMXPath makeCMXPath(Route route) {
+        CMXPath path = new CMXPath();
+        for(int projectId : route.getProjects()) {
+            Project project = ModelRepository.getInstance().getItemLibrary().findProject(projectId);
+            CMXPoint point = new CMXPoint(project.getX(), project.getY());
+            path.add(point);
+        }
+        return path;
     }
 
     @Override
