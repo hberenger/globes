@@ -25,4 +25,8 @@
     <string name="sort_by">Trier par:</string>
     <string name="recherche">recherche</string>
     <string name="routes_header">Composez votre visite &quot;bis&quot;, avec cette sélection d\'itinéraires…</string>
+    <plurals name="routeLength">
+        <item quantity="one">%d projet</item>
+        <item quantity="other">%d projets</item>
+    </plurals>
 </resources>

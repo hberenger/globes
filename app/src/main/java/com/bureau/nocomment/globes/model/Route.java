@@ -23,4 +23,8 @@ public class Route {
     public List<Integer> getProjects() {
         return projects;
     }
+
+    public int getLength() {
+        return projects.size();
+    }
 }

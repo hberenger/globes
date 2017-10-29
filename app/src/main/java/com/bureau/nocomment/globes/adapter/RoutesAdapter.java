@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.bureau.nocomment.globes.R;
-import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
 import com.bureau.nocomment.globes.view.RouteCell;
 
@@ -41,9 +40,7 @@ public class RoutesAdapter extends ArrayAdapter<Route> {
                     .inflate(R.layout.view_routes_cell_root, parent, false);
         }
 
-        Project project = new Project();
-
-        ((RouteCell) convertView).configure(project, getContext());
+        ((RouteCell) convertView).configure(route, getContext());
         return convertView;
     }
 }

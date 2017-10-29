@@ -21,4 +21,8 @@
     <string name="sort_by">Sort by:</string>
     <string name="recherche">search</string>
     <string name="routes_header">Find your own way in the exhibition, with this special selection of alternative routes…</string>
+    <plurals name="routeLength">
+        <item quantity="one">%d project</item>
+        <item quantity="other">%d projects</item>
+    </plurals>
 </resources>
