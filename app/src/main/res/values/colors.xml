@@ -11,4 +11,6 @@
     <color name="buttonBackground">@color/colorAccent</color>
     <color name="buttonBackgroundPressed">#d6a207</color>
     <color name="buttonShadow">#CCCCCC</color>
+
+    <color name="fragmentBackground">#EEEEFF</color>
 </resources>
