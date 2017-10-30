@@ -51,8 +51,7 @@ public class ArchitectCell extends ConstraintLayout {
         projectNameTextView.setText(project.getName());
         dateTextView.setText(project.getDateDescription());
         placeTextView.setText(project.getLocalizationDescription());
-        String diameter = String.format(Locale.getDefault(), "%.0fm", project.getDiameter());
-        sizeTextView.setText(diameter);
+        sizeTextView.setText(project.getDiameterDescription());
     }
 
 }

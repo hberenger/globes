@@ -16,160 +16,1821 @@
 
     "projects": [
       {
-        "id" : 21,
+        "id" : 1021,
         "name" : "Lorem ipsum",
-        "author" : "Ait amet consectetur",
+        "author" : "Sit amet consectetur",
         "localization" : "Londres",
         "country_code" : "GB",
         "date" : "1897",
-        "date_desc" : "Fin XIXè s.",
+        "date_desc" : "Fin 19è s.",
+        "diam_desc" : "dans les 28m",
         "diameter" : 28,
-        "description" : "#21 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1927",
-        "audio_file" : "weininger.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
+        "description": "#21 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\\r\\n\\r\\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
+        "subtitle": "Andor Weininger, 1927",
+        "audio_file": "weininger.mp3",
+        "images": ["weininger.jpg"],
+        "coordinates": [
           3.0, 40.0
         ]
       },
       {
-        "id" : 22,
-        "name" : "Lorem ipsum",
-        "author" : "Bit amet consectetur",
-        "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          8.0, 80.0
+        "id" : 1,
+        "name" : "Ornithon",
+        "author" : "Marcus Terentius Varro ",
+        "localization" : "Casinum",
+        "country_code" : "IT",
+        "date" : "-50",
+        "date_desc" : "1er s. av. JC",
+        "diam_desc" : "",
+        "diameter" : 10.9,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       },
+      {
+        "id" : 2,
+        "name" : "Cenatio Rotunda",
+        "author" : "Severus Celer ",
+        "localization" : "Rome",
+        "country_code" : "IT",
+        "date" : "66",
+        "date_desc" : "64-68",
+        "diam_desc" : "",
+        "diameter" : 16,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
 
+        ]
+      },
+      {
+        "id" : 3,
+        "name" : "Panthéon",
+        "author" : "Apollodore de Damas",
+        "localization" : "Rome",
+        "country_code" : "IT",
+        "date" : "125",
+        "date_desc" : "v. 125",
+        "diam_desc" : "",
+        "diameter" : 43.3,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
 
+        ]
+      },
+      {
+        "id" : 3,
+        "name" : "Théâtre maritime de la villa Adriana",
+        "author" : "Architecte inconnu",
+        "localization" : "Tivoli",
+        "country_code" : "IT",
+        "date" : "119",
+        "date_desc" : "v. 118-121",
+        "diam_desc" : "",
+        "diameter" : 44,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 4,
+        "name" : "Trône de Chosroès II",
+        "author" : "Chosroès (Khosro II)",
+        "localization" : "Ctésiphon, Irak",
+        "country_code" : "IQ",
+        "date" : "604",
+        "date_desc" : "590 - 628",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 5,
+        "name" : "Qasr Amra",
+        "author" : "Al-Walïd Ier ou Al-Walīd II",
+        "localization" : "Azraq, Jordanie",
+        "country_code" : "JO",
+        "date" : "720",
+        "date_desc" : "début 8e siècle",
+        "diam_desc" : "",
+        "diameter" : 2.6,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 6,
+        "name" : "Cielo de Salamanca",
+        "author" : "Fernando Gallego",
+        "localization" : "Salamanque",
+        "country_code" : "ES",
+        "date" : "1475",
+        "date_desc" : "XVè siècle",
+        "diam_desc" : "~8.5m",
+        "diameter" : 8.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 6,
+        "name" : "Sagrestia Vecchia",
+        "author" : "Filippo Brunelleschi, Giuliano d’Arrigo",
+        "localization" : "Florence",
+        "country_code" : "IT",
+        "date" : "1442",
+        "date_desc" : "XVè siècle",
+        "diam_desc" : "~4m",
+        "diameter" : 4,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 7,
+        "name" : "Globe de Gottorf",
+        "author" : "Adam Olearius, Andreas Bösch",
+        "localization" : "Schleswig, Saint-Petersburg",
+        "country_code" : "DE, RU",
+        "date" : "1650",
+        "date_desc" : "1650-1664",
+        "diam_desc" : "",
+        "diameter" : 3,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 8,
+        "name" : "Urania",
+        "author" : "Ehrard Weigel",
+        "localization" : "Iéna",
+        "country_code" : "DE",
+        "date" : "1661",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 5.4,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 8,
+        "name" : "Pancosmos",
+        "author" : "Ehrard Weigel",
+        "localization" : "Copenhague",
+        "country_code" : "DK",
+        "date" : "1696",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 9.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 9,
+        "name" : "Globe céleste et globe terrestre",
+        "author" : "Vincenzo Coronelli",
+        "localization" : "Marly et Paris",
+        "country_code" : "FR",
+        "date" : "1682",
+        "date_desc" : "1681-1683",
+        "diam_desc" : "",
+        "diameter" : 3.86,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 11,
+        "name" : "Temple sphérique",
+        "author" : "Pierre de la Ruette dit de Beaumesnil ",
+        "localization" : "Limoges",
+        "country_code" : "FR",
+        "date" : "1747",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 14,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 10,
+        "name" : "Uranium",
+        "author" : "Roger Long, Jonathan Munns",
+        "localization" : "Cambridge",
+        "country_code" : "GB",
+        "date" : "1758",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 5.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 12,
+        "name" : "Cénotaphe à Newton",
+        "author" : "Etienne-Louis Boullée",
+        "localization" : "Paris",
+        "country_code" : "FR",
+        "date" : "1784",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 150,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 13,
+        "name" : "Maison d'un cosmopolite",
+        "author" : "Antoine Laurent Thomas Vaudoyer",
+        "localization" : "Rome (conception)",
+        "country_code" : "IT",
+        "date" : "1784",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 28,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 14,
+        "name" : "Temples décadaires",
+        "author" : "JNL Durand, Jean-Thomas Thibault",
+        "localization" : "Paris",
+        "country_code" : "FR",
+        "date" : "1793",
+        "date_desc" : "1793, 1794",
+        "diam_desc" : "70m & 90m",
+        "diameter" : 70,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 15,
+        "name" : "Temple de la Terre",
+        "author" : "Jean-Jacques Lequeu",
+        "localization" : "Divers, France",
+        "country_code" : "FR",
+        "date" : "1794",
+        "date_desc" : "",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 16,
+        "name" : "Temple à l'immortalité",
+        "author" : "Jean-Nicolas Sobre",
+        "localization" : "Paris, Champs-Elysées",
+        "country_code" : "FR",
+        "date" : "1799",
+        "date_desc" : "v. 1799",
+        "diam_desc" : "",
+        "diameter" : 80,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 17,
+        "name" : "Cimetière de la ville de Chaux",
+        "author" : "Claude Nicolas Ledoux",
+        "localization" : "Arc-et-senans",
+        "country_code" : "FR",
+        "date" : "1800",
+        "date_desc" : "v. 1800",
+        "diam_desc" : "",
+        "diameter" : 78,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 19,
+        "name" : "Cénotaphes à Newton ",
+        "author" : "Delespine, Gay, Labadye",
+        "localization" : "Paris",
+        "country_code" : "FR",
+        "date" : "1785",
+        "date_desc" : "1785-1800",
+        "diam_desc" : "20-22m",
+        "diameter" : 21,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 18,
+        "name" : "Planétarium",
+        "author" : "Thomas Jefferson",
+        "localization" : "Charlottesville",
+        "country_code" : "US",
+        "date" : "1821",
+        "date_desc" : "1817-1826",
+        "diam_desc" : "",
+        "diameter" : 22.25,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 20,
+        "name" : "National Monument to Newton",
+        "author" : "Thomas Ennis Steele",
+        "localization" : "Londres, Leicester Square",
+        "country_code" : "GB",
+        "date" : "1831",
+        "date_desc" : "1829-1834",
+        "diam_desc" : "",
+        "diameter" : 12.2,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 22,
+        "name" : "Géorama",
+        "author" : "Charles-François-Paul Delanglard, Pierre-Magloire Châtelain",
+        "localization" : "Paris & Londres",
+        "country_code" : "FR, GB",
+        "date" : "1827",
+        "date_desc" : "1822-1833",
+        "diam_desc" : "",
+        "diameter" : 13,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 21,
+        "name" : "Géorama",
+        "author" : "Guérin, Jodot, Hittorff, Louis Vivien",
+        "localization" : "Paris & Londres",
+        "country_code" : "FR, GB",
+        "date" : "1847",
+        "date_desc" : "1844-1849",
+        "diam_desc" : "",
+        "diameter" : 10,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
       {
         "id" : 23,
-        "name" : "Lorzm ipsum",
-        "author" : "Bit amet consectetur",
+        "name" : "Model of the Earth",
+        "author" : "James Wyld, Edward Welch, Henry R. Abraham",
+        "localization" : "Londres, Leicester Square",
         "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          9.0, 55.0
+        "date" : "1857",
+        "date_desc" : "1851-1862",
+        "diam_desc" : "",
+        "diameter" : 18.24,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       },
       {
         "id" : 24,
-        "name" : "Lorem ipsum",
-        "author" : "Bit amet consectetur",
-        "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          1.0, 25.0
+        "name" : "Géoplaste",
+        "author" : "Jean-Léon Sanis, Hector Horeau",
+        "localization" : "Bois de Boulogne",
+        "country_code" : "FR",
+        "date" : "1858",
+        "date_desc" : "v.1852-1863",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       },
       {
         "id" : 25,
-        "name" : "Lorem ipsum",
-        "author" : "Bit amet consectetur",
-        "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          6.0, 70.0
+        "name" : "Brick Moon",
+        "author" : "Edward Everett Hale",
+        "localization" : "Orbite terrestre",
+        "country_code" : "",
+        "date" : "1869",
+        "date_desc" : "1869-1870",
+        "diam_desc" : "",
+        "diameter" : 61,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       },
       {
         "id" : 26,
-        "name" : "Loram ipsum",
-        "author" : "Bit amet consectetur",
-        "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          4.0, 67.0
+        "name" : "Monument à Ortelius",
+        "author" : "Henri-Emmanuel Wauwermans",
+        "localization" : "Anvers",
+        "country_code" : "BE",
+        "date" : "1877",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 25.46,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       },
       {
         "id" : 27,
-        "name" : "Loram ipsum",
-        "author" : "Bit amet consectetur",
+        "name" : "Planétarium",
+        "author" : "Napoleone Perini",
+        "localization" : "Londres",
         "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          4.0, 73.0
+        "date" : "1879",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 4.25,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       },
       {
         "id" : 28,
-        "name" : "Loràm ipsum",
-        "author" : "Bit amot consectetur",
-        "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          8.0, 80.0
+        "name" : "Sphère terrestre monumentale",
+        "author" : "François Filon, Alexandre Cordeau",
+        "localization" : "Paris et New York",
+        "country_code" : "FR, US",
+        "date" : "1887",
+        "date_desc" : "1887-1889",
+        "diam_desc" : "",
+        "diameter" : 12.73,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       },
       {
         "id" : 29,
-        "name" : "Lorem ipsum",
-        "author" : "Bit amet consectetur",
+        "name" : "Globe terrestre au millionième",
+        "author" : "Villard & Cotard, A. Tissandier, T. Seyrig",
+        "localization" : "Paris, Champs de Mars",
+        "country_code" : "FR",
+        "date" : "1888",
+        "date_desc" : "1888-1889",
+        "diam_desc" : "",
+        "diameter" : 12.73,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 30,
+        "name" : "National Botanical Gardens",
+        "author" : "Adolphus Alvord Knudson",
+        "localization" : "New York",
+        "country_code" : "US",
+        "date" : "1889",
+        "date_desc" : "1889-1890",
+        "diam_desc" : "",
+        "diameter" : 25,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 31,
+        "name" : "Memorial Tower",
+        "author" : "Charles E. Burton",
+        "localization" : "Chicago ",
+        "country_code" : "US",
+        "date" : "1890",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 122,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 31,
+        "name" : "Solar system",
+        "author" : "Harriet G.Hosmer",
+        "localization" : "Chicago ",
+        "country_code" : "US",
+        "date" : "1889",
+        "date_desc" : "",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 31,
+        "name" : "World",
+        "author" : "Louis H. Martin",
+        "localization" : "Chicago ",
+        "country_code" : "US",
+        "date" : "1889",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 244,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 33,
+        "name" : "Coliseum and Tower ",
+        "author" : "Leroy S. Buffington, Harvey Ellis",
+        "localization" : "Chicago",
+        "country_code" : "US",
+        "date" : "1890",
+        "date_desc" : "1889-90 & 1929",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 32,
+        "name" : "Colossal Globe Crystal Palace",
+        "author" : "Paul Langhammer",
+        "localization" : "Chicago",
+        "country_code" : "US",
+        "date" : "1891",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 30.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 32,
+        "name" : "Crystal Water Palace",
+        "author" : "Ernst Fischer, William F. Smith, George H. Hess",
+        "localization" : "Chicago",
+        "country_code" : "US",
+        "date" : "1890",
+        "date_desc" : "1890-1893",
+        "diam_desc" : "",
+        "diameter" : 76,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 32,
+        "name" : "Columbus Dome",
+        "author" : "John K. Hallock, Cyrus F. Dean",
+        "localization" : "Chicago",
+        "country_code" : "US",
+        "date" : "1890",
+        "date_desc" : "1889-1890",
+        "diam_desc" : "",
+        "diameter" : 244,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 35,
+        "name" : "Freedom Raising the World",
+        "author" : "Frank S.Ingolsby Frank S.Ingoldsby",
+        "localization" : "Chicago & Saint Louis",
+        "country_code" : "US",
+        "date" : "1891",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 42.7,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 34,
+        "name" : "Monumento colosal en memoria de Cristóbal Colón",
+        "author" : "Alberto de Palacio",
+        "localization" : "Chicago, Madrid, Paris",
+        "country_code" : "US, ES, FR",
+        "date" : "1890",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 300,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 36,
+        "name" : "Great Terrestrial Globe",
+        "author" : "Thomas Ruddiman Johnston",
+        "localization" : "Londres",
         "country_code" : "GB",
-        "date" : "1898",
-        "diameter" : 29,
-        "description" : "#22 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\r\n\r\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle" : "Andor Weininger, 1926",
-        "audio_file" : "pass-the-peas.mp3",
-        "images" : [
-          "weininger.jpg"
-        ],
-        "coordinates" : [
-          8.0, 80.0
+        "date" : "1895",
+        "date_desc" : "1895-1896",
+        "diam_desc" : "",
+        "diameter" : 25.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 36,
+        "name" : "Great Hollow Terrestrial Globe",
+        "author" : "Thomas Ruddiman Johnston",
+        "localization" : "Londres",
+        "country_code" : "GB",
+        "date" : "1895",
+        "date_desc" : "1895-1896",
+        "diam_desc" : "",
+        "diameter" : 51,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 37,
+        "name" : "Parapluie universel français",
+        "author" : "Léopold Bourdin",
+        "localization" : "Paris et Marseille",
+        "country_code" : "FR",
+        "date" : "1895",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 38.2,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 38,
+        "name" : "Le Tour du monde en 80 minutes",
+        "author" : "François Borgel-Court, Alexandre Gavard",
+        "localization" : "Paris",
+        "country_code" : "FR",
+        "date" : "1896",
+        "date_desc" : "1895-1897",
+        "diam_desc" : "",
+        "diameter" : 150,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 39,
+        "name" : "Pavillon de l'Homme",
+        "author" : "Alfons Mucha, James Vibert",
+        "localization" : "Paris, Champs de mars",
+        "country_code" : "FR",
+        "date" : "1897",
+        "date_desc" : "",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 40,
+        "name" : "Globe terrestre",
+        "author" : "Elisée Reclus, Louis Bonnier",
+        "localization" : "Paris, Trocadéro",
+        "country_code" : "FR",
+        "date" : "1896",
+        "date_desc" : "1895-1898",
+        "diam_desc" : "",
+        "diameter" : 25.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 41,
+        "name" : "Globe céleste",
+        "author" : "Albert Galeron",
+        "localization" : "Paris",
+        "country_code" : "FR",
+        "date" : "1897",
+        "date_desc" : "1895-1900",
+        "diam_desc" : "",
+        "diameter" : 41,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 42,
+        "name" : "Exhibition structure",
+        "author" : "Herbert F.W. Lyouns",
+        "localization" : "Pas de lieu (brevet)",
+        "country_code" : "",
+        "date" : "1899",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 183,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 42,
+        "name" : "Structure for Educational and Recreative Purposes ",
+        "author" : "Frank A. Pridmore",
+        "localization" : "Pas de lieu (brevet)",
+        "country_code" : "",
+        "date" : "1913",
+        "date_desc" : "",
+        "diam_desc" : "67 ou 100m",
+        "diameter" : 67,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 43,
+        "name" : "National Institute of Geography",
+        "author" : "Patrick Geddes, Elisée Reclus, Albert Galeron, Franz Schrader",
+        "localization" : "Edimbourg",
+        "country_code" : "GB",
+        "date" : "1901",
+        "date_desc" : "",
+        "diam_desc" : "20m chaque",
+        "diameter" : 20,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 44,
+        "name" : "Aerial Globe and Globe Tower",
+        "author" : "Samuel M. Friede, Alfred M. Borden",
+        "localization" : "St Louis & Coney Island",
+        "country_code" : "US",
+        "date" : "1903",
+        "date_desc" : "1899-1907",
+        "diam_desc" : "",
+        "diameter" : 106,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 45,
+        "name" : "Temple pour l’œuvre Mysterium",
+        "author" : "Alexandre Scriabine",
+        "localization" : "Himalaya ou Adyar",
+        "country_code" : "IN, NP",
+        "date" : "1909",
+        "date_desc" : "1903-1915",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 46,
+        "name" : "Magic sphere",
+        "author" : "Hiram S.Maxim",
+        "localization" : "Sheperds Bush & Coney Island",
+        "country_code" : "GB, US",
+        "date" : "1906",
+        "date_desc" : "1904-1907",
+        "diam_desc" : "",
+        "diameter" : 9.1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 47,
+        "name" : "Creation",
+        "author" : "Henry Roltair",
+        "localization" : "St Louis, Coney Island & SF",
+        "country_code" : "US",
+        "date" : "1908",
+        "date_desc" : "1904-1911",
+        "diam_desc" : "",
+        "diameter" : 45.7,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 48,
+        "name" : "Atwood Celestial Sphere",
+        "author" : "Wallace W. Atwood, La Verne W. Noyes",
+        "localization" : "Chicago",
+        "country_code" : "US",
+        "date" : "1913",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 4.6,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 49,
+        "name" : "Globe",
+        "author" : "Fitch B.Fulton, Frank A. Wadleigh",
+        "localization" : "Transportation palace, SF",
+        "country_code" : "US",
+        "date" : "1915",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 15.8,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 50,
+        "name" : "Periscopic Theatre",
+        "author" : "Loyd A.Jones",
+        "localization" : "Kodak Labs, Rochester",
+        "country_code" : "US",
+        "date" : "1918",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 4.3,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 51,
+        "name" : "Karussell, Domstern, Sterne im Reigen",
+        "author" : "Bruno Taut",
+        "localization" : "Univers",
+        "country_code" : "",
+        "date" : "1920",
+        "date_desc" : "1918-1920",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 53,
+        "name" : "Sternhaus",
+        "author" : "Carl Krayl",
+        "localization" : "Univers",
+        "country_code" : "",
+        "date" : "1920",
+        "date_desc" : "v. 1920",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 52,
+        "name" : "Freitragende Kuppel",
+        "author" : "Wenzel Hablik",
+        "localization" : "Montagnes et océans",
+        "country_code" : "",
+        "date" : "1921",
+        "date_desc" : "v. 1920",
+        "diam_desc" : "30-1000m",
+        "diameter" : 650,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 54,
+        "name" : "Forecast Factory",
+        "author" : "Lewis F.Richardson",
+        "localization" : "Lieu indéterminé",
+        "country_code" : "",
+        "date" : "1922",
+        "date_desc" : "",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 55,
+        "name" : "Planétarium 1",
+        "author" : "Walther Bauersfeld (firme Carl Zeiss), Oskar von Miller",
+        "localization" : "Iéna",
+        "country_code" : "DE",
+        "date" : "1923",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 16,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 55,
+        "name" : "Planétarium 2",
+        "author" : "Walther Bauersfeld (firme Carl Zeiss), Oskar von Miller",
+        "localization" : "Munich",
+        "country_code" : "DE",
+        "date" : "1923",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 9.8,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 56,
+        "name" : "Babson Globe & Giant Relief Map",
+        "author" : "Roger Babson, G. Curtis, E. Nichols, Wallace W. Atwood",
+        "localization" : "Wellesley, MA, USA",
+        "country_code" : "US",
+        "date" : "1939",
+        "date_desc" : "1923-1955",
+        "diam_desc" : "",
+        "diameter" : 8.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 57,
+        "name" : "Monument lumineux à Lénine & de la Révolution",
+        "author" : "Grigori Gidoni, Naum Mogilevsky",
+        "localization" : "Leningrad",
+        "country_code" : "RU",
+        "date" : "1926",
+        "date_desc" : "1926-1927",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 58,
+        "name" : "La Sfera di Platino ",
+        "author" : "Giuseppe Lo Duca",
+        "localization" : "Terre",
+        "country_code" : "",
+        "date" : "1927",
+        "date_desc" : "",
+        "diam_desc" : "La terre",
+        "diameter" : 12756000,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 59,
+        "name" : "Kugelhaus",
+        "author" : "Peter Birkenholz",
+        "localization" : "Dresde & Leipzig",
+        "country_code" : "DE",
+        "date" : "1927",
+        "date_desc" : "1927-1938",
+        "diam_desc" : "",
+        "diameter" : 24,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 60,
+        "name" : "Phare monumental à la mémoire de Christophe Colomb",
+        "author" : "Concepteurs divers",
+        "localization" : "Saint-Domingue",
+        "country_code" : "DO",
+        "date" : "1929",
+        "date_desc" : "",
+        "diam_desc" : "variés",
+        "diameter" : 0,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 62,
+        "name" : "Mapparium",
+        "author" : "Chester Lindsay Churchill",
+        "localization" : "Boston",
+        "country_code" : "US",
+        "date" : "1932",
+        "date_desc" : "1930-1935",
+        "diam_desc" : "",
+        "diameter" : 9.1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 61,
+        "name" : "Cosmosarium",
+        "author" : "Robert V. Morse, Peter J.Bitterman",
+        "localization" : "New York",
+        "country_code" : "US",
+        "date" : "1935",
+        "date_desc" : "1935-1936",
+        "diam_desc" : "",
+        "diameter" : 30.5,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 63,
+        "name" : "Trylon & Perisphere",
+        "author" : "Wallace Harrison, J.A. Fouilhoux, H. Dreyfuss, W.G. Still",
+        "localization" : "New York",
+        "country_code" : "US",
+        "date" : "1938",
+        "date_desc" : "1937-1940",
+        "diam_desc" : "",
+        "diameter" : 55,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 64,
+        "name" : "Cité du Soleil",
+        "author" : "Ivan Leonidov",
+        "localization" : "Univers",
+        "country_code" : "",
+        "date" : "1951",
+        "date_desc" : "1943-1959",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 65,
+        "name" : "Space Flyer, 20th Century Globe, Cosmic-Atomic Power Plant",
+        "author" : "Hugo Gernsback",
+        "localization" : "Espace",
+        "country_code" : "",
+        "date" : "1915",
+        "date_desc" : "1911-1921",
+        "diam_desc" : "",
+        "diameter" : 18.3,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 66,
+        "name" : "Pentadome",
+        "author" : "Walter Bird, Kenneth E. Joy, Walter Bird",
+        "localization" : "Redstone arsenal",
+        "country_code" : "US",
+        "date" : "1958",
+        "date_desc" : "1958-1959",
+        "diam_desc" : "",
+        "diameter" : 45.7,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 67,
+        "name" : "Terranische Raumschiffe & Hauptquartier",
+        "author" : "Karl-Herbert Scheer, Clark Darlton (Walter Ernsting)",
+        "localization" : "Espace",
+        "country_code" : "",
+        "date" : "1961",
+        "date_desc" : "",
+        "diam_desc" : "1 à 62km",
+        "diameter" : 4200,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 68,
+        "name" : "Lunar Orbit and Landing Approach Simulator",
+        "author" : "Nasa",
+        "localization" : "Langley Research Center",
+        "country_code" : "US",
+        "date" : "1964",
+        "date_desc" : "1964-1978",
+        "diam_desc" : "",
+        "diameter" : 6.1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 69,
+        "name" : "Synchronized Space : Universal House",
+        "author" : "Raimund Abraham",
+        "localization" : "Lieu indéterminé",
+        "country_code" : "",
+        "date" : "1967",
+        "date_desc" : "",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 70,
+        "name" : "US Pavilion",
+        "author" : "Chermayeff, Buckminster Fuller, Shoji Sadao, Rankine",
+        "localization" : "Montréal",
+        "country_code" : "CA",
+        "date" : "1967",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 76,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 71,
+        "name" : "Kugelauditorium",
+        "author" : "Bornemann, Stockhausen, Winckel, Mengeringhausen",
+        "localization" : "Osaka",
+        "country_code" : "JP",
+        "date" : "1969",
+        "date_desc" : "1968-1970",
+        "diam_desc" : "",
+        "diameter" : 28,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 72,
+        "name" : "Atomic City",
+        "author" : "Oscar Newman",
+        "localization" : "Manhattan",
+        "country_code" : "US",
+        "date" : "1969",
+        "date_desc" : "",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 73,
+        "name" : "Ringworld",
+        "author" : "Larry Niven",
+        "localization" : "Espace",
+        "country_code" : "",
+        "date" : "1970",
+        "date_desc" : "",
+        "diam_desc" : "Terre-soleil",
+        "diameter" : 308000000000,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 74,
+        "name" : "Architettura Interplanetaria",
+        "author" : "Superstudio",
+        "localization" : "Système solaire",
+        "country_code" : "",
+        "date" : "1971",
+        "date_desc" : "1970-1972",
+        "diam_desc" : "Système solaire",
+        "diameter" : 9000000000000,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 75,
+        "name" : "Revitalized Architecture ",
+        "author" : "Takefumi Aida",
+        "localization" : "Tokyo",
+        "country_code" : "JP",
+        "date" : "1971",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 80,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 76,
+        "name" : "Matrimandir ",
+        "author" : "Mira Mirra Alfassa, Roger Anger, Piero Cicionesi",
+        "localization" : "Auroville, Inde",
+        "country_code" : "IN",
+        "date" : "1971",
+        "date_desc" : "1971-2008",
+        "diam_desc" : "",
+        "diameter" : 36,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 79,
+        "name" : "Bernal Sphere « Island One »",
+        "author" : "Gerard K. O’Neill",
+        "localization" : "Espace",
+        "country_code" : "",
+        "date" : "1975",
+        "date_desc" : "v. 1974-1976",
+        "diam_desc" : "",
+        "diameter" : 460,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 78,
+        "name" : "Roden Crater",
+        "author" : "James Turrel",
+        "localization" : "Painted desert, Arizona",
+        "country_code" : "US",
+        "date" : "1976",
+        "date_desc" : "Depuis 1974",
+        "diam_desc" : "variés",
+        "diameter" : 0,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 77,
+        "name" : "Death Star",
+        "author" : "George Lucas, Ralph McQuarrie, Autres auteurs",
+        "localization" : "Espace",
+        "country_code" : "",
+        "date" : "1977",
+        "date_desc" : "Depuis 1977",
+        "diam_desc" : "120-160km",
+        "diameter" : 140000,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 80,
+        "name" : "Epicyclarium",
+        "author" : "Lebbeus Woods",
+        "localization" : "Lieu indéterminé",
+        "country_code" : "",
+        "date" : "1984",
+        "date_desc" : "",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 81,
+        "name" : "Ericsson Globe",
+        "author" : "Adamson, Berg, Vretblad, Wycichowski",
+        "localization" : "Stockholm",
+        "country_code" : "SE",
+        "date" : "1988",
+        "date_desc" : "1985-1989",
+        "diam_desc" : "",
+        "diameter" : 110,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 82,
+        "name" : "Esfera Armilar",
+        "author" : "José Antonio Fernández Ordóñez, Rafael Trénor y Suárez de Lezo",
+        "localization" : "Séville, Madrid…",
+        "country_code" : "ES",
+        "date" : "1991",
+        "date_desc" : "1986-2004",
+        "diam_desc" : "",
+        "diameter" : 80,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 83,
+        "name" : "Space for peace",
+        "author" : "Paolo Soleri",
+        "localization" : "Espace",
+        "country_code" : "",
+        "date" : "1984",
+        "date_desc" : "1984-1987",
+        "diam_desc" : "?",
+        "diameter" : -1,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 84,
+        "name" : "Mappemondo della Pace",
+        "author" : "Orfeo Bartolucci",
+        "localization" : "Colombara di Apecchio",
+        "country_code" : "IT",
+        "date" : "1988",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 10000,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 85,
+        "name" : "Soul’s Cycle",
+        "author" : "Raoul Bunschoten",
+        "localization" : "Fort Asperen",
+        "country_code" : "NL",
+        "date" : "1989",
+        "date_desc" : "1989",
+        "diam_desc" : "Qq. cm à 4m",
+        "diameter" : 0.8,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 86,
+        "name" : "Arceon, projet pour Alien 3",
+        "author" : "Vincent Ward",
+        "localization" : "Espace",
+        "country_code" : "",
+        "date" : "1989",
+        "date_desc" : "1989-1990",
+        "diam_desc" : "",
+        "diameter" : 1609,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 87,
+        "name" : "Globus Cassus",
+        "author" : "Christian Waldvogel",
+        "localization" : "Terre++",
+        "country_code" : "",
+        "date" : "2003",
+        "date_desc" : "2002-2009",
+        "diam_desc" : "85 000km",
+        "diameter" : 85000000,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 88,
+        "name" : "Longitude Dial",
+        "author" : "William Andrewes",
+        "localization" : "Chilpancigo",
+        "country_code" : "MX",
+        "date" : "2002",
+        "date_desc" : "Depuis 2002",
+        "diam_desc" : "",
+        "diameter" : 15.09,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 89,
+        "name" : "Convention and Exhibition Center",
+        "author" : "Rem Koolhaas, Reinier de Graaf",
+        "localization" : "Ras al Khaimah",
+        "country_code" : "AE",
+        "date" : "2006",
+        "date_desc" : "",
+        "diam_desc" : "",
+        "diameter" : 200,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
+        ]
+      },
+      {
+        "id" : 90,
+        "name" : "Great Globe Project",
+        "author" : "Bryan Beaulieu",
+        "localization" : "Sonora Desert, AZ.",
+        "country_code" : "US",
+        "date" : "2015",
+        "date_desc" : "Depuis 1993",
+        "diam_desc" : "",
+        "diameter" : 128,
+        "description": "",
+        "subtitle": "",
+        "audio_file": "",
+        "images": [""],
+        "coordinates": [
+
         ]
       }
     ],

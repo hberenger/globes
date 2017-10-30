@@ -19,7 +19,8 @@ public class Project {
     @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "yyyy")
     public  Date         date;         // mandatory
     private String       dateDesc;     // optional
-    private Float        diameter;
+    private String       diamDesc;     // optional
+    private Float        diameter;     // mandatory
     private String       description;
     private String       subtitle;
     private String       audioFile;
@@ -167,5 +168,13 @@ public class Project {
 
     private static String normalize(String s) {
         return Normalizer.normalize(s.toLowerCase(), Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+    }
+
+    public String getDiameterDescription() {
+        if (diamDesc != null && !diamDesc.isEmpty()) {
+            return diamDesc;
+        }
+        String diamDesc = String.format(Locale.getDefault(), "%.0fm", getDiameter());
+        return diamDesc;
     }
 }
