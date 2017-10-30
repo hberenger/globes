@@ -13,17 +13,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8564477"/>
+        app:layout_constraintGuide_percent="0.8"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="288dp"/>
 
     <ImageView
         android:id="@+id/picto"
-        android:layout_height="match_parent"
-        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_width="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_01_rvb_picto"
-        android:background="#ff0000"/>
+        android:background="#ff0000"
+        tools:layout_editor_absoluteX="0dp"/>
 
     <TextView
         android:id="@+id/architect_name"
@@ -40,7 +43,8 @@
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
         android:background="#00ff00"
-        android:text="John Doe, John Doe, John Doe, John Doe, John Doe, John Doe, John Doe, John Doe"/>
+        android:text="John Doe, John Doe, John Doe, John Doe, John Doe, John Doe, John Doe, John Doe"
+        tools:layout_editor_absoluteX="60dp"/>
 
     <TextView
         android:id="@+id/project_name"
@@ -55,11 +59,12 @@
         android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@id/guide"
         app:layout_constraintStart_toEndOf="@id/picto"
-        app:layout_constraintTop_toBottomOf="@+id/architect_name"/>
+        app:layout_constraintTop_toBottomOf="@+id/architect_name"
+        tools:layout_editor_absoluteX="60dp"/>
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="52dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:gravity="end"
@@ -69,13 +74,13 @@
         app:layout_constraintStart_toEndOf="@id/guide"
         android:textSize="12sp"
         android:textColor="@color/colorPrimaryDark"
-        android:text="1881"
+        tools:text="1881-1882"
         android:background="#00ffff"
-        tools:layout_editor_absoluteX="328dp"/>
+        tools:layout_editor_absoluteX="288dp"/>
 
     <TextView
         android:id="@+id/place"
-        android:layout_width="52dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:gravity="end"
@@ -83,15 +88,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date"
         app:layout_constraintStart_toEndOf="@id/guide"
+        android:breakStrategy="high_quality"
         android:textSize="12sp"
         android:textColor="@color/colorPrimaryDark"
         android:text="Londres"
         android:background="#ff00ff"
-        tools:layout_editor_absoluteX="328dp"/>
+        tools:layout_editor_absoluteX="288dp"/>
 
     <TextView
         android:id="@+id/size"
-        android:layout_width="52dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:gravity="end"
@@ -103,7 +109,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:background="#ffff00"
         android:text="124m"
-        tools:layout_editor_absoluteX="328dp"/>
+        tools:layout_editor_absoluteX="288dp"/>
 
 
 </merge>

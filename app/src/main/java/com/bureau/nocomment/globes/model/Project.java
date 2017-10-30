@@ -62,7 +62,7 @@ public class Project {
     }
 
     public String getDateDescription() {
-        if(dateDesc != null) {
+        if(dateDesc != null && !dateDesc.isEmpty()) {
             return dateDesc;
         }
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
