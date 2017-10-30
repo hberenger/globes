@@ -11,23 +11,34 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fast bitmap drawable. Does not support states. it only
  * support alpha and colormatrix
  *
+ * Also, the bitmap is stratified into stripes having height 4096 to
+ * avoid breaking the OpenGL max Bitmap size (4096x4096)
+ * (OK we should theoretically cut vertical stripes too, but for now we
+ *  have this problem in only one direction ^^)
+ *
  * @author alessandro
  */
 public class FastBitmapDrawable extends Drawable implements IBitmapDrawable {
-    protected Bitmap mBitmap;
-    protected Paint mPaint;
-    protected int mIntrinsicWidth, mIntrinsicHeight;
+    final static int       CHUNK_HEIGHT = 4096;
+
+    protected Bitmap       mOriginalBitmap;
+    protected List<Bitmap> mChunks;
+    protected Paint        mPaint;
+    protected int          mIntrinsicWidth, mIntrinsicHeight;
 
     public FastBitmapDrawable(Bitmap b) {
-        mBitmap = b;
-        if (null != mBitmap) {
-            mIntrinsicWidth = mBitmap.getWidth();
-            mIntrinsicHeight = mBitmap.getHeight();
+        setBitmap(b);
+
+        if (null != b) {
+            mIntrinsicWidth = b.getWidth();
+            mIntrinsicHeight = b.getHeight();
         } else {
             mIntrinsicWidth = 0;
             mIntrinsicHeight = 0;
@@ -37,8 +48,19 @@ public class FastBitmapDrawable extends Drawable implements IBitmapDrawable {
         mPaint.setFilterBitmap(true);
     }
 
-    public void setBitmap(Bitmap bitmap) {
-        mBitmap = bitmap;
+    public void setBitmap(Bitmap b) {
+        mOriginalBitmap = b;
+        int height = b.getHeight();
+        int chunkCount = (height / CHUNK_HEIGHT);
+        if ((height % CHUNK_HEIGHT) > 0) {
+            chunkCount++;
+        }
+        mChunks = new ArrayList<Bitmap>();
+        for (int i = 0; i < chunkCount; ++i) {
+            int chunkHeight = (i < (height / CHUNK_HEIGHT)) ? CHUNK_HEIGHT : (height % CHUNK_HEIGHT);
+            Bitmap chunk = Bitmap.createBitmap(b, 0, i * CHUNK_HEIGHT, b.getWidth(), chunkHeight);
+            mChunks.add(chunk);
+        }
     }
 
     public FastBitmapDrawable(Resources res, InputStream is) {
@@ -47,12 +69,28 @@ public class FastBitmapDrawable extends Drawable implements IBitmapDrawable {
 
     @Override
     public void draw(Canvas canvas) {
-        if (null != mBitmap && !mBitmap.isRecycled()) {
-            final Rect bounds = getBounds();
-            if (!bounds.isEmpty()) {
-                canvas.drawBitmap(mBitmap, null, bounds, mPaint);
-            } else {
-                canvas.drawBitmap(mBitmap, 0f, 0f, mPaint);
+        if (mOriginalBitmap == null) {
+            return;
+        }
+        for (Bitmap chunk : mChunks) {
+            if (chunk.isRecycled()) {
+                return;
+            }
+        }
+
+        final Rect bounds = getBounds();
+        if (!bounds.isEmpty()) {
+            float factor = (float)bounds.height() / (float)mOriginalBitmap.getHeight();
+            for (int i = 0; i < mChunks.size(); ++i) {
+                Bitmap chunk = mChunks.get(i);
+                int destTop = bounds.top + (int)((float)i * (float)CHUNK_HEIGHT * factor);
+                int destHeight = (int)((float)chunk.getHeight() * factor);
+                Rect destRect = new Rect(bounds.left, destTop, bounds.right, destTop + destHeight);
+                canvas.drawBitmap(chunk, null, destRect, mPaint);
+            }
+        } else {
+            for (int i = 0; i < mChunks.size(); ++i) {
+                canvas.drawBitmap(mChunks.get(i), 0f, i * CHUNK_HEIGHT, mPaint);
             }
         }
     }
@@ -99,7 +137,7 @@ public class FastBitmapDrawable extends Drawable implements IBitmapDrawable {
 
     @Override
     public Bitmap getBitmap() {
-        return mBitmap;
+        return mOriginalBitmap;
     }
 
     public Paint getPaint() {
