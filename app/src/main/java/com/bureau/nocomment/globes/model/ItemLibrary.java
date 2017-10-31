@@ -47,7 +47,7 @@ public class ItemLibrary {
             Assert.assertEquals(null, sortedProjects.get(0));
         }
         List<Project> matchingProjects = sortedProjects.get(projectId);
-        return (matchingProjects.size() > 0) ? matchingProjects.get(0) : null;
+        return (matchingProjects != null && matchingProjects.size() > 0) ? matchingProjects.get(0) : null;
     }
 
     public void localeDidChange() {
