@@ -15,6 +15,7 @@ public class ItemLibrary {
 
     // Computes ppties
     private Map<Integer, List<Project>> sortedProjects;
+    private Map<Integer, Table> sortedTables;
 
     public List<Project> getProjects() {
         return projects;
@@ -29,11 +30,11 @@ public class ItemLibrary {
     }
 
     public Project findProject(int projectId) {
-        if (tables == null) {
+        if (projects == null) {
             return null;
         }
         if (sortedProjects == null) {
-            sortedProjects = new HashMap<>(tables.size());
+            sortedProjects = new HashMap<>(projects.size());
             for(Project p : projects) {
                 List<Project> projectsSharingSameId = sortedProjects.get(p.getId());
                 if (projectsSharingSameId == null) {
@@ -48,6 +49,23 @@ public class ItemLibrary {
         }
         List<Project> matchingProjects = sortedProjects.get(projectId);
         return (matchingProjects != null && matchingProjects.size() > 0) ? matchingProjects.get(0) : null;
+    }
+
+    public Table findTable(int tableId) {
+        if (tables == null) {
+            return null;
+        }
+        if (sortedTables == null) {
+            sortedTables = new HashMap<>(tables.size());
+            for(Table t : tables) {
+                sortedTables.put(t.getId(), t);
+            }
+            // Make sure we don't have any duplicate id
+            Assert.assertEquals(tables.size(), sortedTables.size());
+            // Make sure we don't have tables without id
+            Assert.assertEquals(null, sortedTables.get(0));
+        }
+        return sortedTables.get(tableId);
     }
 
     public void localeDidChange() {
