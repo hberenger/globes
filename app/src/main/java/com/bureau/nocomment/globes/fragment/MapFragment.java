@@ -16,6 +16,7 @@ import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
+import com.bureau.nocomment.globes.model.Table;
 import com.cisco.cmx.model.CMXDimension;
 import com.cisco.cmx.model.CMXFloor;
 import com.cisco.cmx.model.CMXPath;
@@ -33,6 +34,7 @@ import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler {
 
     private static final int kMAP_ID = R.drawable.plan_415;
+    private static final int kTABLE_ID_OFFSET = 2000;
 
     @Bind(R.id.map)
     CMXFloorView mMapView;
@@ -78,9 +80,11 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
         for (Project project : projects) {
-            if (project.hasValidCoordinates()) {
-                addMarker(project.getId(), project.getX(), project.getY());
-            }
+            addProjectMarker(project);
+        }
+        List<Table> tables = ModelRepository.getInstance().getItemLibrary().getTables();
+        for (Table table : tables) {
+            addTableMarker(table);
         }
 
         return rootView;
@@ -111,8 +115,19 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         hideMiniDetails(false);
     }
 
-    private void addMarker(int id, float x, float y) {
-        Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_project_marker_36dp);
+    private void addProjectMarker(Project project) {
+        if (project.hasValidCoordinates()) {
+            addMarker(project.getId(), project.getX(), project.getY(), R.drawable.ic_project_marker_transparent);
+        }
+    }
+
+    private void addTableMarker(Table table) {
+        int markerId = table.getId() + kTABLE_ID_OFFSET;
+        addMarker(markerId, table.getX(), table.getY(), R.drawable.sticker_nfc);
+    }
+
+    private void addMarker(int id, float x, float y, int iconId) {
+        Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), iconId);
         CMXPoi poi = makeCMXPoi(id, x, y);
         mMapView.showPoi(poi, poiBitmap);
     }

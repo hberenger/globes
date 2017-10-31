@@ -16,24 +16,6 @@
 
     "projects": [
       {
-        "id" : 1021,
-        "name" : "Lorem ipsum",
-        "author" : "Sit amet consectetur",
-        "localization" : "Londres",
-        "country_code" : "GB",
-        "date" : "1897",
-        "date_desc" : "Fin XIXè s.",
-        "diam_desc" : "dans les 28m",
-        "diameter" : 28,
-        "description": "#21 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a semper magna, sit amet fermentum elit. Praesent nisi ante, ultrices sed enim nec, molestie vestibulum augue. Mauris accumsan nibh lorem, eget maximus sem auctor ac. Morbi non tellus quis lectus ullamcorper sodales in et est. Duis molestie pellentesque varius. Maecenas nisl nisi, ullamcorper eu nulla id, gravida malesuada risus. Aliquam pulvinar augue ac orci pharetra tempus. Donec vel dictum erat. Duis tincidunt, turpis egestas imperdiet porttitor, dolor massa semper eros, quis laoreet nisl diam non neque. Fusce eget dolor dictum dolor dictum porta a egestas purus. Donec vulputate nisl eu malesuada tempor. Donec laoreet dignissim arcu, vel pulvinar urna mattis hendrerit. Phasellus suscipit aliquet egestas. Etiam mi nibh, rhoncus nec arcu ac, malesuada feugiat quam. Nam a enim eget neque finibus convallis a at sem.\\r\\n\\r\\nAliquam facilisis ac dolor vitae dignissim. Aenean feugiat pretium orci ac scelerisque. Sed euismod feugiat ipsum, ut imperdiet justo tristique et. Donec non vestibulum dolor, blandit ultrices nisl. Phasellus tristique justo et felis viverra, et bibendum augue mattis. Phasellus orci odio, aliquam vitae dignissim eu, efficitur et nisi. Vivamus facilisis laoreet tristique. Suspendisse sapien sapien, dapibus id placerat non, lobortis ac massa. Pellentesque dignissim quam ut est dictum eleifend.",
-        "subtitle": "Andor Weininger, 1927",
-        "audio_file": "weininger.mp3",
-        "images": ["weininger.jpg"],
-        "coordinates": [
-          3.0, 40.0
-        ]
-      },
-      {
         "id" : 1,
         "name" : "Ornithon",
         "author" : "Marcus Terentius Varro ",
@@ -1836,5 +1818,89 @@
     ],
 
     "tables": [
+      {
+        "id": 1,
+        "title": "Table 1",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [4.78, 14.40]
+      },
+      {
+        "id": 2,
+        "title": "Table 2",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [3.11, 15.89]
+      },
+      {
+        "id": 3,
+        "title": "Table 3",
+        "audio_file": "Module-02.mp3",
+        "coordinates":[4.84, 31.13]
+      },
+      {
+        "id": 4,
+        "title": "Table 4",
+        "audio_file": "Module-02.mp3",
+        "coordinates":  [3.05, 32.88]
+      },
+      {
+        "id": 5,
+        "title": "Table 5",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [2.99, 42.59]
+      },
+      {
+        "id": 6,
+        "title": "Table 6",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [4.84, 44.32]
+      },
+      {
+        "id": 7,
+        "title": "Table 7",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [4.94, 54.40]
+      },
+      {
+        "id": 8,
+        "title": "Table 8",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [3.10, 56.17]
+      },
+      {
+        "id": 9,
+        "title": "Table 9",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [4.50, 67.65]
+      },
+      {
+        "id": 10,
+        "title": "Table 10",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [3.19, 69.44]
+      },
+      {
+        "id": 11,
+        "title": "Table 11",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [4.91, 83.27]
+      },
+      {
+        "id": 12,
+        "title": "Table 12",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [3.24, 85.05]
+      },
+      {
+        "id": 13,
+        "title": "Table 13",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [4.25, 96.92]
+      },
+      {
+        "id": 14,
+        "title": "Table 14",
+        "audio_file": "Module-02.mp3",
+        "coordinates": [9.89, 75.24]
+      }
     ]
 }
