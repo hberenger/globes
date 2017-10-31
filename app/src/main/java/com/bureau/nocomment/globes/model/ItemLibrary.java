@@ -2,6 +2,7 @@ package com.bureau.nocomment.globes.model;
 
 import junit.framework.Assert;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class ItemLibrary {
     private List<Route> routes;
 
     // Computes ppties
-    private Map<Integer, Project> sortedProjects;
+    private Map<Integer, List<Project>> sortedProjects;
 
     public List<Project> getProjects() {
         return projects;
@@ -27,21 +28,26 @@ public class ItemLibrary {
         return routes;
     }
 
-    public Project findProject(int testProjectId) {
+    public Project findProject(int projectId) {
         if (tables == null) {
             return null;
         }
         if (sortedProjects == null) {
             sortedProjects = new HashMap<>(tables.size());
             for(Project p : projects) {
-                sortedProjects.put(p.getId(), p);
+                List<Project> projectsSharingSameId = sortedProjects.get(p.getId());
+                if (projectsSharingSameId == null) {
+                    projectsSharingSameId = new ArrayList<>();
+                    sortedProjects.put(p.getId(), projectsSharingSameId);
+                }
+                projectsSharingSameId.add(p);
             }
-            // Make sure we don't have any duplicate id
-            Assert.assertEquals(projects.size(), sortedProjects.size());
+
             // Make sure we don't have projects without id
             Assert.assertEquals(null, sortedProjects.get(0));
         }
-        return sortedProjects.get(testProjectId);
+        List<Project> matchingProjects = sortedProjects.get(projectId);
+        return (matchingProjects.size() > 0) ? matchingProjects.get(0) : null;
     }
 
     public void localeDidChange() {
