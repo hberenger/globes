@@ -205,6 +205,7 @@ public class MiniDetailsFragment extends BaseFragment {
         String number = String.format(Locale.getDefault(), "%d", project.getId());
         projectNumber.setText(number);
 
+        description.setVisibility(View.VISIBLE);
         configureProjectDetails(project);
 
         progressView.setVisibility(View.INVISIBLE);
@@ -230,6 +231,8 @@ public class MiniDetailsFragment extends BaseFragment {
         }
         title.setText(projectTitle);
         description.setText(projectDescription);
+        // HBR FIXME Whattttt a hack ; use autoresizing textView instead
+        description.setTextSize((projectDescription.length() > 80) ? 12 : 14);
     }
 
     private void loadFromTable(Table table) {
@@ -246,6 +249,7 @@ public class MiniDetailsFragment extends BaseFragment {
         currentTableId = table.getId();
         currentProjectId = -1;
 
+        description.setVisibility(View.GONE);
         title.setText(table.getTitle());
 
         progressView.setVisibility(View.VISIBLE);
