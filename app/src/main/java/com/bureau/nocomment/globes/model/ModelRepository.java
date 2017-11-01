@@ -1,8 +1,10 @@
 package com.bureau.nocomment.globes.model;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.common.PictoCache;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -17,16 +19,26 @@ import java.io.InputStream;
 public class ModelRepository {
     private static final ModelRepository mInstance = new ModelRepository();
     private ItemLibrary mItemLibrary;
+    private PictoCache mPictoCache;
 
     public static ModelRepository getInstance() {
         return mInstance;
     }
 
     private ModelRepository() {
+        mPictoCache = new PictoCache();
     }
 
     public ItemLibrary getItemLibrary() {
         return mItemLibrary;
+    }
+
+    public void loadProjectPictograms(Context context) {
+        mPictoCache.loadProjects(mItemLibrary.getProjects(), context);
+    }
+
+    public Bitmap pictogramForProject(Project p) {
+        return mPictoCache.bitmapForProject(p);
     }
 
     public void loadItemLibrary(Context context) {

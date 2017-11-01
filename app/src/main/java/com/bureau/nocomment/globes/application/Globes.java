@@ -13,6 +13,7 @@ public class Globes extends Application {
         super.onCreate();
         mAppContext = this;
         ModelRepository.getInstance().loadItemLibrary(mAppContext);
+        ModelRepository.getInstance().loadProjectPictograms(this);
     }
 
     public static synchronized Context getAppContext() {
