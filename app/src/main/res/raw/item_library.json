@@ -106,7 +106,7 @@
         ]
       },
       {
-        "id" : 5,
+        "id" : 6,
         "name" : "Qasr Amra",
         "author" : "Al-Walīd Ier ou Al-Walīd II",
         "localization" : "Azraq, Jordanie",
@@ -124,7 +124,7 @@
         ]
       },
       {
-        "id" : 6,
+        "id" : 5,
         "name" : "Cielo de Salamanca",
         "author" : "Fernando Gallego",
         "localization" : "Salamanque",
@@ -142,7 +142,7 @@
         ]
       },
       {
-        "id" : 6,
+        "id" : 5,
         "name" : "Sagrestia Vecchia",
         "author" : "Filippo Brunelleschi, Giuliano d’Arrigo",
         "localization" : "Florence",
@@ -1104,7 +1104,7 @@
         ]
       },
       {
-        "id" : 53,
+        "id" : 52,
         "name" : "Sternhaus",
         "author" : "Carl Krayl",
         "localization" : "Univers",
@@ -1122,7 +1122,7 @@
         ]
       },
       {
-        "id" : 52,
+        "id" : 53,
         "name" : "Freitragende Kuppel",
         "author" : "Wenzel Hablik",
         "localization" : "Montagnes et océans",
