@@ -1870,86 +1870,86 @@
     "tables": [
       {
         "id": 1,
-        "title": "1 - Introduction - L'Antiquité",
+        "title": "Introduction - L'Antiquité",
         "audio_file": "Module-01.mp3",
         "coordinates": [4.66, 2.65]
       },
       {
         "id": 2,
-        "title": "Table 2",
+        "title": "Point d'écoute 1",
         "audio_file": "Module-02.mp3",
         "coordinates": [4.78, 14.40]
       },
       {
         "id": 3,
-        "title": "Table 3",
+        "title": "Point d'écoute 2",
         "audio_file": "Module-03.mp3",
         "coordinates": [3.11, 15.89]
       },
       {
         "id": 4,
-        "title": "Table 4",
+        "title": "Point d'écoute 3",
         "audio_file": "Module-04.mp3",
         "coordinates":[4.84, 31.13]
       },
       {
         "id": 5,
-        "title": "Table 5",
+        "title": "Point d'écoute 4",
         "audio_file": "Module-05.mp3",
         "coordinates":  [3.05, 32.88]
       },
       {
         "id": 6,
-        "title": "Table 6",
+        "title": "Point d'écoute 5",
         "audio_file": "Module-06.mp3",
         "coordinates": [2.99, 42.59]
       },
       {
         "id": 7,
-        "title": "Table 7",
+        "title": "Point d'écoute 6",
         "audio_file": "Module-07.mp3",
         "coordinates": [4.84, 44.32]
       },
       {
         "id": 8,
-        "title": "Table 8",
-        "audio_file": "Module-01.mp3",
+        "title": "Point d'écoute 7",
+        "audio_file": "Module-08.mp3",
         "coordinates": [4.94, 54.40]
       },
       {
         "id": 9,
-        "title": "Table 9",
-        "audio_file": "Module-02.mp3",
+        "title": "Point d'écoute 8",
+        "audio_file": "Module-09.mp3",
         "coordinates": [3.10, 56.17]
       },
       {
         "id": 10,
-        "title": "Table 10",
-        "audio_file": "Module-03.mp3",
+        "title": "Point d'écoute 9",
+        "audio_file": "Module-10.mp3",
         "coordinates": [4.50, 67.65]
       },
       {
         "id": 11,
-        "title": "Table 11",
-        "audio_file": "Module-04.mp3",
+        "title": "Point d'écoute 10",
+        "audio_file": "Module-11.mp3",
         "coordinates": [3.19, 69.44]
       },
       {
         "id": 12,
-        "title": "Table 12",
-        "audio_file": "Module-05.mp3",
+        "title": "Point d'écoute 11",
+        "audio_file": "Module-12.mp3",
         "coordinates": [4.91, 83.27]
       },
       {
         "id": 13,
-        "title": "Table 13",
-        "audio_file": "Module-06.mp3",
+        "title": "Point d'écoute 12",
+        "audio_file": "Module-13.mp3",
         "coordinates": [3.24, 85.05]
       },
       {
         "id": 14,
-        "title": "Table 14",
-        "audio_file": "Module-07.mp3",
+        "title": "Point d'écoute 13",
+        "audio_file": "Module-14.mp3",
         "coordinates": [4.25, 96.92]
       }
     ]
