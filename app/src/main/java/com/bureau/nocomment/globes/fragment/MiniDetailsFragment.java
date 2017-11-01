@@ -29,6 +29,7 @@ import butterknife.OnClick;
 public class MiniDetailsFragment extends BaseFragment {
 
     interface PlayerListener {
+        void onReadyToPlay();
         void playerDidStartToPlay(int trackId);
         void playerDidEndToPlay(int trackId);
     }
@@ -73,7 +74,7 @@ public class MiniDetailsFragment extends BaseFragment {
         Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableID);
         loadFromTable(table);
         if (playSound) {
-            player.start();
+            playSoundtrack();
         }
     }
 
@@ -124,6 +125,7 @@ public class MiniDetailsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        mPlayerListener.onReadyToPlay();
         playSoundtrack();
     }
 

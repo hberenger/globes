@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     Toolbar mToolbar;
     ForegroundDispatcher mForegroundDispatcher;
     private NfcTagMessageParser tagParser;
+    private boolean autoplayOnResume;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,8 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
         mForegroundDispatcher = new ForegroundDispatcher(this);
         tagParser = new ClassicNfcTextRecordParser();
+
+        autoplayOnResume = mForegroundDispatcher.isNfcIntent(getIntent());
     }
 
     @Override
@@ -151,6 +154,10 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
         getPagerAdapter().updateCacheWithFragment(fragment);
+        if (autoplayOnResume && fragment.getClass() == MapFragment.class) {
+            loadFromNfcIntent(getIntent());
+            autoplayOnResume = false;
+        }
     }
 
     @Override

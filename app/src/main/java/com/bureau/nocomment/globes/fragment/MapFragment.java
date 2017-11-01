@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -42,6 +43,8 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @Bind(R.id.quick_view)
     ViewGroup mQuickView;
     int mQuickViewHeight;
+
+    private Table tableToPlayOnResume;
 
     @Nullable
     @Override
@@ -90,6 +93,8 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         return rootView;
     }
 
+    // Public Fragment API
+
     public void focusOnProject(Project project) {
         setActiveProject(project, true);
     }
@@ -100,7 +105,12 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     }
 
     public void focusAndPlayTable(Table table) {
-        setActiveTable(table, true, true);
+        // TODO : improve this test
+        if (mMapView != null && getChildFragmentManager().findFragmentById(R.id.quick_view) != null) {
+            setActiveTable(table, true, true);
+        } else {
+            tableToPlayOnResume = table;
+        }
     }
 
     @Override
@@ -259,5 +269,21 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sticker_nfc);
         String poiId = Integer.toString(trackId + kTABLE_ID_OFFSET);
         mMapView.updatePoiBitmap(poiId, poiBitmap);
+    }
+
+    @Override
+    public void onReadyToPlay() {
+        if (tableToPlayOnResume != null) {
+            final Table tableToPlay = tableToPlayOnResume;
+            tableToPlayOnResume = null;
+            final Handler handler = new Handler();
+            // TODO : Hacky delay
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setActiveTable(tableToPlay, true, true);
+                }
+            }, 1000);
+        }
     }
 }
