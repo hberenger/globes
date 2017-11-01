@@ -7,11 +7,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.nfc.NdefMessage;
-import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,8 +24,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
-import com.bureau.nocomment.globes.common.ClassicNfcTextRecordParser;
-import com.bureau.nocomment.globes.common.ForegroundDispatcher;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.github.chrisbanes.photoview.PhotoView;
@@ -42,10 +37,6 @@ import butterknife.OnClick;
 
 
 public class DetailActivity extends AppCompatActivity {
-
-    public interface NfcTagMessageParser {
-        public int readProjectIdFromNdefMessage(NdefMessage message);
-    }
 
     private final static String IMAGE_FOLDER = "images";
     private final static String SOUND_FOLDER = "sound";
@@ -74,8 +65,6 @@ public class DetailActivity extends AppCompatActivity {
     MediaPlayer player;
     private Handler  progressUpdateHandler;
     private Runnable progressUpdater;
-    private ForegroundDispatcher nfcDispatcher;
-    private NfcTagMessageParser tagParser;
 
     private static final String TEST_PROJECT_ID_EXTRA =
             DetailActivity.class.getCanonicalName().concat("project_id");
@@ -89,9 +78,6 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        nfcDispatcher = new ForegroundDispatcher(this);
-        tagParser = new ClassicNfcTextRecordParser();
 
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
@@ -135,15 +121,6 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
-
-        Intent currentIntent = getIntent();
-        loadFromIntent(currentIntent);
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        loadFromIntent(intent);
     }
 
     @Override
@@ -160,14 +137,12 @@ public class DetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         playSoundtrack();
-        nfcDispatcher.start(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         pauseSoundtrack();
-        nfcDispatcher.stop(this);
     }
 
     @Override
@@ -224,30 +199,6 @@ public class DetailActivity extends AppCompatActivity {
         final SpannableString str = new SpannableString(text);
         str.setSpan(style, 0, text.length(), 0);
         return str;
-    }
-
-    private int getTestProjectId() {
-        return getIntent().getIntExtra(TEST_PROJECT_ID_EXTRA, -1);
-    }
-
-    private void loadFromIntent(Intent intent) {
-        if (nfcDispatcher.isNfcIntent(intent)) {
-            Parcelable[] rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
-            if (rawMessages != null && rawMessages.length > 0) {
-                NdefMessage message = (NdefMessage) rawMessages[0];
-                int projectId = tagParser.readProjectIdFromNdefMessage(message);
-                // When a tag is detected by the ForegroundDispatcher, onNewIntent is called between
-                // onPause and onResume (which pause and start the player). So we can hot-swap the
-                // player source without bothering about threading or the progress refresher
-                loadFromProjectId(projectId);
-                return;
-            }
-        }
-        int testProjectId = getTestProjectId();
-        if (testProjectId > 0) {
-            loadFromProjectId(testProjectId);
-            return;
-        }
     }
 
     private void loadFromProjectId(int testProjectId) {
