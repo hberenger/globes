@@ -447,6 +447,10 @@ public class CMXFloorView extends ImageViewTouch {
         return mCoronaPaint;
     }
 
+    public void setCoronaColor(int color) {
+        getCoronaPaint().setColor(color);
+    }
+
     private Bitmap pathBitmap;
     private Canvas pathBitmapCanvas;
 
