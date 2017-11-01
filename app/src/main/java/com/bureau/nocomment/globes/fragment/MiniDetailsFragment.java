@@ -27,6 +27,11 @@ import butterknife.OnClick;
 
 public class MiniDetailsFragment extends BaseFragment {
 
+    interface PlayerListener {
+        void playerDidStartToPlay(int trackId);
+        void playerDidEndToPlay(int trackId);
+    }
+
     private final static String SOUND_FOLDER = "sound";
 
     @Bind(R.id.progress)
@@ -45,12 +50,15 @@ public class MiniDetailsFragment extends BaseFragment {
     TextView title;
 
     // to avoid loading issues with multiple taps
-    private int currentTableId = -1;
+    private int currentTableId   = -1;
     private int currentProjectId = -1;
+    private int loadedTrackId    = -1; // a table id
 
     MediaPlayer                  player;
     private Handler              progressUpdateHandler;
     private Runnable             progressUpdater;
+
+    PlayerListener               mPlayerListener;
 
     public void showProject(int projectID) {
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(projectID);
@@ -63,6 +71,10 @@ public class MiniDetailsFragment extends BaseFragment {
         if (playSound) {
             // TODO
         }
+    }
+
+    public void setPlayerListener(PlayerListener playerListener) {
+        mPlayerListener = playerListener;
     }
 
     @Override
@@ -79,6 +91,7 @@ public class MiniDetailsFragment extends BaseFragment {
                 pauseSoundtrack();
                 player.seekTo(0);
                 progressView.setValueAnimated(0, 800);
+                mPlayerListener.playerDidEndToPlay(loadedTrackId);
             }
         });
 
@@ -136,6 +149,7 @@ public class MiniDetailsFragment extends BaseFragment {
         player.start();
         playButton.setVisibility(View.GONE);
         pauseButton.setVisibility(View.VISIBLE);
+        mPlayerListener.playerDidStartToPlay(loadedTrackId);
     }
 
     private void pauseSoundtrack() {
@@ -149,6 +163,7 @@ public class MiniDetailsFragment extends BaseFragment {
         pauseSoundtrack();
         player.stop();
         progressView.setValueAnimated(0, 400);
+        mPlayerListener.playerDidEndToPlay(loadedTrackId);
     }
 
     @OnClick(R.id.play_button)
@@ -202,6 +217,7 @@ public class MiniDetailsFragment extends BaseFragment {
         // update progress bar
         progressView.setMaxValue(player.getDuration()); // in ms
         currentTableId = table.getId();
+        loadedTrackId = currentTableId;
         currentProjectId = -1;
 
         title.setText(table.getTitle());
@@ -219,7 +235,7 @@ public class MiniDetailsFragment extends BaseFragment {
             if (descriptor != null) {
                 long offset = descriptor.getStartOffset();
                 long length = descriptor.getLength();
-                if (currentTableId > 0) {
+                if (loadedTrackId > 0) {
                     stopSoundtrack();
                 }
                 player.reset();

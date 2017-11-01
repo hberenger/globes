@@ -31,7 +31,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 
-public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler {
+public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler, MiniDetailsFragment.PlayerListener {
 
     private static final int kMAP_ID = R.drawable.plan_415;
     private static final int kTABLE_ID_OFFSET = 2000;
@@ -103,9 +103,10 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Fragment childFragment = new MiniDetailsFragment();
+        MiniDetailsFragment childFragment = new MiniDetailsFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.add(R.id.quick_view, childFragment).commit();
+        childFragment.setPlayerListener(this);
     }
 
     @Override
@@ -228,5 +229,19 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         Fragment fragment = getChildFragmentManager().findFragmentById(R.id.quick_view);
         MiniDetailsFragment miniDetails = (MiniDetailsFragment)fragment;
         miniDetails.showTable(table.getId(), false);
+    }
+
+    @Override
+    public void playerDidStartToPlay(int trackId) {
+        Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.table_playing);
+        String poiId = Integer.toString(trackId + kTABLE_ID_OFFSET);
+        mMapView.updatePoiBitmap(poiId, poiBitmap);
+    }
+
+    @Override
+    public void playerDidEndToPlay(int trackId) {
+        Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sticker_nfc);
+        String poiId = Integer.toString(trackId + kTABLE_ID_OFFSET);
+        mMapView.updatePoiBitmap(poiId, poiBitmap);
     }
 }

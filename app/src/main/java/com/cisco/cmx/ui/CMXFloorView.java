@@ -762,6 +762,16 @@ public class CMXFloorView extends ImageViewTouch {
         }
     }
 
+    public void updatePoiBitmap(String poiId, Bitmap bitmap) {
+        for (ImageTag tag : mPoiTags) {
+            if (tag.poiId.equals(poiId)) {
+                tag.bitmap = bitmap;
+                invalidate();
+                return;
+            }
+        }
+    }
+
     /**
      * Clear all pois on map
      */
