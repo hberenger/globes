@@ -73,7 +73,7 @@ public class MiniDetailsFragment extends BaseFragment {
         Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableID);
         loadFromTable(table);
         if (playSound) {
-            // TODO
+            player.start();
         }
     }
 
