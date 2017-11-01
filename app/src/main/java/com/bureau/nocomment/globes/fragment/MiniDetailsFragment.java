@@ -226,9 +226,15 @@ public class MiniDetailsFragment extends BaseFragment {
         title.setText(table.getTitle());
 
         progressView.setVisibility(View.VISIBLE);
-        playButton.setVisibility(View.VISIBLE);
-        pauseButton.setVisibility(View.GONE);
         projectNumber.setVisibility(View.INVISIBLE);
+
+        if (player.isPlaying()) {
+            playButton.setVisibility(View.GONE);
+            pauseButton.setVisibility(View.VISIBLE);
+        } else {
+            playButton.setVisibility(View.VISIBLE);
+            pauseButton.setVisibility(View.GONE);            
+        }
     }
 
     private void loadAudioAsset(String audioFile) {
