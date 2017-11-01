@@ -24,7 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/fragmentBackground"
+        android:background="@color/cellBackground"
         tools:layout_editor_absoluteX="0dp"/>
 
     <TextView
@@ -41,7 +41,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
-        android:background="@color/fragmentBackground"
+        android:background="@color/cellBackground"
         android:text="John Doe, John Doe, John Doe, John Doe, John Doe, John Doe, John Doe, John Doe"
         tools:layout_editor_absoluteX="60dp"/>
 
@@ -50,7 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:background="@color/fragmentBackground"
+        android:background="@color/cellBackground"
         android:gravity="start"
         android:text="globe etc.."
         android:textColor="@color/colorPrimaryDark"
@@ -75,7 +75,7 @@
         android:textSize="12sp"
         android:textColor="@color/colorPrimaryDark"
         tools:text="1881-1882"
-        android:background="@color/fragmentBackground"
+        android:background="@color/cellBackground"
         tools:layout_editor_absoluteX="288dp"/>
 
     <TextView
@@ -93,7 +93,7 @@
         android:textSize="12sp"
         android:textColor="@color/colorPrimaryDark"
         android:text="Londres"
-        android:background="@color/fragmentBackground"
+        android:background="@color/cellBackground"
         tools:layout_editor_absoluteX="288dp"/>
 
     <TextView
@@ -109,7 +109,7 @@
         app:layout_constraintStart_toEndOf="@id/guide"
         android:textSize="12sp"
         android:textColor="@color/colorPrimaryDark"
-        android:background="@color/fragmentBackground"
+        android:background="@color/cellBackground"
         android:text="124m"
         tools:layout_editor_absoluteX="288dp"/>
 
