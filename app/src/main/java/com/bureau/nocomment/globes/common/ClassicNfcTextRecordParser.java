@@ -3,17 +3,17 @@ package com.bureau.nocomment.globes.common;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 
-import com.bureau.nocomment.globes.activity.DetailActivity;
+import com.bureau.nocomment.globes.activity.HomeActivity;
 
 import java.io.UnsupportedEncodingException;
 
 
-public class ClassicNfcTextRecordParser implements DetailActivity.NfcTagMessageParser {
+public class ClassicNfcTextRecordParser implements HomeActivity.NfcTagMessageParser {
 
     final private static String GLOBES_PREFIX = "globes-";
 
     @Override
-    public int readProjectIdFromNdefMessage(NdefMessage message) {
+    public int readGlobeIdFromNdefMessage(NdefMessage message) {
         int projectId = -1;
         NdefRecord[] records = message.getRecords();
         if (records.length > 0) {

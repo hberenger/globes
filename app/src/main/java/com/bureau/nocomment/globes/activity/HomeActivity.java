@@ -1,7 +1,10 @@
 package com.bureau.nocomment.globes.activity;
 
 import android.content.Intent;
+import android.nfc.NdefMessage;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +22,7 @@ import android.view.View;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.application.Globes;
+import com.bureau.nocomment.globes.common.ClassicNfcTextRecordParser;
 import com.bureau.nocomment.globes.common.ForegroundDispatcher;
 import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
@@ -28,18 +32,26 @@ import com.bureau.nocomment.globes.fragment.RoutesFragment;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
+import com.bureau.nocomment.globes.model.Table;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.bureau.nocomment.globes.R.id.map;
+
 public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.RouteSelectedObserver {
+
+    public interface NfcTagMessageParser {
+        public int readGlobeIdFromNdefMessage(NdefMessage message);
+    }
 
     ViewPager mViewPager;
     TabLayout mTabs;
     HomePagerAdapter mPagerAdapter;
     Toolbar mToolbar;
     ForegroundDispatcher mForegroundDispatcher;
+    private NfcTagMessageParser tagParser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +76,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         ViewCompat.setElevation(mToolbar, elevation);
 
         mForegroundDispatcher = new ForegroundDispatcher(this);
+        tagParser = new ClassicNfcTextRecordParser();
     }
 
     @Override
@@ -82,10 +95,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if(mForegroundDispatcher.isNfcIntent(intent)) {
-            Intent detailActivityIntent = new Intent(this, DetailActivity.class);
-            detailActivityIntent.setAction(intent.getAction());
-            detailActivityIntent.putExtras(intent);
-            startActivity(detailActivityIntent);
+            loadFromNfcIntent(intent);
         }
     }
 
@@ -161,6 +171,21 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         }
         mPagerAdapter = new HomePagerAdapter(getSupportFragmentManager());
         return mPagerAdapter;
+    }
+
+    private void loadFromNfcIntent(Intent intent) {
+        Parcelable[] rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+        if (rawMessages != null && rawMessages.length > 0) {
+            NdefMessage message = (NdefMessage) rawMessages[0];
+            int tableId = tagParser.readGlobeIdFromNdefMessage(message);
+            // When a tag is detected by the ForegroundDispatcher, onNewIntent is called between
+            // onPause and onResume (which pause and start the player). So we can hot-swap the
+            // player source without bothering about threading or the progress refresher
+            Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableId);
+
+            getPagerAdapter().getMap().focusAndPlayTable(table);
+            return;
+        }
     }
 
     // HomePageAdapter

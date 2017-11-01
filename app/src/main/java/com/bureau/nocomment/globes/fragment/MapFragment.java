@@ -99,6 +99,10 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setPath(path);
     }
 
+    public void focusAndPlayTable(Table table) {
+        setActiveTable(table, true, true);
+    }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -161,12 +165,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         if (id > kTABLE_ID_OFFSET) {
             Table table = ModelRepository.getInstance().getItemLibrary().findTable(id - kTABLE_ID_OFFSET);
             if (table != null) {
-                // TODO (not so important) factorize with project
-                CMXPoi activePoi = makeCMXPoi(id, table.getX(), table.getY());
-                mMapView.setActivePoi(activePoi);
-
-                showMiniDetails();
-                playTable(table);
+                setActiveTable(table, false, false);
             }
 
         } else {
@@ -230,10 +229,22 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         miniDetails.showProject(project.getId());
     }
 
-    private void playTable(Table table) {
+    private void setActiveTable(Table table, boolean focusOnTable, boolean play) {
+        // TODO (not so important) factorize with project
+        CMXPoi activePoi = makeCMXPoi(table.getId() + kTABLE_ID_OFFSET, table.getX(), table.getY());
+        mMapView.setActivePoi(activePoi);
+        if (focusOnTable) {
+            mMapView.centerOnPoi(activePoi);
+        }
+
+        showMiniDetails();
+        showTable(table, play);
+    }
+
+    private void showTable(Table table, boolean play) {
         Fragment fragment = getChildFragmentManager().findFragmentById(R.id.quick_view);
         MiniDetailsFragment miniDetails = (MiniDetailsFragment)fragment;
-        miniDetails.showTable(table.getId(), false);
+        miniDetails.showTable(table.getId(), play);
     }
 
     @Override
