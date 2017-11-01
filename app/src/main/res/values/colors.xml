@@ -2,14 +2,16 @@
 <resources>
     <color name="colorPrimary">#407cca</color>
     <color name="colorPrimaryDark">#003594</color>
-    <color name="colorAccent">#EEEEEE</color>
+    <color name="colorAccent">#EEEEFF</color>
     <color name="white">#ffffff</color>
+    <color name="color4">#ffffff</color>
+    <color name="color5">#ffffff</color>
 
     <color name="buttonPlay">@color/white</color>
     <color name="buttonPause">@color/white</color>
 
-    <color name="buttonBackground">@color/colorAccent</color>
-    <color name="buttonBackgroundPressed">#d6a207</color>
+    <color name="buttonBackground">@color/colorPrimary</color>
+    <color name="buttonBackgroundPressed">@color/colorPrimaryDark</color>
     <color name="buttonShadow">#CCCCCC</color>
 
     <color name="fragmentBackground">#EEEEFF</color>

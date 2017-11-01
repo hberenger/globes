@@ -6,13 +6,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:background="#f1ff91">
+        android:background="@android:color/transparent">
 
     <at.grabner.circleprogress.CircleProgressView
         android:id="@+id/progress"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintDimensionRatio="1.0"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,10 +22,12 @@
         app:cpv_barColor1="@color/colorPrimaryDark"
         app:cpv_barWidth="10dp"
         app:cpv_rimWidth="10dp"
-        app:cpv_rimColor="@color/colorPrimary"
+        app:cpv_rimColor="@color/colorAccent"
         app:cpv_seekMode="true"
         app:cpv_startAngle="270"
         app:cpv_maxValue="100"
+        app:cpv_innerContourSize="0dp"
+        app:cpv_outerContourSize="0dp"
         app:cpv_value="70"
         tools:layout_editor_absoluteY="8dp"/>
 
@@ -61,6 +65,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintDimensionRatio="1.0"
         android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="36sp"
         android:background="@drawable/project_number_background"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -75,9 +82,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/description"
         android:layout_marginStart="4dp"
-        android:gravity="start|center_vertical"
+        android:gravity="center_horizontal|center_vertical"
         tools:text="Title"
-        android:background="#00ff00"
+        android:textStyle="bold"
+        android:background="@android:color/transparent"
         tools:layout_editor_absoluteY="0dp"/>
 
     <TextView
@@ -90,9 +98,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="14sp"
         android:layout_marginStart="4dp"
-        android:gravity="start|center_vertical"
+        android:gravity="center_horizontal|center_vertical"
         tools:text="Short description"
-        android:background="#0000ff"
+        android:background="@android:color/transparent"
         tools:layout_editor_absoluteY="0dp"/>
 
 </android.support.constraint.ConstraintLayout>

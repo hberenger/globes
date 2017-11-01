@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_marginTop="4dp"
+        android:layout_marginStart="6dp"
         android:gravity="start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +30,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
-        android:background="#00ff00"
+        android:background="@color/fragmentBackground"
         tools:text="Les plus belles spirales"/>
 
     <TextView
@@ -37,7 +38,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:background="@android:color/holo_orange_dark"
+        android:layout_marginStart="6dp"
+        android:background="@color/fragmentBackground"
         android:gravity="start"
         tools:text="Les projets marqués par la forme de la spirale"
         android:textColor="@color/colorPrimaryDark"
@@ -52,6 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="6dp"
         android:gravity="center|end"
         app:layout_constraintStart_toEndOf="@id/guide"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +63,6 @@
         android:textSize="12sp"
         android:textColor="@color/colorPrimaryDark"
         tools:text="3 projets"
-        android:background="#00ffff"/>
+        android:background="@color/fragmentBackground"/>
 
 </merge>
