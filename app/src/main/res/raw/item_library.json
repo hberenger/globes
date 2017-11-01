@@ -1829,7 +1829,7 @@
       {
         "id": 1,
         "title": "Table 1",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-01.mp3",
         "coordinates": [4.78, 14.40]
       },
       {
@@ -1841,37 +1841,37 @@
       {
         "id": 3,
         "title": "Table 3",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-03.mp3",
         "coordinates":[4.84, 31.13]
       },
       {
         "id": 4,
         "title": "Table 4",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-04.mp3",
         "coordinates":  [3.05, 32.88]
       },
       {
         "id": 5,
         "title": "Table 5",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-05.mp3",
         "coordinates": [2.99, 42.59]
       },
       {
         "id": 6,
         "title": "Table 6",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-06.mp3",
         "coordinates": [4.84, 44.32]
       },
       {
         "id": 7,
         "title": "Table 7",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-07.mp3",
         "coordinates": [4.94, 54.40]
       },
       {
         "id": 8,
         "title": "Table 8",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-01.mp3",
         "coordinates": [3.10, 56.17]
       },
       {
@@ -1883,31 +1883,31 @@
       {
         "id": 10,
         "title": "Table 10",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-03.mp3",
         "coordinates": [3.19, 69.44]
       },
       {
         "id": 11,
         "title": "Table 11",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-04.mp3",
         "coordinates": [4.91, 83.27]
       },
       {
         "id": 12,
         "title": "Table 12",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-05.mp3",
         "coordinates": [3.24, 85.05]
       },
       {
         "id": 13,
         "title": "Table 13",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-06.mp3",
         "coordinates": [4.25, 96.92]
       },
       {
         "id": 14,
         "title": "Table 14",
-        "audio_file": "Module-02.mp3",
+        "audio_file": "Module-07.mp3",
         "coordinates": [9.89, 75.24]
       }
     ]
