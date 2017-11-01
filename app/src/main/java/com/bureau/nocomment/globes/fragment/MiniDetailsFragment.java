@@ -213,11 +213,14 @@ public class MiniDetailsFragment extends BaseFragment {
         if (currentTableId == table.getId()) {
             return;
         }
-        loadAudioAsset(table.getAudioFile());
-        // update progress bar
-        progressView.setMaxValue(player.getDuration()); // in ms
+        if (loadedTrackId != table.getId()) {
+            loadAudioAsset(table.getAudioFile());
+            // update progress bar
+            progressView.setMaxValue(player.getDuration()); // in ms
+            loadedTrackId = table.getId();
+        }
+
         currentTableId = table.getId();
-        loadedTrackId = currentTableId;
         currentProjectId = -1;
 
         title.setText(table.getTitle());
