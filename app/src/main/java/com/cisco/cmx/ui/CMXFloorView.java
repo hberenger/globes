@@ -195,6 +195,8 @@ public class CMXFloorView extends ImageViewTouch {
 
     public void setPathColor(int color) {
     	mPathPaint.setColor(color);
+        mArrowPathPaint.setColor(color);
+        mArrowPathPaint.setAlpha(192);
     }
 
     /**

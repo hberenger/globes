@@ -67,6 +67,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setActiveSelectionHandler(this);
         mMapView.setActivePoiMode(CMXFloorView.ActivePoiMode.CORONA);
         mMapView.setCoronaColor(getResources().getColor(R.color.colorPrimary));
+        mMapView.setPathColor(getResources().getColor(R.color.colorPrimary));
 
         float bottomMargin = (float) getResources().getDimensionPixelSize(R.dimen.quickview_height);
         mMapView.setBottomMargin(bottomMargin);
