@@ -91,8 +91,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     }
 
     public void focusOnProject(Project project) {
-        CMXPoi poi = makeCMXPoi(project.getId(), project.getX(), project.getY());
-        mMapView.centerOnPoi(poi);
+        setActiveProject(project, true);
     }
 
     public void showRoute(Route route) {
@@ -173,11 +172,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         } else {
             Project project = ModelRepository.getInstance().getItemLibrary().findProject(id);
             if (project != null) {
-                CMXPoi activePoi = makeCMXPoi(id, project.getX(), project.getY());
-                mMapView.setActivePoi(activePoi);
-
-                showMiniDetails();
-                showProject(project);
+                setActiveProject(project, false);
             }
         }
     }
@@ -217,6 +212,16 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     private void showMiniDetails() {
         mQuickView.setVisibility(View.VISIBLE);
         mQuickView.animate().translationY(0.f).setListener(null).start();
+    }
+
+    private void setActiveProject(Project project, boolean centerProjectInView) {
+        CMXPoi activePoi = makeCMXPoi(project.getId(), project.getX(), project.getY());
+        mMapView.setActivePoi(activePoi);
+        if (centerProjectInView) {
+            mMapView.centerOnPoi(activePoi);
+        }
+        showMiniDetails();
+        showProject(project);
     }
 
     private void showProject(Project project) {
