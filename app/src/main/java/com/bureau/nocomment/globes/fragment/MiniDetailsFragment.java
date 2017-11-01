@@ -18,6 +18,7 @@ import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Table;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import at.grabner.circleprogress.CircleProgressView;
@@ -48,6 +49,9 @@ public class MiniDetailsFragment extends BaseFragment {
 
     @Bind(R.id.title)
     TextView title;
+
+    @Bind(R.id.description)
+    TextView description;
 
     // to avoid loading issues with multiple taps
     private int currentTableId   = -1;
@@ -200,13 +204,32 @@ public class MiniDetailsFragment extends BaseFragment {
 
         String number = String.format(Locale.getDefault(), "%d", project.getId());
         projectNumber.setText(number);
-        title.setText(project.getName());
+
+        configureProjectDetails(project);
 
         progressView.setVisibility(View.INVISIBLE);
         playButton.setVisibility(View.GONE);
         pauseButton.setVisibility(View.GONE);
         projectNumber.setVisibility(View.VISIBLE);
+    }
 
+    private void configureProjectDetails(Project project) {
+        List<Project> projects = ModelRepository.getInstance().getItemLibrary().projectsHavingId(project.getId());
+        String projectTitle = project.getName();
+        String projectDescription = project.getAuthor();
+        String previousAuthor = projectDescription;
+        if (projects.size() > 1) {
+            for (int i = 1; i < projects.size(); ++i) {
+                Project p = projects.get(i);
+                projectTitle = projectTitle + " ; " + p.getName();
+                if (!p.getAuthor().equals(previousAuthor)) {
+                    projectDescription = projectDescription + " ; " + p.getAuthor();
+                    previousAuthor = p.getAuthor();
+                }
+            }
+        }
+        title.setText(projectTitle);
+        description.setText(projectDescription);
     }
 
     private void loadFromTable(Table table) {
@@ -233,7 +256,7 @@ public class MiniDetailsFragment extends BaseFragment {
             pauseButton.setVisibility(View.VISIBLE);
         } else {
             playButton.setVisibility(View.VISIBLE);
-            pauseButton.setVisibility(View.GONE);            
+            pauseButton.setVisibility(View.GONE);
         }
     }
 

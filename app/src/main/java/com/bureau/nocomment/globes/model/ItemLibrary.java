@@ -29,7 +29,7 @@ public class ItemLibrary {
         return routes;
     }
 
-    public Project findProject(int projectId) {
+    public List<Project> projectsHavingId(int projectId) {
         if (projects == null) {
             return null;
         }
@@ -48,7 +48,12 @@ public class ItemLibrary {
             Assert.assertEquals(null, sortedProjects.get(0));
         }
         List<Project> matchingProjects = sortedProjects.get(projectId);
-        return (matchingProjects != null && matchingProjects.size() > 0) ? matchingProjects.get(0) : null;
+        return matchingProjects;
+    }
+
+    public Project findProject(int projectId) {
+        List<Project> projects = projectsHavingId(projectId);
+        return (projects != null && projects.size() > 0) ? projects.get(0) : null;
     }
 
     public Table findTable(int tableId) {

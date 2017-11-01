@@ -73,8 +73,23 @@
         app:layout_constraintStart_toEndOf="@+id/progress"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/description"
+        android:layout_marginStart="4dp"
+        android:gravity="start|center_vertical"
+        tools:text="Title"
+        android:background="#00ff00"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <TextView
+        android:id="@id/description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@+id/progress"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center"
+        android:layout_marginStart="4dp"
+        android:gravity="start|center_vertical"
         tools:text="Short description"
         android:background="#0000ff"
         tools:layout_editor_absoluteY="0dp"/>
