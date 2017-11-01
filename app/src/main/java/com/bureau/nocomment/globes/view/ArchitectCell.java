@@ -1,15 +1,15 @@
 package com.bureau.nocomment.globes.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
-
-import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,6 +52,9 @@ public class ArchitectCell extends ConstraintLayout {
         dateTextView.setText(project.getDateDescription());
         placeTextView.setText(project.getLocalizationDescription());
         sizeTextView.setText(project.getDiameterDescription());
+
+        Bitmap bitmap = ModelRepository.getInstance().pictogramForProject(project);
+        pictogram.setImageBitmap(bitmap);
     }
 
 }
