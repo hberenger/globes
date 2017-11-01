@@ -611,6 +611,7 @@
       },
       {
         "id" : 31,
+        "index" : 1,
         "name" : "Memorial Tower",
         "author" : "Charles E. Burton",
         "localization" : "Chicago ",
@@ -629,6 +630,7 @@
       },
       {
         "id" : 31,
+        "index" : 2,
         "name" : "Solar system",
         "author" : "Harriet G.Hosmer",
         "localization" : "Chicago ",
@@ -647,6 +649,7 @@
       },
       {
         "id" : 31,
+        "index" : 3,
         "name" : "World",
         "author" : "Louis H. Martin",
         "localization" : "Chicago ",
@@ -683,6 +686,7 @@
       },
       {
         "id" : 32,
+        "index" : 3,
         "name" : "Colossal Globe Crystal Palace",
         "author" : "Paul Langhammer",
         "localization" : "Chicago",
@@ -701,6 +705,7 @@
       },
       {
         "id" : 32,
+        "index" : 1,
         "name" : "Crystal Water Palace",
         "author" : "Ernst Fischer, William F. Smith, George H. Hess",
         "localization" : "Chicago",
@@ -719,6 +724,7 @@
       },
       {
         "id" : 32,
+        "index" : 2,
         "name" : "Columbus Dome",
         "author" : "John K. Hallock, Cyrus F. Dean",
         "localization" : "Chicago",
@@ -773,6 +779,7 @@
       },
       {
         "id" : 36,
+        "index" : 1,
         "name" : "Great Terrestrial Globe",
         "author" : "Thomas Ruddiman Johnston",
         "localization" : "Londres",
@@ -791,6 +798,7 @@
       },
       {
         "id" : 36,
+        "index" : 2,
         "name" : "Great Hollow Terrestrial Globe",
         "author" : "Thomas Ruddiman Johnston",
         "localization" : "Londres",

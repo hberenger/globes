@@ -12,6 +12,7 @@ import java.util.Locale;
 @JsonIgnoreProperties({"countryLabel"})
 public class Project {
     private int          id;
+    private int          index;
     private String       name;
     private String       author;
     private String       localization; // optional
@@ -32,6 +33,10 @@ public class Project {
 
     public int getId() {
         return id;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     public String getName() {
