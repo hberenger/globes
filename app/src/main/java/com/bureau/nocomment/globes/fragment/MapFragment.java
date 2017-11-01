@@ -158,19 +158,27 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
             return;
         }
         int id = Integer.parseInt(poiIdentifier);
-        Project project = ModelRepository.getInstance().getItemLibrary().findProject(id);
-        if (project != null) {
-            CMXPoi activePoi = makeCMXPoi(project.getId(), project.getX(), project.getY());
-            mMapView.setActivePoi(activePoi);
+        if (id > kTABLE_ID_OFFSET) {
+            Table table = ModelRepository.getInstance().getItemLibrary().findTable(id - kTABLE_ID_OFFSET);
+            if (table != null) {
+                // TODO (not so important) factorize with project
+                CMXPoi activePoi = makeCMXPoi(id, table.getX(), table.getY());
+                mMapView.setActivePoi(activePoi);
 
-            showMiniDetails();
-            playProject(id);
+                showMiniDetails();
+                playTable(table);
+            }
+
+        } else {
+            Project project = ModelRepository.getInstance().getItemLibrary().findProject(id);
+            if (project != null) {
+                CMXPoi activePoi = makeCMXPoi(id, project.getX(), project.getY());
+                mMapView.setActivePoi(activePoi);
+
+                showMiniDetails();
+                showProject(project);
+            }
         }
-
-        // TODO at some point :
-        // if (id > 0) {
-        // startActivity(DetailActivity.makeTestIntent(getContext(), id));
-        // }
     }
 
     @Override
@@ -210,9 +218,15 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mQuickView.animate().translationY(0.f).setListener(null).start();
     }
 
-    private void playProject(int projectID) {
+    private void showProject(Project project) {
         Fragment fragment = getChildFragmentManager().findFragmentById(R.id.quick_view);
         MiniDetailsFragment miniDetails = (MiniDetailsFragment)fragment;
-        miniDetails.playProject(projectID);
+        miniDetails.showProject(project.getId());
+    }
+
+    private void playTable(Table table) {
+        Fragment fragment = getChildFragmentManager().findFragmentById(R.id.quick_view);
+        MiniDetailsFragment miniDetails = (MiniDetailsFragment)fragment;
+        miniDetails.showTable(table.getId(), false);
     }
 }

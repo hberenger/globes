@@ -10,12 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
+import com.bureau.nocomment.globes.model.Table;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import at.grabner.circleprogress.CircleProgressView;
 import butterknife.Bind;
@@ -35,15 +38,31 @@ public class MiniDetailsFragment extends BaseFragment {
     @Bind(R.id.pause_button)
     ImageButton pauseButton;
 
-    private int currentProjectId = -1; // to avoid loading issues with multiple taps
+    @Bind(R.id.project_number)
+    TextView projectNumber;
+
+    @Bind(R.id.title)
+    TextView title;
+
+    // to avoid loading issues with multiple taps
+    private int currentTableId = -1;
+    private int currentProjectId = -1;
 
     MediaPlayer                  player;
     private Handler              progressUpdateHandler;
     private Runnable             progressUpdater;
 
-    public void playProject(int projectID) {
+    public void showProject(int projectID) {
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(projectID);
         loadFromProject(project);
+    }
+
+    public void showTable(int tableID, boolean playSound) {
+        Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableID);
+        loadFromTable(table);
+        if (playSound) {
+            // TODO
+        }
     }
 
     @Override
@@ -159,10 +178,38 @@ public class MiniDetailsFragment extends BaseFragment {
         if (currentProjectId == project.getId()) {
             return;
         }
-        loadAudioAsset(project.getAudioFile());
+        // update progress bar
+
+        currentProjectId = project.getId();
+        currentTableId = -1;
+
+        String number = String.format(Locale.getDefault(), "%d", project.getId());
+        projectNumber.setText(number);
+        title.setText(project.getName());
+
+        progressView.setVisibility(View.INVISIBLE);
+        playButton.setVisibility(View.GONE);
+        pauseButton.setVisibility(View.GONE);
+        projectNumber.setVisibility(View.VISIBLE);
+
+    }
+
+    private void loadFromTable(Table table) {
+        if (currentTableId == table.getId()) {
+            return;
+        }
+        loadAudioAsset(table.getAudioFile());
         // update progress bar
         progressView.setMaxValue(player.getDuration()); // in ms
-        currentProjectId = project.getId();
+        currentTableId = table.getId();
+        currentProjectId = -1;
+
+        title.setText(table.getTitle());
+
+        progressView.setVisibility(View.VISIBLE);
+        playButton.setVisibility(View.VISIBLE);
+        pauseButton.setVisibility(View.GONE);
+        projectNumber.setVisibility(View.INVISIBLE);
     }
 
     private void loadAudioAsset(String audioFile) {
@@ -172,7 +219,7 @@ public class MiniDetailsFragment extends BaseFragment {
             if (descriptor != null) {
                 long offset = descriptor.getStartOffset();
                 long length = descriptor.getLength();
-                if (currentProjectId > 0) {
+                if (currentTableId > 0) {
                     stopSoundtrack();
                 }
                 player.reset();
