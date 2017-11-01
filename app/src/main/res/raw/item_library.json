@@ -1,16 +1,58 @@
 {
     "routes": [
       {
-        "id": 100,
+        "id": 101,
         "title": "Lumières",
-        "description": "Les projets où la lumière joue un rôle important, très important, nan mais vraiment important jveux dire",
+        "description": "Les bâtiments où la lumière joue un rôle important",
         "projects" : []
       },
       {
         "id": 101,
+        "title": "Dans l'espace",
+        "description": "Quand l'architecture échappe à la gravité...",
+        "projects" : [25, 65, 51, 67, 73, 74, 79, 77, 83, 86, 87]
+      },
+      {
+        "id": 102,
+        "title": "Expositions universelles",
+        "description": "Les expositions universelles sont souvent l'occasion de construire sphérique",
+        "projects" : [28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 44, 47, 49, 59, 61, 63, 70, 71, 82]
+      },
+      {
+        "id": 103,
+        "title": "Oeuvres d'art globales",
+        "description": "Où l'architecture rejoint la musique, l'opéra, la danse, la science...",
+        "projects" : [41, 45, 47, 57, 63, 71, 82]
+      },
+      {
+        "id": 104,
+        "title": "En relief",
+        "description": "Les projets où l'architecte s'est attaché à reconstituer le relief de la terre",
+        "projects" : [22, 23, 24, 40, 41, 49, 56, 78, 68, 90]
+      },
+      {
+        "id": 105,
         "title": "Planétariums",
-        "description": "Tous les planétariums !",
-        "projects" : [21, 22, 23, 24, 25, 26, 27]
+        "description": "Tous les planétatiums, ou les projets qui comportent un planétarium",
+        "projects" : [8, 12, 15, 16, 18, 27, 35, 41, 48, 49, 55, 61]
+      },
+      {
+        "id": 106,
+        "title": "Les plus belles spirales",
+        "description": "La spirale, une forme récurrente dans les architectures sphériques",
+        "projects" : [13, 29, 31, 32, 34, 36, 40, 41, 42, 44, 61, 63, 76]
+      },
+      {
+        "id": 107,
+        "title": "Pas si rond",
+        "description": "Les projets où la sphère... n'est pas sphérique",
+        "projects" : [14, 76, 87]
+      },
+      {
+        "id": 108,
+        "title": "J'habite dans une sphère",
+        "description": "Les projets de globes habitables",
+        "projects" : [2, 13, 17, 20, 53, 59, 69]
       }
     ],
 
