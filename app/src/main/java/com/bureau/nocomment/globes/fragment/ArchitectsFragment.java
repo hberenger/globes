@@ -97,7 +97,9 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
     @Override
     public void onStart() {
         super.onStart();
-        populate();
+        if (mArchitectsAdapter.isEmpty()) {
+            populate();
+        }
     }
 
     @Override

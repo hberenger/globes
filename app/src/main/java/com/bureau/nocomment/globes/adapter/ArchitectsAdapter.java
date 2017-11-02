@@ -29,7 +29,11 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
     }
 
     public void setProjects(List<Project> projects) {
-        this.mProjects.addAll(projects);
+        mProjects.clear();
+        if (mFilteredProjects != null) {
+            mFilteredProjects.clear();
+        }
+        mProjects.addAll(projects);
         clear();
         addAll(mProjects);
     }
