@@ -188,6 +188,8 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
             // When a tag is detected by the ForegroundDispatcher, onNewIntent is called between
             // onPause and onResume (which pause and start the player). So we can hot-swap the
             // player source without bothering about threading or the progress refresher
+            // Les tables de l'expo commenence à 0
+            tableId += 1;
             Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableId);
 
             getPagerAdapter().getMap().focusAndPlayTable(table);
