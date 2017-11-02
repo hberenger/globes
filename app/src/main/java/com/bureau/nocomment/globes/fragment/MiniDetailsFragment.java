@@ -65,6 +65,8 @@ public class MiniDetailsFragment extends BaseFragment {
 
     PlayerListener               mPlayerListener;
 
+    Boolean                      mTrackCompletable;
+
     public void showProject(int projectID) {
         Project project = ModelRepository.getInstance().getItemLibrary().findProject(projectID);
         loadFromProject(project);
@@ -93,10 +95,14 @@ public class MiniDetailsFragment extends BaseFragment {
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
+                if (!mTrackCompletable) {
+                    return;
+                }
                 pauseSoundtrack();
                 player.seekTo(0);
                 progressView.setValueAnimated(0, 800);
                 mPlayerListener.playerDidEndToPlay(loadedTrackId);
+                mTrackCompletable = false;
             }
         });
 
@@ -156,6 +162,7 @@ public class MiniDetailsFragment extends BaseFragment {
         playButton.setVisibility(View.GONE);
         pauseButton.setVisibility(View.VISIBLE);
         mPlayerListener.playerDidStartToPlay(loadedTrackId);
+        mTrackCompletable = true;
     }
 
     private void pauseSoundtrack() {
