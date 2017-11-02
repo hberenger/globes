@@ -124,7 +124,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
-        Project p = projects.get(i - 1); // minus one because of header
+        Project p = mArchitectsAdapter.getItem(i - 1); // minus one because of header
         if (mProjectSelectedObserver != null) {
             mProjectSelectedObserver.onProjectSelected(p);
         }
