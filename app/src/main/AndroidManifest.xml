@@ -18,7 +18,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-
+            </intent-filter>
+            <intent-filter>
                 <!-- NFC instructions -->
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <data android:mimeType="text/plain" />
