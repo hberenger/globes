@@ -933,7 +933,8 @@ public class CMXFloorView extends ImageViewTouch {
         float xp = getCenter().x - target[0];
         float yp = getCenter().y - target[1];
 
-        scrollBy(xp, yp, kScrollDuraton);
+        centerAndZoomOn(x, y, 5.f, kScrollDuraton);
+        //scrollBy(xp, yp, kScrollDuraton);
     }
 
     /**
