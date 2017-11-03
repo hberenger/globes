@@ -101,7 +101,9 @@ public class MiniDetailsFragment extends BaseFragment {
                 pauseSoundtrack();
                 player.seekTo(0);
                 progressView.setValueAnimated(0, 800);
-                mPlayerListener.playerDidEndToPlay(loadedTrackId);
+                if (mPlayerListener != null) {
+                    mPlayerListener.playerDidEndToPlay(loadedTrackId);
+                }
                 mTrackCompletable = false;
             }
         });
@@ -131,7 +133,9 @@ public class MiniDetailsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        mPlayerListener.onReadyToPlay();
+        if (mPlayerListener != null) {
+            mPlayerListener.onReadyToPlay();
+        }
         playSoundtrack();
     }
 
@@ -161,7 +165,9 @@ public class MiniDetailsFragment extends BaseFragment {
         player.start();
         playButton.setVisibility(View.GONE);
         pauseButton.setVisibility(View.VISIBLE);
-        mPlayerListener.playerDidStartToPlay(loadedTrackId);
+        if (mPlayerListener != null) {
+            mPlayerListener.playerDidStartToPlay(loadedTrackId);
+        }
         mTrackCompletable = true;
     }
 
@@ -176,7 +182,9 @@ public class MiniDetailsFragment extends BaseFragment {
         pauseSoundtrack();
         player.stop();
         progressView.setValueAnimated(0, 400);
-        mPlayerListener.playerDidEndToPlay(loadedTrackId);
+        if (mPlayerListener != null) {
+            mPlayerListener.playerDidEndToPlay(loadedTrackId);
+        }
     }
 
     @OnClick(R.id.play_button)
