@@ -948,8 +948,7 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
         mCurrentAnimation.addListener(createOnScrollEndListener());
     }
-
-    @NonNull
+    
     private Animator.AnimatorListener createOnScrollEndListener() {
         return new Animator.AnimatorListener() {
             @Override
