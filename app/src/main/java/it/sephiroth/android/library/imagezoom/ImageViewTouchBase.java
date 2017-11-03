@@ -946,32 +946,35 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
             }
         );
 
-        mCurrentAnimation.addListener(
-            new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(final Animator animation) {
+        mCurrentAnimation.addListener(createOnScrollEndListener());
+    }
 
-                }
+    @NonNull
+    private Animator.AnimatorListener createOnScrollEndListener() {
+        return new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(final Animator animation) {
 
-                @Override
-                public void onAnimationEnd(final Animator animation) {
-                    RectF centerRect = getCenter(mSuppMatrix, true, true);
-                    if (centerRect.left != 0 || centerRect.top != 0) {
-                        scrollBy(centerRect.left, centerRect.top);
-                    }
-                }
+            }
 
-                @Override
-                public void onAnimationCancel(final Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(final Animator animation) {
-
+            @Override
+            public void onAnimationEnd(final Animator animation) {
+                RectF centerRect = getCenter(mSuppMatrix, true, true);
+                if (centerRect.left != 0 || centerRect.top != 0) {
+                    scrollBy(centerRect.left, centerRect.top);
                 }
             }
-        );
+
+            @Override
+            public void onAnimationCancel(final Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(final Animator animation) {
+
+            }
+        };
     }
 
     protected void zoomTo(float scale, float centerX, float centerY, final long durationMs) {
