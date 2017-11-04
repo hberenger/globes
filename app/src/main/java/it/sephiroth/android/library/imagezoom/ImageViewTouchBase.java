@@ -1021,20 +1021,18 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
                     @Override
                     public void onAnimationUpdate(final ValueAnimator animation) {
-                        float nextImageX = (Float) anim1.getAnimatedValue();
-                        float nextImageY = (Float) anim2.getAnimatedValue();
+                        float nextBitmapX = (Float) anim1.getAnimatedValue();
+                        float nextBitmapY = (Float) anim2.getAnimatedValue();
 
-                        //
-                        RectF rect = getCenter(mSuppMatrix, true, true);
-                        float currentX = rect.left;
-                        float currentY = rect.top;
+                        float currentX = getCenter().x;
+                        float currentY = getCenter().y;
 
-                        float[] next = new float[] { nextImageX, nextImageY };
+                        float[] next = new float[] { nextBitmapX, nextBitmapY };
                         getImageViewMatrix().mapPoints(next);
 
-                        Log.d("Anim", String.format("moving from (%.1f, %.1f) to (%.1f, %.1f)", currentX, currentY, next[0], next[1]));
+                        Log.d("anim", String.format("next bitmap target : (%.1f, %.1f) ; moving from (%.1f, %.1f) to (%.1f, %.1f)", nextBitmapX, nextBitmapY, currentX, currentY, next[0], next[1]));
 
-                        panBy(next[0] - currentX, next[1] - currentY);
+                        panBy(currentX - next[0], currentY - next[1]);
 
                         postInvalidateOnAnimation();
                     }
