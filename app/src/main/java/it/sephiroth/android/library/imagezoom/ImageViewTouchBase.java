@@ -17,6 +17,7 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewConfiguration;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
@@ -950,7 +951,7 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
         mCurrentAnimation.addListener(createOnScrollEndListener());
     }
-    
+
     private Animator.AnimatorListener createOnScrollEndListener() {
         return new Animator.AnimatorListener() {
             @Override
@@ -987,6 +988,10 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
      * @param imageY
      */
     protected void centerAndZoomOn(float imageX, float imageY, float scale, final long durationMs) {
+        if (scale > getMaxScale()) {
+            scale = getMaxScale();
+        }
+
         final Matrix imgMatrix = this.getImageViewMatrix();
         Matrix invImgMatrix = new Matrix();
         boolean invert = imgMatrix.invert(invImgMatrix);
@@ -1003,12 +1008,14 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
         final ValueAnimator anim1 = ValueAnimator.ofFloat(imageStart[0], imageX).setDuration(durationMs);
         final ValueAnimator anim2 = ValueAnimator.ofFloat(imageStart[1], imageY).setDuration(durationMs);
+        final ValueAnimator anim3 = ValueAnimator.ofFloat(getScale(), scale).setDuration(durationMs);
+        anim3.setInterpolator(new AccelerateDecelerateInterpolator());
 
         stopAllAnimations();
 
         mCurrentAnimation = new AnimatorSet();
         ((AnimatorSet) mCurrentAnimation).playTogether(
-                anim1, anim2
+                anim1, anim2, anim3
         );
 
         mCurrentAnimation.setDuration(durationMs);
@@ -1023,6 +1030,7 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
                     public void onAnimationUpdate(final ValueAnimator animation) {
                         float nextBitmapX = (Float) anim1.getAnimatedValue();
                         float nextBitmapY = (Float) anim2.getAnimatedValue();
+                        float nextScale = (Float) anim3.getAnimatedValue();
 
                         float currentX = getCenter().x;
                         float currentY = getCenter().y;
@@ -1030,9 +1038,9 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
                         float[] next = new float[] { nextBitmapX, nextBitmapY };
                         getImageViewMatrix().mapPoints(next);
 
-                        Log.d("anim", String.format("next bitmap target : (%.1f, %.1f) ; moving from (%.1f, %.1f) to (%.1f, %.1f)", nextBitmapX, nextBitmapY, currentX, currentY, next[0], next[1]));
-
                         panBy(currentX - next[0], currentY - next[1]);
+
+                        zoomTo(nextScale, currentX, currentY);
 
                         postInvalidateOnAnimation();
                     }
