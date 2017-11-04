@@ -10,11 +10,14 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewConfiguration;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
@@ -948,7 +951,7 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
         mCurrentAnimation.addListener(createOnScrollEndListener());
     }
-    
+
     private Animator.AnimatorListener createOnScrollEndListener() {
         return new Animator.AnimatorListener() {
             @Override
@@ -974,6 +977,77 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
             }
         };
+    }
+
+    /**
+     * Center on a specific coordinate in the image. This method uses
+     * image-based coordinates, with 0,0 at the top left of the image. It is
+     * scale agnostic.
+     *
+     * @param imageX
+     * @param imageY
+     */
+    protected void centerAndZoomOn(float imageX, float imageY, float scale, final long durationMs) {
+        if (scale > getMaxScale()) {
+            scale = getMaxScale();
+        }
+
+        final Matrix imgMatrix = this.getImageViewMatrix();
+        Matrix invImgMatrix = new Matrix();
+        boolean invert = imgMatrix.invert(invImgMatrix);
+        if (!invert) {
+            return;
+        }
+
+        float imageStart[] = { getCenter().x, getCenter().y };
+        invImgMatrix.mapPoints(imageStart);
+
+        float[] target = new float[] { imageX, imageY };
+        imgMatrix.mapPoints(target);
+        Log.d("couocu", "couocu");
+
+        final ValueAnimator anim1 = ValueAnimator.ofFloat(imageStart[0], imageX).setDuration(durationMs);
+        final ValueAnimator anim2 = ValueAnimator.ofFloat(imageStart[1], imageY).setDuration(durationMs);
+        final ValueAnimator anim3 = ValueAnimator.ofFloat(getScale(), scale).setDuration(durationMs);
+        anim3.setInterpolator(new AccelerateDecelerateInterpolator());
+
+        stopAllAnimations();
+
+        mCurrentAnimation = new AnimatorSet();
+        ((AnimatorSet) mCurrentAnimation).playTogether(
+                anim1, anim2, anim3
+        );
+
+        mCurrentAnimation.setDuration(durationMs);
+        mCurrentAnimation.setInterpolator(new DecelerateInterpolator());
+        mCurrentAnimation.start();
+
+        anim2.addUpdateListener(
+                new ValueAnimator.AnimatorUpdateListener() {
+
+
+                    @Override
+                    public void onAnimationUpdate(final ValueAnimator animation) {
+                        float nextBitmapX = (Float) anim1.getAnimatedValue();
+                        float nextBitmapY = (Float) anim2.getAnimatedValue();
+                        float nextScale = (Float) anim3.getAnimatedValue();
+
+                        float currentX = getCenter().x;
+                        float currentY = getCenter().y;
+
+                        float[] next = new float[] { nextBitmapX, nextBitmapY };
+                        getImageViewMatrix().mapPoints(next);
+
+                        panBy(currentX - next[0], currentY - next[1]);
+
+                        zoomTo(nextScale, currentX, currentY);
+
+                        postInvalidateOnAnimation();
+                    }
+                }
+        );
+
+        mCurrentAnimation.addListener(createOnScrollEndListener());
     }
 
     protected void zoomTo(float scale, float centerX, float centerY, final long durationMs) {
