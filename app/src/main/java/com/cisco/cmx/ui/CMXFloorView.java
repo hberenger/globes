@@ -64,6 +64,8 @@ public class CMXFloorView extends ImageViewTouch {
 
     private Paint mArrowPathPaint = new Paint();
 
+    private Paint mPathPointPaint = new Paint();
+
     private CMXMapCoordinate mClientCoordinate;
 
     private float mClientDirection;
@@ -135,6 +137,8 @@ public class CMXFloorView extends ImageViewTouch {
 
     static final float kFOCUS_ZOOM_LEVEL = 5.f;
 
+    static final float kPATH_POINT_BASE_RADIUS = 16.f;
+
     /* Corona current poi marker */
     private float mCoronaAngle = 0.0f;
 
@@ -181,6 +185,10 @@ public class CMXFloorView extends ImageViewTouch {
         mArrowPathPaint.setStrokeCap(Cap.ROUND);
         mArrowPathPaint.setAlpha(192);
 
+        mPathPointPaint = new Paint(mArrowPathPaint);
+        mPathPointPaint.setStyle(Style.FILL_AND_STROKE);
+        mPathPointPaint.setARGB(216, 0xFF, 0x00, 0x00);
+
         mShowPOIs = true;
 
     }
@@ -195,10 +203,12 @@ public class CMXFloorView extends ImageViewTouch {
      * Color.black as a parameter.
      */
 
-    public void setPathColor(int color) {
+    public void setPathColor(int color, int alpha, int dotColor, int dotAlpha) {
     	mPathPaint.setColor(color);
         mArrowPathPaint.setColor(color);
-        mArrowPathPaint.setAlpha(192);
+        mArrowPathPaint.setAlpha(alpha);
+        mPathPointPaint.setColor(dotColor);
+        mPathPointPaint.setAlpha(dotAlpha);
     }
 
     /**
@@ -594,6 +604,15 @@ public class CMXFloorView extends ImageViewTouch {
 
             // Draw path
             pathBitmapCanvas.drawPath(mPath, mArrowPathPaint);
+
+            float pathPointRadius = kPATH_POINT_BASE_RADIUS;
+            if (mMarkerScalingTransform != null) {
+                pathPointRadius *= mMarkerScalingTransform.scalingFactorForScale(getScale());
+            }
+
+            for (int p = 0; p < target.length; p+=2) {
+                pathBitmapCanvas.drawCircle(target[p], target[p+1], pathPointRadius, mPathPointPaint);
+            }
 
             canvas.drawBitmap(pathBitmap, 0, 0, mArrowPathPaint);
 

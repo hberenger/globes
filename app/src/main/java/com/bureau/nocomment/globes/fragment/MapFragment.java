@@ -3,6 +3,7 @@ package com.bureau.nocomment.globes.fragment;
 import android.animation.Animator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
@@ -71,7 +72,8 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setActiveSelectionHandler(this);
         mMapView.setActivePoiMode(CMXFloorView.ActivePoiMode.CORONA);
         mMapView.setCoronaColor(getResources().getColor(R.color.colorPrimary));
-        mMapView.setPathColor(getResources().getColor(R.color.colorPrimary));
+        int pathColor = Color.rgb(154, 145, 129); // $$$$ TODO ajuster et envoyer dans colors
+        mMapView.setPathColor(pathColor, 192, pathColor, 216);
 
         float bottomMargin = (float) getResources().getDimensionPixelSize(R.dimen.quickview_height);
         mMapView.setBottomMargin(bottomMargin);
