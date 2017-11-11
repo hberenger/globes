@@ -1,5 +1,7 @@
 package com.cisco.cmx.model;
 
+import android.graphics.RectF;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -27,5 +29,18 @@ public class CMXPath {
                 return lhsY.compareTo(rhsY);
             }
         });
+    }
+
+    public RectF getBounds() {
+        if (mPoints.size() == 0) {
+            return new RectF(0.f, 0.f, 0.f, 0.f);
+        }
+        CMXPoint first = mPoints.get(0);
+        RectF bounds = new RectF(first.getX(), first.getY(), first.getX(), first.getY());
+        for (int i = 2; i < mPoints.size(); ++i) {
+            CMXPoint pt = mPoints.get(i);
+            bounds.union(pt.getX(), pt.getY());
+        }
+        return bounds;
     }
 }

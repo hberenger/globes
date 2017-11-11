@@ -913,7 +913,7 @@ public class CMXFloorView extends ImageViewTouch {
      */
     public void centerOnPoi(CMXPoi poi) {
         if (poi.getCenter() != null)
-            centerOn(poi.getCenter().getX() * mMapBitmapWidth / mDimension.getLength(), poi.getCenter().getY() * mMapBitmapHeight / mDimension.getWidth());
+            centerOn(poi.getCenter().getX() * mMapBitmapWidth / mDimension.getLength(), poi.getCenter().getY() * mMapBitmapHeight / mDimension.getWidth(), kFOCUS_ZOOM_LEVEL);
     }
 
     /**
@@ -924,7 +924,7 @@ public class CMXFloorView extends ImageViewTouch {
      * @param x
      * @param y
      */
-    public void centerOn(float x, float y) {
+    public void centerOn(float x, float y, float zoomLevel) {
         if (getDrawable() == null) {
             return; // nothing to do
         }
@@ -935,7 +935,7 @@ public class CMXFloorView extends ImageViewTouch {
         float xp = getCenter().x - target[0];
         float yp = getCenter().y - target[1];
 
-        centerAndZoomOn(x, y, kFOCUS_ZOOM_LEVEL, kScrollDuraton);
+        centerAndZoomOn(x, y, zoomLevel, kScrollDuraton);
     }
 
     public void focusOnTop(float zoomLevel) {
@@ -949,9 +949,9 @@ public class CMXFloorView extends ImageViewTouch {
      * @param x
      * @param y
      */
-    public void centerOnPoint(float x, float y) {
+    public void centerOnPoint(float x, float y, float zoomLevel) {
         if (mDimension != null) {
-            centerOn(x * mMapBitmapWidth / mDimension.getLength(), y * mMapBitmapHeight / mDimension.getWidth());
+            centerOn(x * mMapBitmapWidth / mDimension.getLength(), y * mMapBitmapHeight / mDimension.getWidth(), zoomLevel);
         }
     }
 

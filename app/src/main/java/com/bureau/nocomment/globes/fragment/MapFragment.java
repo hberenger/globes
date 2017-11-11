@@ -3,6 +3,7 @@ package com.bureau.nocomment.globes.fragment;
 import android.animation.Animator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -37,6 +38,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     private static final int kMAP_ID = R.drawable.plan_415;
     private static final int kTABLE_ID_OFFSET = 2000;
     private static final long kRESET_DELAY = 15*60*1000; // reset app if not used during 15 minutes
+    private static final float kMAP_HEIGHT = 100.f;      // see it at percent or meters
 
     @Bind(R.id.map)
     CMXFloorView mMapView;
@@ -56,7 +58,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
         ButterKnife.bind(this, rootView);
 
-        float height = 100.0f; // see it at percent or meters
+        float height = kMAP_HEIGHT;
         float width = height * mapImage.getWidth() / mapImage.getHeight();
         // Coordinates will be O..width in X and 0..height in Y, with top-left origin, and Y axis pointing downwards
         CMXDimension dimensions = new CMXDimension(width, height, 0.0f, 0.f, 0.0f, CMXDimension.Unit.FEET);
@@ -105,7 +107,14 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
     public void showRoute(Route route) {
         CMXPath path = makeCMXPath(route);
+        RectF bounds = path.getBounds();
+        float height = (bounds.height() > 0.f) ? bounds.height() : kMAP_HEIGHT;
+        float zoomLevel = 0.9f * kMAP_HEIGHT / height; // x 0.9 to give some margin
+        if (zoomLevel > mMapView.getMaxScale()) {
+            zoomLevel = mMapView.getMaxScale();
+        }
         mMapView.setPath(path);
+        mMapView.centerOnPoint(bounds.centerX(), bounds.centerY(), zoomLevel);
     }
 
     public void focusAndPlayTable(Table table) {
