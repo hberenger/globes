@@ -36,6 +36,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
     private static final int kMAP_ID = R.drawable.plan_415;
     private static final int kTABLE_ID_OFFSET = 2000;
+    private static final long kRESET_DELAY = 15*60*1000; // reset app if not used during 15 minutes
 
     @Bind(R.id.map)
     CMXFloorView mMapView;
@@ -45,6 +46,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     int mQuickViewHeight;
 
     private Table tableToPlayOnResume;
+    private long stopTimestamp = -1;
 
     @Nullable
     @Override
@@ -125,11 +127,33 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        long now = System.currentTimeMillis();
+        if (stopTimestamp > 0 && (now - stopTimestamp) > kRESET_DELAY) {
+            reset();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        stopTimestamp = System.currentTimeMillis();
+    }
+
+    @Override
     protected void onViewDrawn() {
         super.onViewDrawn();
         mQuickViewHeight = mQuickView.getHeight();
         hideMiniDetails(false);
         mMapView.focusOnTop(4.0f);
+    }
+
+    private void reset() {
+        hideMiniDetails(false);
+        mMapView.setActivePoi(null);
+        mMapView.focusOnTop(4.0f);
+        // TODO : reset mini details
     }
 
     private void addProjectMarker(Project project) {
