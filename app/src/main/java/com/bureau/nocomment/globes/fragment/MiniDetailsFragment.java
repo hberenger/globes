@@ -136,7 +136,6 @@ public class MiniDetailsFragment extends BaseFragment {
         if (mPlayerListener != null) {
             mPlayerListener.onReadyToPlay();
         }
-        playSoundtrack();
     }
 
     @Override
@@ -173,7 +172,9 @@ public class MiniDetailsFragment extends BaseFragment {
 
     private void pauseSoundtrack() {
         progressUpdateHandler.removeCallbacks(progressUpdater);
-        player.pause();
+        if (loadedTrackId > 0 && player.isPlaying()) {
+            player.pause();
+        }
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(View.GONE);
     }
