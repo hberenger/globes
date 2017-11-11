@@ -133,6 +133,8 @@ public class CMXFloorView extends ImageViewTouch {
 
     static final long kScrollDuraton = 1000;
 
+    static final float kFOCUS_ZOOM_LEVEL = 5.f;
+
     /* Corona current poi marker */
     private float mCoronaAngle = 0.0f;
 
@@ -933,7 +935,12 @@ public class CMXFloorView extends ImageViewTouch {
         float xp = getCenter().x - target[0];
         float yp = getCenter().y - target[1];
 
-        centerAndZoomOn(x, y, 5.f, kScrollDuraton);
+        centerAndZoomOn(x, y, kFOCUS_ZOOM_LEVEL, kScrollDuraton);
+    }
+
+    public void focusOnTop(float zoomLevel) {
+        int width = getWidth();
+        zoomTo(zoomLevel, width / 2.f, 0.f);
     }
 
     /**

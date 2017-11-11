@@ -129,6 +129,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         super.onViewDrawn();
         mQuickViewHeight = mQuickView.getHeight();
         hideMiniDetails(false);
+        mMapView.focusOnTop(4.0f);
     }
 
     private void addProjectMarker(Project project) {
