@@ -45,4 +45,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/fragmentBackground"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tabs"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/tab_shadow" />
+
 </android.support.constraint.ConstraintLayout>
