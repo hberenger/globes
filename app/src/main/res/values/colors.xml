@@ -16,5 +16,5 @@
 
     <color name="cellBackground">@android:color/transparent</color>
 
-    <color name="fragmentBackground">#EEEEFF</color>
+    <color name="fragmentBackground">#F5F5F5</color>
 </resources>
