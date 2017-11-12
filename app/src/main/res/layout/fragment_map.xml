@@ -17,6 +17,38 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <LinearLayout
+        android:id="@+id/route_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/map"
+        android:layout_margin="8dp"
+        android:background="@drawable/floating_info_background"
+        android:visibility="gone"
+        >
+        <ImageButton
+            android:id="@+id/route_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="fitCenter"
+            android:tint="@color/white"
+            android:src="@drawable/ic_action_close_light"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/close_button_background"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Parcours 8"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1.0"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/quick_view"
         android:layout_width="match_parent"
