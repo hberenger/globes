@@ -3,7 +3,6 @@ package com.bureau.nocomment.globes.fragment;
 import android.animation.Animator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +13,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.model.ModelRepository;
@@ -32,6 +33,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
 
 public class MapFragment extends BaseFragment implements CMXFloorView.SelectionHandler, CMXFloorView.ActiveSelectionHandler, MiniDetailsFragment.PlayerListener {
@@ -47,6 +49,11 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @Bind(R.id.quick_view)
     ViewGroup mQuickView;
     int mQuickViewHeight;
+
+    @Bind(R.id.route_info)
+    ViewGroup mRouteInfo;
+    @Bind(R.id.route_name)
+    TextView  mRouteName;
 
     private Table tableToPlayOnResume;
     private long stopTimestamp = -1;
@@ -117,6 +124,13 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         }
         mMapView.setPath(path);
         mMapView.centerOnPoint(bounds.centerX(), bounds.centerY(), zoomLevel);
+        mRouteInfo.setVisibility(View.VISIBLE);
+        mRouteName.setText(String.format(getString(R.string.route_info), route.getTitle()));
+    }
+
+    private void hideRoute() {
+        mMapView.setPath(null);
+        mRouteInfo.setVisibility(View.GONE);
     }
 
     public void focusAndPlayTable(Table table) {
@@ -164,6 +178,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         hideMiniDetails(false);
         mMapView.setActivePoi(null);
         mMapView.focusOnTop(4.0f);
+        hideRoute();
         // TODO : reset mini details
     }
 
@@ -323,5 +338,10 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
                 }
             }, 1000);
         }
+    }
+
+    @OnClick(R.id.route_close)
+    void onRouteClose(ImageButton button) {
+        hideRoute();
     }
 }

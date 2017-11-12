@@ -29,4 +29,5 @@
         <item quantity="one">%d projet</item>
         <item quantity="other">%d projets</item>
     </plurals>
+    <string name="route_info">"Itinéraire : %s"</string>
 </resources>
