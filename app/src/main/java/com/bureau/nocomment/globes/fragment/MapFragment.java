@@ -80,6 +80,19 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
             int transparent = Color.argb(204, Color.red(primary), Color.green(primary), Color.blue(primary));
             ((GradientDrawable)d).setColor(transparent);
         }
+        mNowPlayingInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onNowPlayingTap();
+            }
+        });
+
+        mRouteInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCurrentRouteTap();
+            }
+        });
 
         float height = kMAP_HEIGHT;
         float width = height * mapImage.getWidth() / mapImage.getHeight();
@@ -131,16 +144,22 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
     public void showRoute(Route route) {
         CMXPath path = makeCMXPath(route);
+        mMapView.setPath(path);
+        centerOnPath(path);
+        mRouteInfo.setVisibility(View.VISIBLE);
+        mRouteName.setText(String.format(getString(R.string.route_info), route.getTitle()));
+    }
+
+    private void centerOnPath(CMXPath path) {
         RectF bounds = path.getBounds();
         float height = (bounds.height() > 0.f) ? bounds.height() : kMAP_HEIGHT;
-        float zoomLevel = 0.9f * kMAP_HEIGHT / height; // x 0.9 to give some margin
+        bounds.top =  bounds.top - 0.13f * height;           // give some...
+        bounds.bottom = bounds.bottom + 0.05f * height;     // ... margin
+        float zoomLevel = kMAP_HEIGHT / (height * 1.18f);   // 1.18 = 1 + 0.13 + 0.05
         if (zoomLevel > mMapView.getMaxScale()) {
             zoomLevel = mMapView.getMaxScale();
         }
-        mMapView.setPath(path);
         mMapView.centerOnPoint(bounds.centerX(), bounds.centerY(), zoomLevel);
-        mRouteInfo.setVisibility(View.VISIBLE);
-        mRouteName.setText(String.format(getString(R.string.route_info), route.getTitle()));
     }
 
     private void hideRoute() {
@@ -374,5 +393,19 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @OnClick(R.id.route_close)
     void onRouteClose(ImageButton button) {
         hideRoute();
+    }
+
+    private void onNowPlayingTap() {
+        showMiniDetails();
+        Fragment fragment = getChildFragmentManager().findFragmentById(R.id.quick_view);
+        MiniDetailsFragment miniDetails = (MiniDetailsFragment)fragment;
+        miniDetails.showCurrentTable();
+    }
+
+    private void onCurrentRouteTap() {
+        CMXPath path = mMapView.getCurrentPath();
+        if (path != null) {
+            centerOnPath(path);
+        }
     }
 }

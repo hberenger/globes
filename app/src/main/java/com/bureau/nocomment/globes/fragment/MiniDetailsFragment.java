@@ -81,6 +81,13 @@ public class MiniDetailsFragment extends BaseFragment {
         }
     }
 
+    public void showCurrentTable() {
+        if (loadedTrackId > 0) {
+            Table table = ModelRepository.getInstance().getItemLibrary().findTable(loadedTrackId);
+            loadFromTable(table);
+        }
+    }
+
     public void setPlayerListener(PlayerListener playerListener) {
         mPlayerListener = playerListener;
     }

@@ -833,6 +833,18 @@ public class CMXFloorView extends ImageViewTouch {
         invalidate();
     }
 
+
+    public CMXPath getCurrentPath() {
+        if (mPoints.size() == 0) {
+            return null;
+        }
+        CMXPath path = new CMXPath();
+        for (PathPoint p : mPoints) {
+            path.add(new CMXPoint(p.x, p.y));
+        }
+        return path;
+    }
+
     /**
      * Display client location on map
      *
