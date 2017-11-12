@@ -36,6 +36,7 @@
             android:tint="@color/white"
             android:src="@drawable/ic_action_close_light"
             android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/close_button_background"/>
         <TextView
@@ -67,8 +68,8 @@
             android:scaleType="fitCenter"
             android:src="@drawable/table_playing_trans"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/close_button_background"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
         <TextView
             android:id="@+id/current_track_name"
             android:layout_width="0dp"
