@@ -60,6 +60,8 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
     @Bind(R.id.now_playing_info)
     ViewGroup mNowPlayingInfo;
+    @Bind(R.id.current_track_name)
+    TextView mCurrentTrackName;
 
     private Table tableToPlayOnResume;
     private long stopTimestamp = -1;
@@ -192,6 +194,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setActivePoi(null);
         mMapView.focusOnTop(4.0f);
         hideRoute();
+        hideNowPlayingInfo();
         // TODO : reset mini details
     }
 
@@ -323,11 +326,25 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         miniDetails.showTable(table.getId(), play);
     }
 
+    private void hideNowPlayingInfo() {
+        mNowPlayingInfo.setVisibility(View.GONE);
+    }
+
     @Override
     public void playerDidStartToPlay(int trackId) {
         Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.table_playing);
         String poiId = Integer.toString(trackId + kTABLE_ID_OFFSET);
         mMapView.updatePoiBitmap(poiId, poiBitmap);
+        mNowPlayingInfo.setVisibility(View.VISIBLE);
+        Table table = ModelRepository.getInstance().getItemLibrary().findTable(trackId);
+        if (table != null) {
+            mCurrentTrackName.setText(String.format(getString(R.string.now_playing_info), table.getTitle()));
+        }
+    }
+
+    @Override
+    public void playerDidPause(int trackId) {
+        hideNowPlayingInfo();
     }
 
     @Override
@@ -335,6 +352,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         Bitmap poiBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sticker_nfc);
         String poiId = Integer.toString(trackId + kTABLE_ID_OFFSET);
         mMapView.updatePoiBitmap(poiId, poiBitmap);
+        hideNowPlayingInfo();
     }
 
     @Override

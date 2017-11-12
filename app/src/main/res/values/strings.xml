@@ -30,4 +30,5 @@
         <item quantity="other">%d projets</item>
     </plurals>
     <string name="route_info">"Itinéraire : %s"</string>
+    <string name="now_playing_info">"En écoute : %s"</string>
 </resources>

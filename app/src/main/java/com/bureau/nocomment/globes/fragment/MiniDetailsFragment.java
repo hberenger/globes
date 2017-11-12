@@ -31,6 +31,7 @@ public class MiniDetailsFragment extends BaseFragment {
     interface PlayerListener {
         void onReadyToPlay();
         void playerDidStartToPlay(int trackId);
+        void playerDidPause(int trackId);
         void playerDidEndToPlay(int trackId);
     }
 
@@ -177,6 +178,9 @@ public class MiniDetailsFragment extends BaseFragment {
         }
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(View.GONE);
+        if (mPlayerListener != null) {
+            mPlayerListener.playerDidPause(loadedTrackId);
+        }
     }
 
     private void stopSoundtrack() {
