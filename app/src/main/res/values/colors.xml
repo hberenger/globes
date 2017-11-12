@@ -20,4 +20,6 @@
     <color name="selectedTab">#FAD625</color>
 
     <color name="fragmentBackground">#F5F5F5</color>
+
+    <color name="pathColor">#9a9181</color>
 </resources>
