@@ -3,7 +3,10 @@ package com.bureau.nocomment.globes.fragment;
 import android.animation.Animator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -55,6 +58,9 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @Bind(R.id.route_name)
     TextView  mRouteName;
 
+    @Bind(R.id.now_playing_info)
+    ViewGroup mNowPlayingInfo;
+
     private Table tableToPlayOnResume;
     private long stopTimestamp = -1;
 
@@ -65,6 +71,13 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         final Bitmap mapImage = BitmapFactory.decodeResource(getResources(), kMAP_ID);
 
         ButterKnife.bind(this, rootView);
+
+        Drawable d = mNowPlayingInfo.getBackground();
+        if (d instanceof GradientDrawable) {
+            int primary = getResources().getColor(R.color.colorPrimary);
+            int transparent = Color.argb(204, Color.red(primary), Color.green(primary), Color.blue(primary));
+            ((GradientDrawable)d).setColor(transparent);
+        }
 
         float height = kMAP_HEIGHT;
         float width = height * mapImage.getWidth() / mapImage.getHeight();
