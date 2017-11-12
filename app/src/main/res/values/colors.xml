@@ -16,5 +16,8 @@
 
     <color name="cellBackground">@android:color/transparent</color>
 
+    <color name="defaultTab">#9Affffff</color>
+    <color name="selectedTab">#FAD625</color>
+
     <color name="fragmentBackground">#F5F5F5</color>
 </resources>

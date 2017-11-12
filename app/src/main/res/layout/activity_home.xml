@@ -31,9 +31,10 @@
         app:tabMode="fixed"
         app:tabMaxWidth="0dp"
         app:tabGravity="fill"
-        app:tabTextColor="@android:color/white"
-        app:tabSelectedTextColor="@color/colorPrimaryDark"
-        app:tabIndicatorColor="@color/colorPrimaryDark"/>
+        app:tabTextColor="@color/defaultTab"
+        app:tabSelectedTextColor="@color/selectedTab"
+        app:tabIndicatorColor="@color/selectedTab"
+        app:tabIndicatorHeight="2dp"/>
 
     <com.bureau.nocomment.globes.view.NonSwipeableViewPager
         android:id="@+id/viewpager"
