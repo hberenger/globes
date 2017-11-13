@@ -1,6 +1,9 @@
 package com.bureau.nocomment.globes.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -41,6 +44,8 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.RouteSelectedObserver {
 
+    public static final String SHUTDOWN_INTENT = "com.nocomment.globes.homeactivity.SHUTDOWN";
+
     public interface NfcTagMessageParser {
         public int readGlobeIdFromNdefMessage(NdefMessage message);
     }
@@ -52,6 +57,9 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     ForegroundDispatcher mForegroundDispatcher;
     private NfcTagMessageParser tagParser;
     private boolean autoplayOnResume;
+    private BroadcastReceiver mBroadcastReceiver;
+    private boolean receiverRegistered = false;
+    private boolean norespawn          = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +87,16 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         tagParser = new ClassicNfcTextRecordParser();
 
         autoplayOnResume = mForegroundDispatcher.isNfcIntent(getIntent());
+
+        mBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals(SHUTDOWN_INTENT)) {
+                    norespawn = true;
+                    HomeActivity.this.finish();
+                }
+            }
+        };
     }
 
     @Override
@@ -96,13 +114,22 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     @Override
     protected void onStop() {
         super.onStop();
-        startService(new Intent(this, KioskService.class)); // start KioskService
+        if (!norespawn) {
+            startService(new Intent(this, KioskService.class)); // start KioskService
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         stopService(new Intent(this, KioskService.class)); // start KioskService
+        if (!receiverRegistered) {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(SHUTDOWN_INTENT);
+            registerReceiver(mBroadcastReceiver, filter);
+            receiverRegistered = true;
+            norespawn = false;
+        }
     }
 
     @Override

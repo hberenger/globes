@@ -1,6 +1,7 @@
 package com.bureau.nocomment.globes.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.activity.HomeActivity;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Table;
@@ -125,6 +127,13 @@ public class MiniDetailsFragment extends BaseFragment {
                 if(player != null){
                     player.seekTo((int)value);
                 }
+            }
+        });
+
+        projectNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onProjectNumberTap();
             }
         });
 
@@ -318,6 +327,27 @@ public class MiniDetailsFragment extends BaseFragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    private long tapTs;
+    private long tapCount;
+
+    private void onProjectNumberTap() {
+        if (currentProjectId != 21) {
+            return;
+        }
+        long now = System.currentTimeMillis();
+        if (tapTs == 0 || (now - tapTs) > 300) {
+            tapCount = 1;
+        } else {
+            tapCount++;
+            if (tapCount == 7) {
+                Intent intent = new Intent();
+                intent.setAction(HomeActivity.SHUTDOWN_INTENT);
+                getContext().sendBroadcast(intent);
+            }
+        }
+        tapTs = now;
     }
 
 }
