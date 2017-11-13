@@ -25,6 +25,7 @@ public class RoutesAdapter extends ArrayAdapter<Route> {
     }
 
     public void setRoutes(List<Route> routes) {
+        this.mRoutes.clear();
         this.mRoutes.addAll(routes);
         clear();
         addAll(mRoutes);
