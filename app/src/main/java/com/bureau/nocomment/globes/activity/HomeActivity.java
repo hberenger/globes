@@ -38,6 +38,7 @@ import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
 import com.bureau.nocomment.globes.model.Table;
 import com.bureau.nocomment.globes.service.KioskService;
+import com.bureau.nocomment.globes.service.NotifBarHider;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     ForegroundDispatcher mForegroundDispatcher;
     private NfcTagMessageParser tagParser;
     private boolean autoplayOnResume;
+    NotifBarHider mNotifBarHider;
     private BroadcastReceiver mBroadcastReceiver;
     private boolean receiverRegistered = false;
     private boolean norespawn          = false;
@@ -89,6 +91,8 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
         autoplayOnResume = mForegroundDispatcher.isNfcIntent(getIntent());
 
+        mNotifBarHider = new NotifBarHider();
+
         mBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -115,6 +119,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     @Override
     protected void onStop() {
         super.onStop();
+        mNotifBarHider.enableStatusBarExpansion(this);
         if (!norespawn) {
             startService(new Intent(this, KioskService.class)); // start KioskService
         }
@@ -124,6 +129,8 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     protected void onStart() {
         super.onStart();
         stopService(new Intent(this, KioskService.class)); // start KioskService
+        mNotifBarHider.preventStatusBarExpansion(this);
+
         if (!receiverRegistered) {
             IntentFilter filter = new IntentFilter();
             filter.addAction(SHUTDOWN_INTENT);
