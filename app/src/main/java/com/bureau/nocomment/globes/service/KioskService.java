@@ -1,6 +1,7 @@
 package com.bureau.nocomment.globes.service;
 
 import android.app.ActivityManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
@@ -72,9 +73,15 @@ public class KioskService extends Service {
 
     private void restoreApp() {
         // Restart activity
-        Intent i = new Intent(this, HomeActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 0, intent, 0);
+        try {
+            pendingIntent.send();
+        } catch (PendingIntent.CanceledException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
