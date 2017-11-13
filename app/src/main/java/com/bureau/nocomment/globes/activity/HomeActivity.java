@@ -23,6 +23,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.application.Globes;
@@ -43,6 +44,8 @@ import com.bureau.nocomment.globes.service.NotifBarHider;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.RouteSelectedObserver {
 
@@ -76,6 +79,18 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
         mViewPager.setAdapter(getPagerAdapter());
         mViewPager.setOffscreenPageLimit(getPagerAdapter().getCount());
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                hideSoftKeyboard();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
 
         mTabs.setupWithViewPager(mViewPager);
 
@@ -216,6 +231,15 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         if (!locale.setAsCurrent(this)) {
             ModelRepository.getInstance().getItemLibrary().localeDidChange();
             this.recreate();
+        }
+    }
+
+
+    private void hideSoftKeyboard() {
+        View view = getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
