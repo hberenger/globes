@@ -103,6 +103,11 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     }
 
     @Override
+    public void onBackPressed() {
+        // Nothing - we want to disable back button
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
