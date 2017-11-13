@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class KioskService extends Service {
 
-    private static final long INTERVAL = TimeUnit.SECONDS.toMillis(1); // periodic interval to check in seconds -> 2 seconds
+    private static final long INTERVAL = TimeUnit.SECONDS.toMillis(1); // periodic interval to check in seconds -> 1 seconds
     private static final String TAG = KioskService.class.getSimpleName();
     private static final String PREF_KIOSK_MODE = "pref_kiosk_mode";
 
@@ -57,6 +57,7 @@ public class KioskService extends Service {
     private void handleKioskMode() {
         // is App in background?
         if(isInBackground()) {
+            Log.i(TAG, "Restoring app !");
             restoreApp(); // restore!
         }
     }

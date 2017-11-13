@@ -33,12 +33,11 @@ import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
 import com.bureau.nocomment.globes.model.Table;
+import com.bureau.nocomment.globes.service.KioskService;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.bureau.nocomment.globes.R.id.map;
 
 public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.RouteSelectedObserver {
 
@@ -92,6 +91,18 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     protected void onPause() {
         super.onPause();
         mForegroundDispatcher.stop(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        startService(new Intent(this, KioskService.class)); // start KioskService
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        stopService(new Intent(this, KioskService.class)); // start KioskService
     }
 
     @Override
