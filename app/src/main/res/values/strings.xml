@@ -23,7 +23,7 @@
     <string name="architect">Architecte</string>
     <string name="number">Numéro</string>
     <string name="sort_by">Trier par:</string>
-    <string name="recherche">recherche</string>
+    <string name="recherche">Rechercher...</string>
     <string name="routes_header">Composez votre visite &quot;bis&quot;, avec cette sélection d\'itinéraires…</string>
     <plurals name="routeLength">
         <item quantity="one">%d projet</item>
