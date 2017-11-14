@@ -34,7 +34,8 @@
         app:tabTextColor="@color/defaultTab"
         app:tabSelectedTextColor="@color/selectedTab"
         app:tabIndicatorColor="@color/selectedTab"
-        app:tabIndicatorHeight="2dp"/>
+        app:tabTextAppearance="@style/TabText"
+        app:tabIndicatorHeight="3dp"/>
 
     <com.bureau.nocomment.globes.view.NonSwipeableViewPager
         android:id="@+id/viewpager"
