@@ -56,7 +56,7 @@ public class PictoCache {
 
         // Mind the ALPHA_8 type, to save memory
         // We also scale down the bitmaps, which are pretty large
-        int scalingFactor = 4;
+        int scalingFactor = 3;
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth() / scalingFactor,
                 drawable.getIntrinsicHeight() / scalingFactor, Bitmap.Config.ALPHA_8);
         Canvas canvas = new Canvas(bitmap);
