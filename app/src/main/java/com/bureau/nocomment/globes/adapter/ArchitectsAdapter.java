@@ -99,8 +99,8 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
             @Override
             public int compare(Project lhs, Project rhs) {
                 return (!inverted) ?
-                        lhs.getLocalizationDescription().compareTo(rhs.getLocalizationDescription()) :
-                        rhs.getLocalizationDescription().compareTo(lhs.getLocalizationDescription());
+                        lhs.getCountryComparisonKey().compareTo(rhs.getCountryComparisonKey()) :
+                        rhs.getCountryComparisonKey().compareTo(lhs.getCountryComparisonKey());
             }
         };
     }

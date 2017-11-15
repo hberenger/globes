@@ -31,6 +31,7 @@ public class Project {
 
     // computed properties
     private String       countryLabel;
+    private String       countrySortKey;
 
     public int getId() {
         return id;
@@ -59,10 +60,34 @@ public class Project {
 
     private String getCountryLabel() {
         if (countryLabel == null) {
-            Locale loc = new Locale("", countryCode);
-            countryLabel = loc.getDisplayCountry();
+            if (countryCode == null) {
+                countryLabel = "";
+            } else {
+                int comma = countryCode.indexOf(',');
+                String uniqueCode = (comma >= 0 && countryCode.length() > 2) ? countryCode.substring(0, comma) : countryCode;
+                Locale loc = new Locale("", uniqueCode);
+                countryLabel = loc.getDisplayCountry();
+            }
         }
         return countryLabel;
+    }
+
+    public String getCountryComparisonKey() {
+        if (countrySortKey == null) {
+            // ù1, ù2, ù3... convenience symbols to put those codes at the end of the list
+            if (countryCode.equals("YY")) {         // near space
+                countrySortKey = "ù1";
+            } else if (countryCode.equals("XX")) {  // space
+                countrySortKey = "ù2";
+            } else if (countryCode.equals("?")) {   // unknown
+                countrySortKey = "ù3";
+            } else if (countryCode == null || countryCode.isEmpty()) {
+                countrySortKey = "ù3";
+            } else {
+                countrySortKey = getCountryLabel().toUpperCase();
+            }
+        }
+        return countrySortKey;
     }
 
     public Date getDate() {
