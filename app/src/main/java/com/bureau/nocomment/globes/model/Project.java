@@ -15,6 +15,7 @@ public class Project {
     private int          index;
     private String       name;
     private String       author;
+    private String       authorSortKey;
     private String       localization; // optional
     private String       countryCode;  // mandatory
     @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "yyyy")
@@ -46,6 +47,8 @@ public class Project {
     public String getAuthor() {
         return author;
     }
+
+    public String getAuthorSortKey() { return authorSortKey.isEmpty() ? author : authorSortKey; }
 
     public String getLocalizationDescription() {
         if (localization != null) {

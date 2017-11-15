@@ -77,8 +77,8 @@ public class ArchitectsAdapter extends ArrayAdapter<Project> {
             @Override
             public int compare(Project lhs, Project rhs) {
                 return (!inverted) ?
-                        lhs.getAuthor().compareTo(rhs.getAuthor()) :
-                        rhs.getAuthor().compareTo(lhs.getAuthor());
+                        lhs.getAuthorSortKey().compareTo(rhs.getAuthorSortKey()) :
+                        rhs.getAuthorSortKey().compareTo(lhs.getAuthorSortKey());
             }
         };
     }
