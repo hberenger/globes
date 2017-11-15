@@ -38,7 +38,7 @@
         app:layout_constraintStart_toEndOf="@id/picto"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/ArchitectInfo"
+        android:textColor="@color/colorPrimaryDark"
         android:maxLines="1"
         android:ellipsize="end"
         android:textSize="15sp"

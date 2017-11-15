@@ -43,7 +43,6 @@
         android:background="@color/cellBackground"
         android:gravity="start"
         tools:text="Les projets marqués par la forme de la spirale"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="12sp"
-        android:textColor="@color/colorPrimaryDark"
+        style="@style/ArchitectInfo"
         tools:text="3 projets"
         android:background="@color/cellBackground"/>
 
