@@ -4,7 +4,7 @@
         "id": 101,
         "title": "Lumières",
         "description": "Les bâtiments où la lumière joue un rôle important",
-        "projects" : []
+        "projects" : [3, 12, 15, 31, 62]
       },
       {
         "id": 101,
@@ -28,7 +28,7 @@
         "id": 104,
         "title": "En relief",
         "description": "Les projets où l'architecte s'est attaché à reconstituer le relief de la terre",
-        "projects" : [22, 23, 24, 40, 41, 49, 56, 78, 68, 90]
+        "projects" : [23, 24, 40, 49, 56, 68, 90]
       },
       {
         "id": 105,
@@ -40,19 +40,61 @@
         "id": 106,
         "title": "Les plus belles spirales",
         "description": "La spirale, une forme récurrente dans les architectures sphériques",
-        "projects" : [13, 29, 31, 32, 34, 36, 40, 41, 42, 44, 61, 63, 76]
+        "projects" : [29, 31, 32, 34, 36, 40, 41, 42, 44, 61, 63, 76]
       },
       {
         "id": 107,
         "title": "Pas si rond",
         "description": "Les projets où la sphère... n'est pas sphérique",
-        "projects" : [14, 51, 76, 87]
+        "projects" : [38, 51, 76, 87]
       },
       {
         "id": 108,
         "title": "J'habite dans une sphère",
         "description": "Les projets de globes habitables",
-        "projects" : [2, 13, 17, 20, 53, 59, 69]
+        "projects" : [2, 13, 20, 53, 59, 69]
+      },
+      {
+        "id": 109,
+        "title": "Latin seconde langue",
+        "description": "Des noms originaux dérivés du latin et du grec",
+        "projects" : [8, 10, 24, 62, 61, 80, 87]
+      },
+      {
+        "id": 110,
+        "title": "Globes & politique",
+        "description": "Globes animés par un projet politique marqué",
+        "projects" : [66, 57, 58, 70, 68, 72]
+      },
+      {
+        "id": 111,
+        "title": "Vu sous cet angle",
+        "description": "Projets où le choix de l'inclinaison de l'axe polaire n'est pas laissé au hasard",
+        "projects" : [31, 32, 40, 56, 90]
+      },
+      {
+        "id": 112,
+        "title": "A deux c'est mieux",
+        "description": "Un globe peut en cacher un autre",
+        "projects" : [9, 36, 43]
+      },
+      {
+        "id": 113,
+        "title": "Le génie du lieu",
+        "description": "Globes pensés pour une certaine latitude ou longitude",
+        "projects" : [28, 88, 90]
+      },
+      {
+        "id": 114,
+        "title": "Soleil et héliocentrisme",
+        "description": "Le soleil occupe une place souvent centrale dans les architectures sphériques",
+        "projects" : [64, 81, 76, 27, 31, 19, 15]
+      },
+      {
+        "id": 115,
+        "title": "Géodésiques",
+        "description": "Où il est question d'icosaèdres et de triangulation",
+        "projects" : [55, 70, 71, 90, 87]
       }
     ],
 
