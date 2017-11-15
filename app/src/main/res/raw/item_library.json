@@ -60,6 +60,7 @@
       {
         "id" : 1,
         "name" : "Ornithon",
+        "author_sort_key": "varro",
         "author" : "Marcus Terentius Varro ",
         "localization" : "Casinum",
         "country_code" : "IT",
@@ -78,7 +79,8 @@
       {
         "id" : 2,
         "name" : "Cenatio Rotunda",
-        "author" : "Severus Celer ",
+        "author_sort_key": "severus",
+        "author" : "Severus, Celer",
         "localization" : "Rome",
         "country_code" : "IT",
         "date" : "66",
@@ -96,6 +98,7 @@
       {
         "id" : 3,
         "name" : "Panthéon",
+        "author_sort_key": "apollodore",
         "author" : "Apollodore de Damas",
         "localization" : "Rome",
         "country_code" : "IT",
@@ -114,6 +117,7 @@
       {
         "id" : 3,
         "name" : "Théâtre maritime de la villa Adriana",
+        "author_sort_key": "?",
         "author" : "Architecte inconnu",
         "localization" : "Tivoli",
         "country_code" : "IT",
@@ -132,6 +136,7 @@
       {
         "id" : 4,
         "name" : "Trône de Chosroès II",
+        "author_sort_key": "chosroes",
         "author" : "Chosroès (Khosro II)",
         "localization" : "Ctésiphon, Irak",
         "country_code" : "IQ",
@@ -150,6 +155,7 @@
       {
         "id" : 6,
         "name" : "Qasr Amra",
+        "author_sort_key": "al-walid",
         "author" : "Al-Walīd Ier ou Al-Walīd II",
         "localization" : "Azraq, Jordanie",
         "country_code" : "JO",
@@ -168,6 +174,7 @@
       {
         "id" : 5,
         "name" : "Cielo de Salamanca",
+        "author_sort_key": "gallego",
         "author" : "Fernando Gallego",
         "localization" : "Salamanque",
         "country_code" : "ES",
@@ -186,6 +193,7 @@
       {
         "id" : 5,
         "name" : "Sagrestia Vecchia",
+        "author_sort_key": "brunelleschi",
         "author" : "Filippo Brunelleschi, Giuliano d’Arrigo",
         "localization" : "Florence",
         "country_code" : "IT",
@@ -204,8 +212,9 @@
       {
         "id" : 7,
         "name" : "Globe de Gottorf",
+        "author_sort_key": "olearius",
         "author" : "Adam Olearius, Andreas Bösch",
-        "localization" : "Schleswig, Saint-Petersburg",
+        "localization" : "Schleswig, St-Petersburg",
         "country_code" : "DE, RU",
         "date" : "1650",
         "date_desc" : "1650-1664",
@@ -222,6 +231,7 @@
       {
         "id" : 8,
         "name" : "Urania",
+        "author_sort_key": "weigel",
         "author" : "Ehrard Weigel",
         "localization" : "Iéna",
         "country_code" : "DE",
@@ -240,6 +250,7 @@
       {
         "id" : 8,
         "name" : "Pancosmos",
+        "author_sort_key": "weigel",
         "author" : "Ehrard Weigel",
         "localization" : "Copenhague",
         "country_code" : "DK",
@@ -258,6 +269,7 @@
       {
         "id" : 9,
         "name" : "Globe céleste et globe terrestre",
+        "author_sort_key": "coronelli",
         "author" : "Vincenzo Coronelli",
         "localization" : "Marly et Paris",
         "country_code" : "FR",
@@ -276,7 +288,8 @@
       {
         "id" : 11,
         "name" : "Temple sphérique",
-        "author" : "Pierre de la Ruette dit de Beaumesnil ",
+        "author_sort_key": "beaumesnil ",
+        "author" : "Pierre de la Ruelle dit de Beaumesnil ",
         "localization" : "Limoges",
         "country_code" : "FR",
         "date" : "1747",
@@ -294,6 +307,7 @@
       {
         "id" : 10,
         "name" : "Uranium",
+        "author_sort_key": "long",
         "author" : "Roger Long, Jonathan Munns",
         "localization" : "Cambridge",
         "country_code" : "GB",
@@ -312,6 +326,7 @@
       {
         "id" : 12,
         "name" : "Cénotaphe à Newton",
+        "author_sort_key": "boullee",
         "author" : "Etienne-Louis Boullée",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -330,6 +345,7 @@
       {
         "id" : 13,
         "name" : "Maison d'un cosmopolite",
+        "author_sort_key": "vaudoyer",
         "author" : "Antoine Laurent Thomas Vaudoyer",
         "localization" : "Rome (conception)",
         "country_code" : "IT",
@@ -348,6 +364,7 @@
       {
         "id" : 14,
         "name" : "Temples décadaires",
+        "author_sort_key": "durand",
         "author" : "JNL Durand, Jean-Thomas Thibault",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -366,6 +383,7 @@
       {
         "id" : 15,
         "name" : "Temple de la Terre",
+        "author_sort_key": "lequeu",
         "author" : "Jean-Jacques Lequeu",
         "localization" : "Divers, France",
         "country_code" : "FR",
@@ -384,6 +402,7 @@
       {
         "id" : 16,
         "name" : "Temple à l'immortalité",
+        "author_sort_key": "sobre",
         "author" : "Jean-Nicolas Sobre",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -402,6 +421,7 @@
       {
         "id" : 17,
         "name" : "Cimetière de la ville de Chaux",
+        "author_sort_key": "ledoux",
         "author" : "Claude Nicolas Ledoux",
         "localization" : "Arc-et-senans",
         "country_code" : "FR",
@@ -420,6 +440,7 @@
       {
         "id" : 19,
         "name" : "Cénotaphes à Newton ",
+        "author_sort_key": "delespine",
         "author" : "Delespine, Gay, Labadye",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -438,6 +459,7 @@
       {
         "id" : 18,
         "name" : "Planétarium",
+        "author_sort_key": "jefferson",
         "author" : "Thomas Jefferson",
         "localization" : "Charlottesville",
         "country_code" : "US",
@@ -456,6 +478,7 @@
       {
         "id" : 20,
         "name" : "National Monument to Newton",
+        "author_sort_key": "steele",
         "author" : "Thomas Ennis Steele",
         "localization" : "Londres",
         "country_code" : "GB",
@@ -474,6 +497,7 @@
       {
         "id" : 22,
         "name" : "Géorama",
+        "author_sort_key": "delanglard",
         "author" : "Charles-François-Paul Delanglard, Pierre-Magloire Châtelain",
         "localization" : "Paris, Londres",
         "country_code" : "FR, GB",
@@ -492,6 +516,7 @@
       {
         "id" : 21,
         "name" : "Géorama",
+        "author_sort_key": "guerin",
         "author" : "Guérin, Jodot, Hittorff, Louis Vivien",
         "localization" : "Paris, Londres",
         "country_code" : "FR, GB",
@@ -510,6 +535,7 @@
       {
         "id" : 23,
         "name" : "Model of the Earth",
+        "author_sort_key": "wyld",
         "author" : "James Wyld, Edward Welch, Henry R. Abraham",
         "localization" : "Londres",
         "country_code" : "GB",
@@ -528,6 +554,7 @@
       {
         "id" : 24,
         "name" : "Géoplaste",
+        "author_sort_key": "sanis",
         "author" : "Jean-Léon Sanis, Hector Horeau",
         "localization" : "Bois de Boulogne",
         "country_code" : "FR",
@@ -546,9 +573,10 @@
       {
         "id" : 25,
         "name" : "Brick Moon",
+        "author_sort_key": "hale",
         "author" : "Edward Everett Hale",
         "localization" : "Orbite terrestre",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1869",
         "date_desc" : "1869-1870",
         "diam_desc" : "",
@@ -564,6 +592,7 @@
       {
         "id" : 26,
         "name" : "Monument à Ortelius",
+        "author_sort_key": "wauwermans",
         "author" : "Henri-Emmanuel Wauwermans",
         "localization" : "Anvers",
         "country_code" : "BE",
@@ -582,6 +611,7 @@
       {
         "id" : 27,
         "name" : "Planétarium",
+        "author_sort_key": "perini",
         "author" : "Napoleone Perini",
         "localization" : "Londres",
         "country_code" : "GB",
@@ -600,6 +630,7 @@
       {
         "id" : 28,
         "name" : "Sphère terrestre monumentale",
+        "author_sort_key": "filon",
         "author" : "François Filon, Alexandre Cordeau",
         "localization" : "Paris, New York",
         "country_code" : "FR, US",
@@ -618,6 +649,7 @@
       {
         "id" : 29,
         "name" : "Globe terrestre au millionième",
+        "author_sort_key": "villard",
         "author" : "Villard & Cotard, A. Tissandier, T. Seyrig",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -636,6 +668,7 @@
       {
         "id" : 30,
         "name" : "National Botanical Gardens",
+        "author_sort_key": "knudson",
         "author" : "Adolphus Alvord Knudson",
         "localization" : "New York",
         "country_code" : "US",
@@ -655,6 +688,7 @@
         "id" : 31,
         "index" : 1,
         "name" : "Memorial Tower",
+        "author_sort_key": "burton",
         "author" : "Charles E. Burton",
         "localization" : "Chicago ",
         "country_code" : "US",
@@ -674,6 +708,7 @@
         "id" : 31,
         "index" : 2,
         "name" : "Solar system",
+        "author_sort_key": "hosmer",
         "author" : "Harriet G.Hosmer",
         "localization" : "Chicago ",
         "country_code" : "US",
@@ -693,6 +728,7 @@
         "id" : 31,
         "index" : 3,
         "name" : "World",
+        "author_sort_key": "martin",
         "author" : "Louis H. Martin",
         "localization" : "Chicago ",
         "country_code" : "US",
@@ -711,6 +747,7 @@
       {
         "id" : 33,
         "name" : "Coliseum and Tower ",
+        "author_sort_key": "buffington",
         "author" : "Leroy S. Buffington, Harvey Ellis",
         "localization" : "Chicago",
         "country_code" : "US",
@@ -730,6 +767,7 @@
         "id" : 32,
         "index" : 3,
         "name" : "Colossal Globe Crystal Palace",
+        "author_sort_key": "langhammer",
         "author" : "Paul Langhammer",
         "localization" : "Chicago",
         "country_code" : "US",
@@ -749,6 +787,7 @@
         "id" : 32,
         "index" : 1,
         "name" : "Crystal Water Palace",
+        "author_sort_key": "fischer",
         "author" : "Ernst Fischer, W. F. Smith, G. H. Hess",
         "localization" : "Chicago",
         "country_code" : "US",
@@ -768,6 +807,7 @@
         "id" : 32,
         "index" : 2,
         "name" : "Columbus Dome",
+        "author_sort_key": "hallock",
         "author" : "John K. Hallock, Cyrus F. Dean",
         "localization" : "Chicago",
         "country_code" : "US",
@@ -786,6 +826,7 @@
       {
         "id" : 35,
         "name" : "Freedom Raising the World",
+        "author_sort_key": "ingolsby",
         "author" : "Frank S.Ingolsby Frank S.Ingoldsby",
         "localization" : "Chicago, St Louis",
         "country_code" : "US",
@@ -804,6 +845,7 @@
       {
         "id" : 34,
         "name" : "Monumento colosal en memoria de Cristóbal Colón",
+        "author_sort_key": "palacio",
         "author" : "Alberto de Palacio",
         "localization" : "Chicago, Madrid, Paris",
         "country_code" : "US, ES, FR",
@@ -823,6 +865,7 @@
         "id" : 36,
         "index" : 1,
         "name" : "Great Terrestrial Globe",
+        "author_sort_key": "johnston",
         "author" : "Thomas Ruddiman Johnston",
         "localization" : "Londres",
         "country_code" : "GB",
@@ -842,6 +885,7 @@
         "id" : 36,
         "index" : 2,
         "name" : "Great Hollow Terrestrial Globe",
+        "author_sort_key": "johnston",
         "author" : "Thomas Ruddiman Johnston",
         "localization" : "Londres",
         "country_code" : "GB",
@@ -860,6 +904,7 @@
       {
         "id" : 37,
         "name" : "Parapluie universel français",
+        "author_sort_key": "bourdin",
         "author" : "Léopold Bourdin",
         "localization" : "Paris, Marseille",
         "country_code" : "FR",
@@ -878,6 +923,7 @@
       {
         "id" : 38,
         "name" : "Le Tour du monde en 80 minutes",
+        "author_sort_key": "borgel",
         "author" : "François Borgel-Court, Alexandre Gavard",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -896,6 +942,7 @@
       {
         "id" : 39,
         "name" : "Pavillon de l'Homme",
+        "author_sort_key": "mucha",
         "author" : "Alfons Mucha, James Vibert",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -914,6 +961,7 @@
       {
         "id" : 40,
         "name" : "Globe terrestre",
+        "author_sort_key": "reclus",
         "author" : "Elisée Reclus, Louis Bonnier",
         "localization" : "Paris (Trocadéro)",
         "country_code" : "FR",
@@ -932,6 +980,7 @@
       {
         "id" : 41,
         "name" : "Globe céleste",
+        "author_sort_key": "galeron",
         "author" : "Albert Galeron",
         "localization" : "Paris",
         "country_code" : "FR",
@@ -950,9 +999,10 @@
       {
         "id" : 42,
         "name" : "Exhibition structure",
+        "author_sort_key": "lyouns",
         "author" : "Herbert F.W. Lyouns",
         "localization" : "Pas de lieu (brevet)",
-        "country_code" : "",
+        "country_code" : "?",
         "date" : "1899",
         "date_desc" : "",
         "diam_desc" : "",
@@ -968,9 +1018,10 @@
       {
         "id" : 42,
         "name" : "Structure for Educational and Recreative Purposes ",
+        "author_sort_key": "pridmore",
         "author" : "Frank A. Pridmore",
         "localization" : "Pas de lieu (brevet)",
-        "country_code" : "",
+        "country_code" : "?",
         "date" : "1913",
         "date_desc" : "",
         "diam_desc" : "67 ou 100m",
@@ -986,6 +1037,7 @@
       {
         "id" : 43,
         "name" : "National Institute of Geography",
+        "author_sort_key": "geddes",
         "author" : "Patrick Geddes, Elisée Reclus, Albert Galeron, Franz Schrader",
         "localization" : "Edimbourg",
         "country_code" : "GB",
@@ -1004,6 +1056,7 @@
       {
         "id" : 44,
         "name" : "Aerial Globe and Globe Tower",
+        "author_sort_key": "friede",
         "author" : "Samuel M. Friede, Alfred M. Borden",
         "localization" : "St Louis, Coney Island",
         "country_code" : "US",
@@ -1022,6 +1075,7 @@
       {
         "id" : 45,
         "name" : "Temple pour l’œuvre Mysterium",
+        "author_sort_key": "scriabine",
         "author" : "Alexandre Scriabine",
         "localization" : "Himalaya, Adyar",
         "country_code" : "IN, NP",
@@ -1040,6 +1094,7 @@
       {
         "id" : 46,
         "name" : "Magic sphere",
+        "author_sort_key": "maxim",
         "author" : "Hiram S.Maxim",
         "localization" : "Londres, Coney Island",
         "country_code" : "GB, US",
@@ -1058,8 +1113,9 @@
       {
         "id" : 47,
         "name" : "Creation",
+        "author_sort_key": "roltair",
         "author" : "Henry Roltair",
-        "localization" : "St Louis, SF, Coney Island",
+        "localization" : "St Louis, Coney Island",
         "country_code" : "US",
         "date" : "1908",
         "date_desc" : "1904-1911",
@@ -1076,6 +1132,7 @@
       {
         "id" : 48,
         "name" : "Atwood Celestial Sphere",
+        "author_sort_key": "atwood",
         "author" : "Wallace W. Atwood, La Verne W. Noyes",
         "localization" : "Chicago",
         "country_code" : "US",
@@ -1094,6 +1151,7 @@
       {
         "id" : 49,
         "name" : "Globe",
+        "author_sort_key": "fulton",
         "author" : "Fitch B.Fulton, Frank A. Wadleigh",
         "localization" : "Transportation palace, SF",
         "country_code" : "US",
@@ -1112,6 +1170,7 @@
       {
         "id" : 50,
         "name" : "Periscopic Theatre",
+        "author_sort_key": "jones",
         "author" : "Loyd A.Jones",
         "localization" : "Rochester (Kodak Labs)",
         "country_code" : "US",
@@ -1130,9 +1189,10 @@
       {
         "id" : 51,
         "name" : "Karussell, Domstern, Sterne im Reigen",
+        "author_sort_key": "taut",
         "author" : "Bruno Taut",
         "localization" : "Univers",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1920",
         "date_desc" : "1918-1920",
         "diam_desc" : "?",
@@ -1148,9 +1208,10 @@
       {
         "id" : 52,
         "name" : "Sternhaus",
+        "author_sort_key": "krayl",
         "author" : "Carl Krayl",
         "localization" : "Univers",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1920",
         "date_desc" : "v. 1920",
         "diam_desc" : "?",
@@ -1166,9 +1227,10 @@
       {
         "id" : 53,
         "name" : "Freitragende Kuppel",
+        "author_sort_key": "hablik",
         "author" : "Wenzel Hablik",
-        "localization" : "Montagnes et océans",
-        "country_code" : "",
+        "localization" : "Montagnes, océans",
+        "country_code" : "?",
         "date" : "1921",
         "date_desc" : "v. 1920",
         "diam_desc" : "30-1000m",
@@ -1184,9 +1246,10 @@
       {
         "id" : 54,
         "name" : "Forecast Factory",
+        "author_sort_key": "richardson",
         "author" : "Lewis F.Richardson",
         "localization" : "Lieu indéterminé",
-        "country_code" : "",
+        "country_code" : "?",
         "date" : "1922",
         "date_desc" : "",
         "diam_desc" : "?",
@@ -1202,6 +1265,7 @@
       {
         "id" : 55,
         "name" : "Planétarium 1",
+        "author_sort_key": "bauersfeld",
         "author" : "Walther Bauersfeld (Zeiss), Oskar von Miller",
         "localization" : "Iéna",
         "country_code" : "DE",
@@ -1220,6 +1284,7 @@
       {
         "id" : 55,
         "name" : "Planétarium 2",
+        "author_sort_key": "bauersfeld",
         "author" : "Walther Bauersfeld (Zeiss), Oskar von Miller",
         "localization" : "Munich",
         "country_code" : "DE",
@@ -1238,6 +1303,7 @@
       {
         "id" : 56,
         "name" : "Babson Globe & Giant Relief Map",
+        "author_sort_key": "babson",
         "author" : "Roger Babson, G. Curtis, E. Nichols, Wallace W. Atwood",
         "localization" : "Wellesley, MA",
         "country_code" : "US",
@@ -1256,6 +1322,7 @@
       {
         "id" : 57,
         "name" : "Monument lumineux à Lénine, monument de la Révolution",
+        "author_sort_key": "gidoni",
         "author" : "Grigori Gidoni, Naum Mogilevsky",
         "localization" : "Leningrad",
         "country_code" : "RU",
@@ -1274,9 +1341,10 @@
       {
         "id" : 58,
         "name" : "La Sfera di Platino ",
+        "author_sort_key": "loduca",
         "author" : "Giuseppe Lo Duca",
         "localization" : "Terre",
-        "country_code" : "",
+        "country_code" : "YY",
         "date" : "1927",
         "date_desc" : "",
         "diam_desc" : "La terre",
@@ -1292,6 +1360,7 @@
       {
         "id" : 59,
         "name" : "Kugelhaus",
+        "author_sort_key": "birkenholz",
         "author" : "Peter Birkenholz",
         "localization" : "Dresde, Leipzig",
         "country_code" : "DE",
@@ -1310,6 +1379,7 @@
       {
         "id" : 60,
         "name" : "Phare monumental à la mémoire de Christophe Colomb",
+        "author_sort_key": "-",
         "author" : "Concepteurs divers",
         "localization" : "Saint-Domingue",
         "country_code" : "DO",
@@ -1328,6 +1398,7 @@
       {
         "id" : 62,
         "name" : "Mapparium",
+        "author_sort_key": "churchill",
         "author" : "Chester Lindsay Churchill",
         "localization" : "Boston",
         "country_code" : "US",
@@ -1346,6 +1417,7 @@
       {
         "id" : 61,
         "name" : "Cosmosarium",
+        "author_sort_key": "morse",
         "author" : "Robert V. Morse, Peter J.Bitterman",
         "localization" : "New York",
         "country_code" : "US",
@@ -1364,6 +1436,7 @@
       {
         "id" : 63,
         "name" : "Trylon et Perisphere",
+        "author_sort_key": "harrison",
         "author" : "Wallace Harrison, J.A. Fouilhoux, H. Dreyfuss, W.G. Still",
         "localization" : "New York",
         "country_code" : "US",
@@ -1382,9 +1455,10 @@
       {
         "id" : 64,
         "name" : "Cité du Soleil",
+        "author_sort_key": "leonidov",
         "author" : "Ivan Leonidov",
         "localization" : "Univers",
-        "country_code" : "",
+        "country_code" : "?",
         "date" : "1951",
         "date_desc" : "1943-1959",
         "diam_desc" : "?",
@@ -1400,9 +1474,10 @@
       {
         "id" : 65,
         "name" : "Space Flyer, 20th Century Globe, Cosmic-Atomic Power Plant",
+        "author_sort_key": "gernsback",
         "author" : "Hugo Gernsback",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1915",
         "date_desc" : "1911-1921",
         "diam_desc" : "",
@@ -1418,6 +1493,7 @@
       {
         "id" : 66,
         "name" : "Pentadome",
+        "author_sort_key": "bird",
         "author" : "Walter Bird, Kenneth E. Joy, Walter Bird",
         "localization" : "Redstone arsenal",
         "country_code" : "US",
@@ -1436,9 +1512,10 @@
       {
         "id" : 67,
         "name" : "Terranische Raumschiffe et Hauptquartier",
+        "author_sort_key": "scheer",
         "author" : "Karl-Herbert Scheer, Clark Darlton (Walter Ernsting)",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1961",
         "date_desc" : "",
         "diam_desc" : "1 à 62km",
@@ -1454,8 +1531,9 @@
       {
         "id" : 68,
         "name" : "Lunar Orbit and Landing Approach Simulator",
+        "author_sort_key": "nasa",
         "author" : "Nasa",
-        "localization" : "Langley Research Center",
+        "localization" : "Langley",
         "country_code" : "US",
         "date" : "1964",
         "date_desc" : "1964-1978",
@@ -1472,9 +1550,10 @@
       {
         "id" : 69,
         "name" : "Synchronized Space : Universal House",
+        "author_sort_key": "abraham",
         "author" : "Raimund Abraham",
         "localization" : "Lieu indéterminé",
-        "country_code" : "",
+        "country_code" : "?",
         "date" : "1967",
         "date_desc" : "",
         "diam_desc" : "?",
@@ -1490,6 +1569,7 @@
       {
         "id" : 70,
         "name" : "US Pavilion",
+        "author_sort_key": "chermayeff",
         "author" : "Chermayeff, Buckminster Fuller, Shoji Sadao, Rankine",
         "localization" : "Montréal",
         "country_code" : "CA",
@@ -1508,6 +1588,7 @@
       {
         "id" : 71,
         "name" : "Kugelauditorium",
+        "author_sort_key": "bornemann",
         "author" : "Bornemann, Stockhausen, Winckel, Mengeringhausen",
         "localization" : "Osaka",
         "country_code" : "JP",
@@ -1526,6 +1607,7 @@
       {
         "id" : 72,
         "name" : "Atomic City",
+        "author_sort_key": "newman",
         "author" : "Oscar Newman",
         "localization" : "Manhattan",
         "country_code" : "US",
@@ -1544,9 +1626,10 @@
       {
         "id" : 73,
         "name" : "Ringworld",
+        "author_sort_key": "niven",
         "author" : "Larry Niven",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1970",
         "date_desc" : "",
         "diam_desc" : "Terre-soleil",
@@ -1562,9 +1645,10 @@
       {
         "id" : 74,
         "name" : "Architettura Interplanetaria",
+        "author_sort_key": "superstudio",
         "author" : "Superstudio",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1971",
         "date_desc" : "1970-1972",
         "diam_desc" : "Système solaire",
@@ -1580,6 +1664,7 @@
       {
         "id" : 75,
         "name" : "Revitalized Architecture ",
+        "author_sort_key": "aida",
         "author" : "Takefumi Aida",
         "localization" : "Tokyo",
         "country_code" : "JP",
@@ -1598,6 +1683,7 @@
       {
         "id" : 76,
         "name" : "Matrimandir ",
+        "author_sort_key": "alfassa",
         "author" : "Mira Mirra Alfassa, Roger Anger, Piero Cicionesi",
         "localization" : "Auroville",
         "country_code" : "IN",
@@ -1616,9 +1702,10 @@
       {
         "id" : 79,
         "name" : "Bernal Sphere « Island One »",
+        "author_sort_key": "oneil",
         "author" : "Gerard K. O’Neill",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1975",
         "date_desc" : "v. 1974-1976",
         "diam_desc" : "",
@@ -1634,6 +1721,7 @@
       {
         "id" : 78,
         "name" : "Roden Crater",
+        "author_sort_key": "turrel",
         "author" : "James Turrel",
         "localization" : "Painted desert, AZ",
         "country_code" : "US",
@@ -1652,9 +1740,10 @@
       {
         "id" : 77,
         "name" : "Death Star",
+        "author_sort_key": "lucas",
         "author" : "George Lucas, Ralph McQuarrie, Autres auteurs",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1977",
         "date_desc" : "1977…",
         "diam_desc" : "120-160km",
@@ -1670,9 +1759,10 @@
       {
         "id" : 80,
         "name" : "Epicyclarium",
+        "author_sort_key": "woods",
         "author" : "Lebbeus Woods",
         "localization" : "Lieu indéterminé",
-        "country_code" : "",
+        "country_code" : "?",
         "date" : "1984",
         "date_desc" : "",
         "diam_desc" : "?",
@@ -1688,6 +1778,7 @@
       {
         "id" : 81,
         "name" : "Ericsson Globe",
+        "author_sort_key": "adamson",
         "author" : "Adamson, Berg, Vretblad, Wycichowski",
         "localization" : "Stockholm",
         "country_code" : "SE",
@@ -1706,6 +1797,7 @@
       {
         "id" : 82,
         "name" : "Esfera Armilar",
+        "author_sort_key": "ordonez",
         "author" : "José Antonio Fernández Ordóñez, Rafael Trénor y Suárez de Lezo",
         "localization" : "Séville, Madrid…",
         "country_code" : "ES",
@@ -1724,9 +1816,10 @@
       {
         "id" : 83,
         "name" : "Space for peace",
+        "author_sort_key": "soleri",
         "author" : "Paolo Soleri",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1984",
         "date_desc" : "1984-1987",
         "diam_desc" : "?",
@@ -1742,6 +1835,7 @@
       {
         "id" : 84,
         "name" : "Mappemondo della Pace",
+        "author_sort_key": "bartolucci",
         "author" : "Orfeo Bartolucci",
         "localization" : "Colombara di Apecchio",
         "country_code" : "IT",
@@ -1760,12 +1854,13 @@
       {
         "id" : 85,
         "name" : "Soul’s Cycle",
+        "author_sort_key": "bunschoten",
         "author" : "Raoul Bunschoten",
         "localization" : "Fort Asperen",
         "country_code" : "NL",
         "date" : "1989",
         "date_desc" : "1989",
-        "diam_desc" : "Qq. cm à 4m",
+        "diam_desc" : "qq. cm à 4m",
         "diameter" : 0.8,
         "description": "",
         "subtitle": "",
@@ -1778,9 +1873,10 @@
       {
         "id" : 86,
         "name" : "Arceon, projet pour Alien 3",
+        "author_sort_key": "ward",
         "author" : "Vincent Ward",
         "localization" : "Espace",
-        "country_code" : "",
+        "country_code" : "XX",
         "date" : "1989",
         "date_desc" : "1989-1990",
         "diam_desc" : "",
@@ -1796,9 +1892,10 @@
       {
         "id" : 87,
         "name" : "Globus Cassus",
+        "author_sort_key": "waldvogel",
         "author" : "Christian Waldvogel",
-        "localization" : "Terre++",
-        "country_code" : "",
+        "localization" : "Terre",
+        "country_code" : "XX",
         "date" : "2003",
         "date_desc" : "2002-2009",
         "diam_desc" : "85 000km",
@@ -1814,6 +1911,7 @@
       {
         "id" : 88,
         "name" : "Longitude Dial",
+        "author_sort_key": "andrewes",
         "author" : "William Andrewes",
         "localization" : "Chilpancigo",
         "country_code" : "MX",
@@ -1832,6 +1930,7 @@
       {
         "id" : 89,
         "name" : "Convention and Exhibition Center",
+        "author_sort_key": "koolhaas",
         "author" : "Rem Koolhaas, Reinier de Graaf",
         "localization" : "Ras al Khaimah",
         "country_code" : "AE",
@@ -1850,6 +1949,7 @@
       {
         "id" : 90,
         "name" : "Great Globe Project",
+        "author_sort_key": "beaulieu",
         "author" : "Bryan Beaulieu",
         "localization" : "Sonora Desert, AZ",
         "country_code" : "US",
