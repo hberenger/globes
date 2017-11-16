@@ -181,6 +181,11 @@ public class MiniDetailsFragment extends BaseFragment {
         player.start();
         playButton.setVisibility(View.GONE);
         pauseButton.setVisibility(View.VISIBLE);
+        if (pauseButton.getParent() != null) {
+            // FIXME hacky fix for nasty behavior : on first launch, if minidetails is displayed by NFC,
+            // the pause button is hidden.
+            pauseButton.getParent().requestLayout();
+        }
         if (mPlayerListener != null) {
             mPlayerListener.playerDidStartToPlay(loadedTrackId);
         }
