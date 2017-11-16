@@ -3,6 +3,7 @@
     <color name="colorPrimary">#407cca</color>
     <color name="colorPrimary60">#99407cca</color>
     <color name="colorPrimary40">#66407cca</color>
+    <color name="colorPrimary20">#33407cca</color>
     <color name="colorPrimaryDark">#003594</color>
     <color name="colorPrimaryDarkTransparent">#B0003594</color>
     <color name="colorAccent">#EEEEFF</color>
@@ -28,4 +29,6 @@
     <color name="searchBackground">#EFEFEF</color>
 
     <color name="pathColor">#9a9181</color>
+
+    <color name="colorItemCellHighlight">#d3e6ff</color>
 </resources>
