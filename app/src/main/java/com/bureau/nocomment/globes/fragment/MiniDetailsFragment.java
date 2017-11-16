@@ -176,6 +176,11 @@ public class MiniDetailsFragment extends BaseFragment {
         super.onDetach();
     }
 
+    @Override
+    public void reset() {
+        // nothing special : minidetails are hidden on reset by the map fragment
+    }
+
     private void playSoundtrack() {
         progressUpdateHandler.post(progressUpdater);
         player.start();

@@ -7,8 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
+import com.bureau.nocomment.globes.application.Globes;
+
 
 abstract public class BaseFragment extends Fragment {
+
+    private long stopTimestamp = -1;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +39,13 @@ abstract public class BaseFragment extends Fragment {
     public void onStart() {
         super.onStart();
         // Add tagging later
+        long now = System.currentTimeMillis();
+        if (stopTimestamp > 0 && (now - stopTimestamp) > Globes.kRESET_DELAY) {
+            reset();
+        }
     }
+
+    abstract public void reset();
 
     @Override
     public void onResume() {
@@ -65,6 +76,6 @@ abstract public class BaseFragment extends Fragment {
     public void onStop() {
         super.onStop();
         // Add tagging later
+        stopTimestamp = System.currentTimeMillis();
     }
-
 }

@@ -170,6 +170,13 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         mArchitectsAdapter.sort(mArchitectsAdapter.getDateComparator(mInverseSort));
     }
 
+    @Override
+    public void reset() {
+        mLastSortField = -1;
+        onSortByNumber();
+        onDismissSearch();
+    }
+
     private void pressSortField(int pos) {
         for(Button button : mSortButtons) {
             button.setSelected(false);

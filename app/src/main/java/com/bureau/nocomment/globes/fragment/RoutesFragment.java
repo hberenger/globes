@@ -78,6 +78,11 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         super.onResume();
     }
 
+    @Override
+    public void reset() {
+        goTop();
+    }
+
     // Private
 
     private void populate() {

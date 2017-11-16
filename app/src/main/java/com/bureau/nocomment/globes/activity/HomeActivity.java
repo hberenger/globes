@@ -66,6 +66,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     private BroadcastReceiver mBroadcastReceiver;
     private boolean receiverRegistered = false;
     private boolean norespawn          = false;
+    private long stopTimestamp         = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +139,8 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         if (!norespawn) {
             startService(new Intent(this, KioskService.class)); // start KioskService
         }
+
+        stopTimestamp = System.currentTimeMillis();
     }
 
     @Override
@@ -152,6 +155,11 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
             registerReceiver(mBroadcastReceiver, filter);
             receiverRegistered = true;
             norespawn = false;
+        }
+
+        long now = System.currentTimeMillis();
+        if (stopTimestamp > 0 && (now - stopTimestamp) > Globes.kRESET_DELAY) {
+            reset();
         }
     }
 
@@ -288,6 +296,10 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
             getPagerAdapter().getMap().focusAndPlayTable(table);
             return;
         }
+    }
+
+    private void reset() {
+        mViewPager.setCurrentItem(getPagerAdapter().getMapIndex(), false);
     }
 
     // HomePageAdapter

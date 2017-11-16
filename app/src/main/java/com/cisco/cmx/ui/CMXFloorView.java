@@ -972,6 +972,11 @@ public class CMXFloorView extends ImageViewTouch {
     public void focusOnTop(float zoomLevel) {
         int width = getWidth();
         zoomTo(zoomLevel, width / 2.f, 0.f);
+
+        float[] target = new float[] { 0, 0 };
+        getImageViewMatrix().mapPoints(target);
+
+        panBy(-target[0], -target[1]);
     }
 
     /**
