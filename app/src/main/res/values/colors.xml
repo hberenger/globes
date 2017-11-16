@@ -22,7 +22,7 @@
     <color name="defaultTab">#9Affffff</color>
     <color name="selectedTab">@color/white</color>
 
-    <color name="fragmentBackground">#F5F5F5</color>
+    <color name="fragmentBackground">#FCFCFC</color>
 
     <color name="pathColor">#9a9181</color>
 </resources>
