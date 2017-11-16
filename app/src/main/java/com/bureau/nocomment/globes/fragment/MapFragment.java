@@ -76,6 +76,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
         Drawable d = mNowPlayingInfo.getBackground();
         if (d instanceof GradientDrawable) {
+            d.mutate();
             int primary = getResources().getColor(R.color.colorPrimary);
             int transparent = Color.argb(204, Color.red(primary), Color.green(primary), Color.blue(primary));
             ((GradientDrawable)d).setColor(transparent);
