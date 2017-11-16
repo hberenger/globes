@@ -30,21 +30,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/number"
-            style="@style/SortLabels"/>
+            style="@style/SortLabelButtons"/>
 
         <Button
             android:id="@+id/sort_by_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/architect"
-            style="@style/SortLabels"/>
+            style="@style/SortLabelButtons"/>
 
         <Button
             android:id="@+id/sort_by_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date"
-            style="@style/SortLabels"/>
+            style="@style/SortLabelButtons"/>
 
         <Button
             android:id="@+id/sort_by_country"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="@string/pays"
             android:textAllCaps="false"
-            style="@style/SortLabels"/>
+            style="@style/SortLabelButtons"/>
 
         <Button
             android:id="@+id/sort_by_size"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/taille"
             android:textAllCaps="false"
-            style="@style/SortLabels"/>
+            style="@style/SortLabelButtons"/>
 
     </LinearLayout>
 

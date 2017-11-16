@@ -8,6 +8,7 @@
     <color name="black">#000000</color>
     <color name="color4">#ffffff</color>
     <color name="color5">#ffffff</color>
+    <color name="selectionTransparency">#20407cca</color>
 
     <color name="buttonPlay">@color/white</color>
     <color name="buttonPause">@color/white</color>

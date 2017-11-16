@@ -34,6 +34,14 @@
         <item name="android:paddingEnd">11dp</item>
     </style>
 
+    <style name="SortLabelButtons" parent="SortLabels">
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:background">@drawable/sort_button_background</item>
+        <item name="android:layout_marginTop">1dp</item>
+    </style>
+
     <style name="ArchitectsFooterButton" parent="Widget.AppCompat.Button.Borderless">
         <item name="colorButtonNormal">@color/white</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>

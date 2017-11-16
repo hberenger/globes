@@ -21,6 +21,7 @@ import com.bureau.nocomment.globes.adapter.ArchitectsAdapter;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -50,6 +51,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
     @Bind(R.id.search_text)     EditText   mSearchString;
 
     private ProjectSelectedObserver mProjectSelectedObserver;
+    private List<Button> mSortButtons;
 
     @Nullable
     @Override
@@ -79,6 +81,8 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
+        mSortButtons = Arrays.asList(mSortByNumber, mSortByName, mSortByDate, mSortByCountry, mSortBySize);
 
         return rootView;
     }
@@ -114,6 +118,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
 
         mArchitectsAdapter.setProjects(projects);
+        onSortByNumber();
     }
 
     @OnClick(R.id.gotop)
@@ -133,31 +138,45 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
     @OnClick(R.id.sort_by_name)
     void onSortByName() {
         updateSortDirection(R.id.sort_by_name);
+        pressSortField(1);
         mArchitectsAdapter.sort(mArchitectsAdapter.getNameComparator(mInverseSort));
     }
 
     @OnClick(R.id.sort_by_size)
     void onSortBySize() {
         updateSortDirection(R.id.sort_by_size);
+        pressSortField(4);
         mArchitectsAdapter.sort(mArchitectsAdapter.getSizeComparator(mInverseSort));
     }
 
     @OnClick(R.id.sort_by_country)
     void onSortByCountry() {
         updateSortDirection(R.id.sort_by_country);
+        pressSortField(3);
         mArchitectsAdapter.sort(mArchitectsAdapter.getCountryComparator(mInverseSort));
     }
 
     @OnClick(R.id.sort_by_index)
     void onSortByNumber() {
         updateSortDirection(R.id.sort_by_index);
+        pressSortField(0);
         mArchitectsAdapter.sort(mArchitectsAdapter.getNumberComparator(mInverseSort));
     }
 
     @OnClick(R.id.sort_by_date)
     void onSortByDate() {
         updateSortDirection(R.id.sort_by_date);
+        pressSortField(2);
         mArchitectsAdapter.sort(mArchitectsAdapter.getDateComparator(mInverseSort));
+    }
+
+    private void pressSortField(int pos) {
+        for(Button button : mSortButtons) {
+            button.setSelected(false);
+            button.setTextColor(getResources().getColor(R.color.black));
+        }
+        mSortButtons.get(pos).setSelected(true);
+        mSortButtons.get(pos).setTextColor(getResources().getColor(R.color.white));
     }
 
     private void updateSortDirection(int tappedFieldId) {
