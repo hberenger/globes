@@ -33,6 +33,7 @@ import com.bureau.nocomment.globes.common.Locale;
 import com.bureau.nocomment.globes.common.Tagger;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
+import com.bureau.nocomment.globes.fragment.CreditsFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
 import com.bureau.nocomment.globes.fragment.RoutesFragment;
 import com.bureau.nocomment.globes.model.ModelRepository;
@@ -236,6 +237,9 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                 } else if (item.getItemId() == Locale.ENGLISH.getMenuId()) {
                     changeLocale(Locale.ENGLISH);
                     Tagger.getInstance().tag(TAG_CTX, "switch to english");
+                } else if (item.getItemId() == R.id.menu_credits) {
+                    CreditsFragment credits = new CreditsFragment();
+                    credits.show(getSupportFragmentManager(), "credits");
                 }
                 return false;
             }

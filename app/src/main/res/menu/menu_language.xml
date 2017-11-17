@@ -9,5 +9,7 @@
             android:title="@string/english"
             android:icon="@mipmap/ic_english"/>
     </group>
+    <item android:id="@+id/menu_credits"
+          android:title="@string/credits"/>
 </menu>
 

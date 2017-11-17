@@ -4,6 +4,8 @@
     <string name="switch_language">Changer la langue</string>
     <string name="french">Français</string>
     <string name="english">Anglais</string>
+    <string name="credits">Crédits</string>
+    <string name="thankyou">Merci</string>
     <string name="tab_architects">Architectes</string>
     <string name="tab_routes">Itinéraires</string>
     <string name="tab_map">Plan</string>
@@ -31,4 +33,6 @@
     </plurals>
     <string name="route_info">"Itinéraire : %s"</string>
     <string name="now_playing_info">"En écoute : %s"</string>
+    <string name="contributors_title">Audioguide GLOBES</string>
+    <string name="contributors">&#x2022; Commissaire :\r\n&#160;&#160;Yann ROCHER\r\n\r\n&#x2022; Acteurs :\r\n&#160;&#160;Hélène LAUSSEUR\r\n&#160;&#160;Olivier CLAVERIE\r\n\r\n&#x2022; Illustration sonore :\r\n&#160;&#160;Grégoire CARPENTIER\r\n\r\n&#x2022; Graphisme :\r\n&#160;&#160;DUOFLUO\r\n\r\n&#x2022; Conception et développement :\r\n&#160;&#160;Hervé BERENGER</string>
 </resources>
