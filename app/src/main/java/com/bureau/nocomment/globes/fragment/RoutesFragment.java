@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.adapter.RoutesAdapter;
+import com.bureau.nocomment.globes.common.Tagger;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Route;
 
@@ -24,6 +25,7 @@ import butterknife.OnClick;
 public class RoutesFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     static final String LOGTAG = "RoutesFragment";
+    static final String TAG_CTXT = "Routes";
 
     private Boolean mInverseSort = false;
     private int     mLastSortField = 0;
@@ -93,6 +95,7 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
 
     @OnClick(R.id.gotop)
     void onGoTop() {
+        Tagger.getInstance().tag(TAG_CTXT, "go_top");
         goTop();
     }
 
@@ -101,17 +104,9 @@ public class RoutesFragment extends BaseFragment implements AdapterView.OnItemCl
         List<Route> routes = ModelRepository.getInstance().getItemLibrary().getRoutes();
         Route route = routes.get(i);
         if (mRouteSelectedObserver != null && route.getLength() > 0) {
+            Tagger.getInstance().tag(TAG_CTXT, "selected r " + route.getId());
             mRouteSelectedObserver.onRouteSelected(route);
         }
-    }
-
-    private void updateSortDirection(int tappedFieldId) {
-        if (mLastSortField == tappedFieldId) {
-            mInverseSort = !mInverseSort;
-        } else {
-            mInverseSort = false;
-        }
-        mLastSortField = tappedFieldId;
     }
 
     private void goTop() {
