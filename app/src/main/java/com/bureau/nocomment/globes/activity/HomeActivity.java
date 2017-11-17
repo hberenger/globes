@@ -88,6 +88,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
             @Override
             public void onPageSelected(int position) {
+                Tagger.getInstance().tag(TAG_CTX, "page_selected " + position);
                 hideSoftKeyboard();
             }
 
