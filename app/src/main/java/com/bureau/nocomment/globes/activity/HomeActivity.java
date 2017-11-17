@@ -309,7 +309,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                 Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableId);
 
                 if (table != null) {
-                    Tagger.getInstance().tag(TAG_CTX, "nfc_play t" + tableId);
+                    Tagger.getInstance().tag(TAG_CTX, "nfc_play t " + tableId);
                     getPagerAdapter().getMap().focusAndPlayTable(table);
                 } else {
                     Tagger.getInstance().tag(TAG_CTX, "nfc_id_unknown");

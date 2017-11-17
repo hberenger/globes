@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.activity.HomeActivity;
+import com.bureau.nocomment.globes.common.Tagger;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Table;
@@ -38,6 +39,7 @@ public class MiniDetailsFragment extends BaseFragment {
     }
 
     private final static String SOUND_FOLDER = "sound";
+    private final static String TAG_CTX = "Minid";
 
     @Bind(R.id.progress)
     CircleProgressView progressView;
@@ -79,6 +81,7 @@ public class MiniDetailsFragment extends BaseFragment {
         Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableID);
         loadFromTable(table);
         if (playSound) {
+            Tagger.getInstance().tag(TAG_CTX, "autoplay");
             playSoundtrack();
         }
     }
@@ -105,6 +108,7 @@ public class MiniDetailsFragment extends BaseFragment {
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
+                Tagger.getInstance().tag(TAG_CTX, "end_of_play");
                 if (!mTrackCompletable) {
                     return;
                 }
@@ -125,6 +129,7 @@ public class MiniDetailsFragment extends BaseFragment {
             @Override
             public void onUserDidChangeProgress(float value) {
                 if(player != null){
+                    Tagger.getInstance().tag(TAG_CTX, "scrubto " + value);
                     player.seekTo((int)value);
                 }
             }
@@ -220,11 +225,13 @@ public class MiniDetailsFragment extends BaseFragment {
 
     @OnClick(R.id.play_button)
     void onPlayButton(ImageButton button) {
+        Tagger.getInstance().tag(TAG_CTX, "manual_play");
         playSoundtrack();
     }
 
     @OnClick(R.id.pause_button)
     void onPauseButton(ImageButton button) {
+        Tagger.getInstance().tag(TAG_CTX, "manual_pause");
         pauseSoundtrack();
     }
 
@@ -352,6 +359,7 @@ public class MiniDetailsFragment extends BaseFragment {
         } else {
             tapCount++;
             if (tapCount == 7) {
+                Tagger.getInstance().tag(TAG_CTX, "explicit_shutdown!");
                 Intent intent = new Intent();
                 intent.setAction(HomeActivity.SHUTDOWN_INTENT);
                 getContext().sendBroadcast(intent);
