@@ -31,8 +31,8 @@ import butterknife.OnClick;
 
 public class ArchitectsFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
-    static final String LOGTAG = "ArchitectsFragment";
-    static final String TAG_CTX = "Archis";
+    private static final String LOGTAG = "ArchitectsFragment";
+    private static final String TAG_CTX = "Archis";
 
     private Boolean mInverseSort = false;
     private int     mLastSortField = 0;

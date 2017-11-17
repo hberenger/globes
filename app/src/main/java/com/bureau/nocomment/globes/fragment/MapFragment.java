@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bureau.nocomment.globes.R;
+import com.bureau.nocomment.globes.common.Tagger;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 import com.bureau.nocomment.globes.model.Route;
@@ -44,6 +45,8 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     private static final int kMAP_ID = R.drawable.plan_415;
     private static final int kTABLE_ID_OFFSET = 2000;
     private static final float kMAP_HEIGHT = 100.f;      // see it at percent or meters
+
+    private static final String TAG_CTX = "Map";
 
     @Bind(R.id.map)
     CMXFloorView mMapView;
@@ -248,12 +251,14 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         if (id > kTABLE_ID_OFFSET) {
             Table table = ModelRepository.getInstance().getItemLibrary().findTable(id - kTABLE_ID_OFFSET);
             if (table != null) {
+                Tagger.getInstance().tag(TAG_CTX, "poi_tap t " + table.getId());
                 setActiveTable(table, false, false);
             }
 
         } else {
             Project project = ModelRepository.getInstance().getItemLibrary().findProject(id);
             if (project != null) {
+                Tagger.getInstance().tag(TAG_CTX, "poi_tap p " + project.getId());
                 setActiveProject(project, false);
             }
         }
@@ -262,6 +267,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @Override
     public void onActivePoiSelected(String poiIdentifier) {
         if (poiIdentifier == null) {
+            Tagger.getInstance().tag(TAG_CTX, "empty_tap");
             hideMiniDetails(true);
             return;
         }
@@ -377,10 +383,12 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
 
     @OnClick(R.id.route_close)
     void onRouteClose(ImageButton button) {
+        Tagger.getInstance().tag(TAG_CTX, "close_current_route");
         hideRoute();
     }
 
     private void onNowPlayingTap() {
+        Tagger.getInstance().tag(TAG_CTX, "now_playing_tap");
         showMiniDetails();
         Fragment fragment = getChildFragmentManager().findFragmentById(R.id.quick_view);
         MiniDetailsFragment miniDetails = (MiniDetailsFragment)fragment;
@@ -388,6 +396,7 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     }
 
     private void onCurrentRouteTap() {
+        Tagger.getInstance().tag(TAG_CTX, "current_route_tap");
         CMXPath path = mMapView.getCurrentPath();
         if (path != null) {
             centerOnPath(path);
