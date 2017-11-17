@@ -238,6 +238,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
                     changeLocale(Locale.ENGLISH);
                     Tagger.getInstance().tag(TAG_CTX, "switch to english");
                 } else if (item.getItemId() == R.id.menu_credits) {
+                    Tagger.getInstance().tag(TAG_CTX, "credits");
                     CreditsFragment credits = new CreditsFragment();
                     credits.show(getSupportFragmentManager(), "credits");
                 }
