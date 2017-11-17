@@ -17,6 +17,7 @@ public class Tagger {
     private static String separator = ">";
     private FileOutputStream outputStream;
     private SimpleDateFormat formatter;
+    private String outOfBandBuffer = "";
 
     public static Tagger getInstance() {
         return mInstance;
@@ -62,7 +63,6 @@ public class Tagger {
         ctx = ctx + separator;
         output = output + ctx;
 
-        msg = msg + separator;
         output = output + msg;
 
         // eol
@@ -73,7 +73,17 @@ public class Tagger {
     }
 
     private void writeString(String output) {
+        if (outputStream == null) {
+            outOfBandBuffer = outOfBandBuffer + output;
+            return;
+        }
         try {
+            if (!outOfBandBuffer.isEmpty()) {
+                outputStream.write("!!! OutOfBand begin\n".getBytes());
+                outputStream.write(outOfBandBuffer.getBytes());
+                outputStream.write("!!! OutOfBand end\n".getBytes());
+                outOfBandBuffer = "";
+            }
             outputStream.write(output.getBytes());
         } catch (Exception e) {
             e.printStackTrace();
