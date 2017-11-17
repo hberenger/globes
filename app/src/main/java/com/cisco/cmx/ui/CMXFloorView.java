@@ -57,6 +57,7 @@ public class CMXFloorView extends ImageViewTouch {
     private FeedbackViewHandler mFeedbackViewHandler;
 
     private MarkerScalingFactorTransform mMarkerScalingTransform;
+    private MarkerScalingFactorTransform mPathPointScalingTransform;
 
     private Paint mPaint = new Paint();
 
@@ -606,8 +607,8 @@ public class CMXFloorView extends ImageViewTouch {
             pathBitmapCanvas.drawPath(mPath, mArrowPathPaint);
 
             float pathPointRadius = kPATH_POINT_BASE_RADIUS;
-            if (mMarkerScalingTransform != null) {
-                pathPointRadius *= mMarkerScalingTransform.scalingFactorForScale(getScale());
+            if (mPathPointScalingTransform != null) {
+                pathPointRadius *= mPathPointScalingTransform.scalingFactorForScale(getScale());
             }
 
             for (int p = 0; p < target.length; p+=2) {
@@ -1023,6 +1024,10 @@ public class CMXFloorView extends ImageViewTouch {
 
     public void setMarkerScalingTransform(MarkerScalingFactorTransform markerScalingTransform) {
         this.mMarkerScalingTransform = markerScalingTransform;
+    }
+
+    public void setPathPointScalingTransform(MarkerScalingFactorTransform pathPointScalingTransform) {
+        this.mPathPointScalingTransform = pathPointScalingTransform;
     }
 
     @Override

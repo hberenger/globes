@@ -109,8 +109,9 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
         mMapView.setActiveSelectionHandler(this);
         mMapView.setActivePoiMode(CMXFloorView.ActivePoiMode.CORONA);
         mMapView.setCoronaColor(getResources().getColor(R.color.colorPrimary));
-        int pathColor = getResources().getColor(R.color.pathColor); // $$$$ TODO ajuster
-        mMapView.setPathColor(pathColor, 192, pathColor, 216);
+        int pathColor = getResources().getColor(R.color.pathColor);
+        int pathPointColor = getResources().getColor(R.color.colorPrimary);
+        mMapView.setPathColor(pathColor, 192, pathPointColor, 216);
 
         float bottomMargin = (float) getResources().getDimensionPixelSize(R.dimen.quickview_height);
         mMapView.setBottomMargin(bottomMargin);
@@ -122,6 +123,14 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
                 // we want marker to be twice their intrinsic size at max zoom,
                 // and half of intrinsic size at full scale
                 float scalingFactor = (2.f - 0.5f) / (21.f - 1.f) * (scale - 1.f) + 0.5f;
+                return scalingFactor;
+            }
+        });
+
+        mMapView.setPathPointScalingTransform(new CMXFloorView.MarkerScalingFactorTransform() {
+            @Override
+            public float scalingFactorForScale(float scale) {
+                float scalingFactor = (4.5f - 0.5f) / (21.f - 1.f) * (scale - 1.f) + 0.5f;
                 return scalingFactor;
             }
         });
