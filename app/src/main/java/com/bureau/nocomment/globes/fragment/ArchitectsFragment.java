@@ -18,6 +18,7 @@ import android.widget.ListView;
 
 import com.bureau.nocomment.globes.R;
 import com.bureau.nocomment.globes.adapter.ArchitectsAdapter;
+import com.bureau.nocomment.globes.common.Tagger;
 import com.bureau.nocomment.globes.model.ModelRepository;
 import com.bureau.nocomment.globes.model.Project;
 
@@ -31,6 +32,7 @@ import butterknife.OnClick;
 public class ArchitectsFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     static final String LOGTAG = "ArchitectsFragment";
+    static final String TAG_CTX = "Archis";
 
     private Boolean mInverseSort = false;
     private int     mLastSortField = 0;
@@ -74,6 +76,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
         mSearchString.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Tagger.getInstance().tag(TAG_CTX, "fw " + charSequence.toString());
                 mArchitectsAdapter.getFilter().filter(charSequence.toString());
             }
             @Override
@@ -123,6 +126,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     @OnClick(R.id.gotop)
     void onGoTop() {
+        Tagger.getInstance().tag(TAG_CTX, "go_top");
         goTop();
     }
 
@@ -130,13 +134,15 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         List<Project> projects = ModelRepository.getInstance().getItemLibrary().getProjects();
         Project p = mArchitectsAdapter.getItem(i - 1); // minus one because of header
-        if (mProjectSelectedObserver != null) {
+        if (mProjectSelectedObserver != null && p != null) {
+            Tagger.getInstance().tag(TAG_CTX, "selected p " + p.getId());
             mProjectSelectedObserver.onProjectSelected(p);
         }
     }
 
     @OnClick(R.id.sort_by_name)
     void onSortByName() {
+        Tagger.getInstance().tag(TAG_CTX, "sort_by_name");
         updateSortDirection(R.id.sort_by_name);
         pressSortField(1);
         mArchitectsAdapter.sort(mArchitectsAdapter.getNameComparator(mInverseSort));
@@ -144,6 +150,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     @OnClick(R.id.sort_by_size)
     void onSortBySize() {
+        Tagger.getInstance().tag(TAG_CTX, "sort_by_size");
         updateSortDirection(R.id.sort_by_size);
         pressSortField(4);
         mArchitectsAdapter.sort(mArchitectsAdapter.getSizeComparator(mInverseSort));
@@ -151,6 +158,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     @OnClick(R.id.sort_by_country)
     void onSortByCountry() {
+        Tagger.getInstance().tag(TAG_CTX, "sort_by_cntry");
         updateSortDirection(R.id.sort_by_country);
         pressSortField(3);
         mArchitectsAdapter.sort(mArchitectsAdapter.getCountryComparator(mInverseSort));
@@ -165,6 +173,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     @OnClick(R.id.sort_by_date)
     void onSortByDate() {
+        Tagger.getInstance().tag(TAG_CTX, "sort_by_date");
         updateSortDirection(R.id.sort_by_date);
         pressSortField(2);
         mArchitectsAdapter.sort(mArchitectsAdapter.getDateComparator(mInverseSort));
@@ -197,6 +206,7 @@ public class ArchitectsFragment extends BaseFragment implements AdapterView.OnIt
 
     @OnClick(R.id.search_close)
     void onDismissSearch() {
+        Tagger.getInstance().tag(TAG_CTX, "dismiss_s");
         hideSoftKeyboard();
         mSearchString.setText("");
         // Hacky but difficult to scroll correctly without it
