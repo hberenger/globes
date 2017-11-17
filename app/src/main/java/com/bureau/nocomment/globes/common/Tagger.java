@@ -52,22 +52,29 @@ public class Tagger {
     }
 
     public void tag(String ctx, String msg) {
+        String output = "";
+
+        Date now = new Date();
+        String date = formatter.format(now);
+        date = date + separator;
+        output = output + date;
+
+        ctx = ctx + separator;
+        output = output + ctx;
+
+        msg = msg + separator;
+        output = output + msg;
+
+        // eol
+        String eol = "\n";
+        output = output + eol;
+
+        writeString(output);
+    }
+
+    private void writeString(String output) {
         try {
-            // ts
-            Date now = new Date();
-            String date = formatter.format(now);
-            date = date + separator;
-            outputStream.write(date.getBytes());
-
-            ctx = ctx + separator;
-            outputStream.write(ctx.getBytes());
-
-            msg = msg + separator;
-            outputStream.write(msg.getBytes());
-
-            // eol
-            String eol = "\n";
-            outputStream.write(eol.getBytes());
+            outputStream.write(output.getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
