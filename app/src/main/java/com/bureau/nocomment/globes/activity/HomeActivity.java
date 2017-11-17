@@ -30,6 +30,7 @@ import com.bureau.nocomment.globes.application.Globes;
 import com.bureau.nocomment.globes.common.ClassicNfcTextRecordParser;
 import com.bureau.nocomment.globes.common.ForegroundDispatcher;
 import com.bureau.nocomment.globes.common.Locale;
+import com.bureau.nocomment.globes.common.Tagger;
 import com.bureau.nocomment.globes.fragment.ArchitectsFragment;
 import com.bureau.nocomment.globes.fragment.BaseFragment;
 import com.bureau.nocomment.globes.fragment.MapFragment;
@@ -136,6 +137,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     protected void onStop() {
         super.onStop();
         mNotifBarHider.enableStatusBarExpansion(this);
+        Tagger.getInstance().close();
         if (!norespawn) {
             startService(new Intent(this, KioskService.class)); // start KioskService
         }
@@ -148,6 +150,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         super.onStart();
         stopService(new Intent(this, KioskService.class)); // start KioskService
         mNotifBarHider.preventStatusBarExpansion(this);
+        Tagger.getInstance().start(getApplicationContext());
 
         if (!receiverRegistered) {
             IntentFilter filter = new IntentFilter();
