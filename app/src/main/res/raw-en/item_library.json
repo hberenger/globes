@@ -139,7 +139,7 @@
       },
       {
         "id" : 3,
-        "name" : "Panthéon",
+        "name" : "Pantheon",
         "author_sort_key": "apollodore",
         "author" : "Apollodore de Damas",
         "localization" : "Rome",
@@ -158,7 +158,7 @@
       },
       {
         "id" : 3,
-        "name" : "Théâtre maritime de la villa Adriana",
+        "name" : "Marine theatre in the villa Adriana",
         "author_sort_key": "?",
         "author" : "Architecte inconnu",
         "localization" : "Tivoli",
@@ -177,7 +177,7 @@
       },
       {
         "id" : 4,
-        "name" : "Trône de Chosroès II",
+        "name" : "Throne of Chosroes II",
         "author_sort_key": "chosroes",
         "author" : "Chosroès (Khosro II)",
         "localization" : "Ctésiphon, Irak",
@@ -253,7 +253,7 @@
       },
       {
         "id" : 7,
-        "name" : "Globe de Gottorf",
+        "name" : "Gottorf globe",
         "author_sort_key": "olearius",
         "author" : "Adam Olearius, Andreas Bösch",
         "localization" : "Schleswig, St-Petersburg",
@@ -310,7 +310,7 @@
       },
       {
         "id" : 9,
-        "name" : "Globe céleste et globe terrestre",
+        "name" : "Celestial globe and terrestrial globe",
         "author_sort_key": "coronelli",
         "author" : "Vincenzo Coronelli",
         "localization" : "Marly et Paris",
@@ -329,7 +329,7 @@
       },
       {
         "id" : 11,
-        "name" : "Temple sphérique",
+        "name" : "Spherical temple",
         "author_sort_key": "beaumesnil ",
         "author" : "Pierre de la Ruelle dit de Beaumesnil ",
         "localization" : "Limoges",
@@ -367,7 +367,7 @@
       },
       {
         "id" : 12,
-        "name" : "Cénotaphe à Newton",
+        "name" : "Cenotaph for Newton",
         "author_sort_key": "boullee",
         "author" : "Etienne-Louis Boullée",
         "localization" : "Paris",
@@ -386,7 +386,7 @@
       },
       {
         "id" : 13,
-        "name" : "Maison d'un cosmopolite",
+        "name" : "A cosmopolitan's house",
         "author_sort_key": "vaudoyer",
         "author" : "Antoine Laurent Thomas Vaudoyer",
         "localization" : "Rome (conception)",
@@ -405,7 +405,7 @@
       },
       {
         "id" : 14,
-        "name" : "Temples décadaires",
+        "name" : "Decadal temple",
         "author_sort_key": "durand",
         "author" : "JNL Durand, Jean-Thomas Thibault",
         "localization" : "Paris",
@@ -424,7 +424,7 @@
       },
       {
         "id" : 15,
-        "name" : "Temple de la Terre",
+        "name" : "Temple of the Earth",
         "author_sort_key": "lequeu",
         "author" : "Jean-Jacques Lequeu",
         "localization" : "Divers, France",
@@ -443,7 +443,7 @@
       },
       {
         "id" : 16,
-        "name" : "Temple à l'immortalité",
+        "name" : "Temple to immortality",
         "author_sort_key": "sobre",
         "author" : "Jean-Nicolas Sobre",
         "localization" : "Paris",
@@ -462,7 +462,7 @@
       },
       {
         "id" : 17,
-        "name" : "Cimetière de la ville de Chaux",
+        "name" : "Cemetery of the city of Chaux",
         "author_sort_key": "ledoux",
         "author" : "Claude Nicolas Ledoux",
         "localization" : "Arc-et-senans",
@@ -481,7 +481,7 @@
       },
       {
         "id" : 19,
-        "name" : "Cénotaphes à Newton ",
+        "name" : "Cénotaphs for Newton ",
         "author_sort_key": "delespine",
         "author" : "Delespine, Gay, Labadye",
         "localization" : "Paris",
@@ -500,7 +500,7 @@
       },
       {
         "id" : 18,
-        "name" : "Planétarium",
+        "name" : "Planetarium",
         "author_sort_key": "jefferson",
         "author" : "Thomas Jefferson",
         "localization" : "Charlottesville",
@@ -538,7 +538,7 @@
       },
       {
         "id" : 22,
-        "name" : "Géorama",
+        "name" : "Georama",
         "author_sort_key": "delanglard",
         "author" : "Charles-François-Paul Delanglard, Pierre-Magloire Châtelain",
         "localization" : "Paris, Londres",
@@ -557,7 +557,7 @@
       },
       {
         "id" : 21,
-        "name" : "Géorama",
+        "name" : "Georama",
         "author_sort_key": "guerin",
         "author" : "Guérin, Jodot, Hittorff, Louis Vivien",
         "localization" : "Paris, Londres",
@@ -633,7 +633,7 @@
       },
       {
         "id" : 26,
-        "name" : "Monument à Ortelius",
+        "name" : "Monument to Ortelius",
         "author_sort_key": "wauwermans",
         "author" : "Henri-Emmanuel Wauwermans",
         "localization" : "Anvers",
@@ -652,7 +652,7 @@
       },
       {
         "id" : 27,
-        "name" : "Planétarium",
+        "name" : "Planetarium",
         "author_sort_key": "perini",
         "author" : "Napoleone Perini",
         "localization" : "Londres",
@@ -671,7 +671,7 @@
       },
       {
         "id" : 28,
-        "name" : "Sphère terrestre monumentale",
+        "name" : "Monumental terrestrial sphere",
         "author_sort_key": "filon",
         "author" : "François Filon, Alexandre Cordeau",
         "localization" : "Paris, New York",
@@ -690,7 +690,7 @@
       },
       {
         "id" : 29,
-        "name" : "Globe terrestre au millionième",
+        "name" : "Terrestrial globe on the millionth scale",
         "author_sort_key": "villard",
         "author" : "Villard & Cotard, A. Tissandier, T. Seyrig",
         "localization" : "Paris",
@@ -945,7 +945,7 @@
       },
       {
         "id" : 37,
-        "name" : "Parapluie universel français",
+        "name" : "French universal umbrella",
         "author_sort_key": "bourdin",
         "author" : "Léopold Bourdin",
         "localization" : "Paris, Marseille",
@@ -964,7 +964,7 @@
       },
       {
         "id" : 38,
-        "name" : "Le Tour du monde en 80 minutes",
+        "name" : "Around the world in 80 minutes",
         "author_sort_key": "borgel",
         "author" : "François Borgel-Court, Alexandre Gavard",
         "localization" : "Paris",
@@ -983,7 +983,7 @@
       },
       {
         "id" : 39,
-        "name" : "Pavillon de l'Homme",
+        "name" : "Pavilion of Man",
         "author_sort_key": "mucha",
         "author" : "Alfons Mucha, James Vibert",
         "localization" : "Paris",
@@ -1002,7 +1002,7 @@
       },
       {
         "id" : 40,
-        "name" : "Globe terrestre",
+        "name" : "Terrestrial Globe",
         "author_sort_key": "reclus",
         "author" : "Elisée Reclus, Louis Bonnier",
         "localization" : "Paris (Trocadéro)",
@@ -1021,7 +1021,7 @@
       },
       {
         "id" : 41,
-        "name" : "Globe céleste",
+        "name" : "Celestial Globe",
         "author_sort_key": "galeron",
         "author" : "Albert Galeron",
         "localization" : "Paris",
@@ -1116,7 +1116,7 @@
       },
       {
         "id" : 45,
-        "name" : "Temple pour l’œuvre Mysterium",
+        "name" : "Temple for the Mysterium artwork",
         "author_sort_key": "scriabine",
         "author" : "Alexandre Scriabine",
         "localization" : "Himalaya, Adyar",
@@ -1306,7 +1306,7 @@
       },
       {
         "id" : 55,
-        "name" : "Planétarium 1",
+        "name" : "Planetarium 1",
         "author_sort_key": "bauersfeld",
         "author" : "Walther Bauersfeld (Zeiss), Oskar von Miller",
         "localization" : "Iéna",
@@ -1325,7 +1325,7 @@
       },
       {
         "id" : 55,
-        "name" : "Planétarium 2",
+        "name" : "Planetarium 2",
         "author_sort_key": "bauersfeld",
         "author" : "Walther Bauersfeld (Zeiss), Oskar von Miller",
         "localization" : "Munich",
@@ -1363,7 +1363,7 @@
       },
       {
         "id" : 57,
-        "name" : "Monument lumineux à Lénine, monument de la Révolution",
+        "name" : "Luminous monument to Lenin, monument of the Revolution",
         "author_sort_key": "gidoni",
         "author" : "Grigori Gidoni, Naum Mogilevsky",
         "localization" : "Leningrad",
@@ -1420,7 +1420,7 @@
       },
       {
         "id" : 60,
-        "name" : "Phare monumental à la mémoire de Christophe Colomb",
+        "name" : "Monumental lighthouse in memory of Christophe Colomb",
         "author_sort_key": "-",
         "author" : "Concepteurs divers",
         "localization" : "Saint-Domingue",
@@ -1477,7 +1477,7 @@
       },
       {
         "id" : 63,
-        "name" : "Trylon et Perisphere",
+        "name" : "Trylon and Perisphere",
         "author_sort_key": "harrison",
         "author" : "Wallace Harrison, J.A. Fouilhoux, H. Dreyfuss, W.G. Still",
         "localization" : "New York",
@@ -1496,7 +1496,7 @@
       },
       {
         "id" : 64,
-        "name" : "Cité du Soleil",
+        "name" : "City of the Sun",
         "author_sort_key": "leonidov",
         "author" : "Ivan Leonidov",
         "localization" : "Univers",
@@ -1553,7 +1553,7 @@
       },
       {
         "id" : 67,
-        "name" : "Terranische Raumschiffe et Hauptquartier",
+        "name" : "Terranische Raumschiffe and Hauptquartier",
         "author_sort_key": "scheer",
         "author" : "Karl-Herbert Scheer, Clark Darlton (Walter Ernsting)",
         "localization" : "Espace",
@@ -1724,7 +1724,7 @@
       },
       {
         "id" : 76,
-        "name" : "Matrimandir ",
+        "name" : "Matrimandir",
         "author_sort_key": "alfassa",
         "author" : "Mira Mirra Alfassa, Roger Anger, Piero Cicionesi",
         "localization" : "Auroville",
@@ -1914,7 +1914,7 @@
       },
       {
         "id" : 86,
-        "name" : "Arceon, projet pour Alien 3",
+        "name" : "Arceon, project for Alien 3",
         "author_sort_key": "ward",
         "author" : "Vincent Ward",
         "localization" : "Espace",
