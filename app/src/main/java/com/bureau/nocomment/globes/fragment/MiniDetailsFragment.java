@@ -304,8 +304,9 @@ public class MiniDetailsFragment extends BaseFragment {
         currentTableId = table.getId();
         currentProjectId = -1;
 
-        description.setVisibility(View.GONE);
+        description.setVisibility(View.VISIBLE);
         title.setText(table.getTitle());
+        description.setText(table.getSubTitle());
 
         progressView.setVisibility(View.VISIBLE);
         projectNumber.setVisibility(View.INVISIBLE);

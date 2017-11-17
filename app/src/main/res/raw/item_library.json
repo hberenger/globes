@@ -2012,85 +2012,99 @@
     "tables": [
       {
         "id": 1,
-        "title": "Introduction - L'Antiquité",
+        "title": "Introduction",
+        "subtitle": "L'éphéméride et l'atlas",
         "audio_file": "Module-01.mp3",
         "coordinates": [4.66, 2.65]
       },
       {
         "id": 2,
         "title": "Point d'écoute 1",
+        "subtitle": "Les catégories du monde",
         "audio_file": "Module-02.mp3",
         "coordinates": [4.78, 14.40]
       },
       {
         "id": 3,
         "title": "Point d'écoute 2",
+        "subtitle": "La rotondité du ciel et de la Terre",
         "audio_file": "Module-03.mp3",
         "coordinates": [3.11, 15.89]
       },
       {
         "id": 4,
         "title": "Point d'écoute 3",
+        "subtitle": "Le monde et ses modèles",
         "audio_file": "Module-04.mp3",
         "coordinates":[4.84, 31.13]
       },
       {
         "id": 5,
         "title": "Point d'écoute 4",
+        "subtitle": "L’absorption du monde",
         "audio_file": "Module-05.mp3",
         "coordinates":  [3.05, 32.88]
       },
       {
         "id": 6,
         "title": "Point d'écoute 5",
+        "subtitle": "Les règles de la démiurgie",
         "audio_file": "Module-06.mp3",
         "coordinates": [2.99, 42.59]
       },
       {
         "id": 7,
         "title": "Point d'écoute 6",
+        "subtitle": "Le globe et ses usages",
         "audio_file": "Module-07.mp3",
         "coordinates": [4.84, 44.32]
       },
       {
         "id": 8,
         "title": "Point d'écoute 7",
+        "subtitle": "Le jour personnifié",
         "audio_file": "Module-08.mp3",
         "coordinates": [4.94, 54.40]
       },
       {
         "id": 9,
         "title": "Point d'écoute 8",
+        "subtitle": "Les théâtres du globe",
         "audio_file": "Module-09.mp3",
         "coordinates": [3.10, 56.17]
       },
       {
         "id": 10,
         "title": "Point d'écoute 9",
+        "subtitle": "L'œuvre d'art globale",
         "audio_file": "Module-10.mp3",
         "coordinates": [4.50, 67.65]
       },
       {
         "id": 11,
         "title": "Point d'écoute 10",
+        "subtitle": "Les effets géostratégiques",
         "audio_file": "Module-11.mp3",
         "coordinates": [3.19, 69.44]
       },
       {
         "id": 12,
         "title": "Point d'écoute 11",
+        "subtitle": "L’idéal de la forme et les contraintes de la pesanteur",
         "audio_file": "Module-12.mp3",
         "coordinates": [4.91, 83.27]
       },
       {
         "id": 13,
         "title": "Point d'écoute 12",
+        "subtitle": "La construction du centre",
         "audio_file": "Module-13.mp3",
         "coordinates": [3.24, 85.05]
       },
       {
         "id": 14,
         "title": "Point d'écoute 13",
+        "subtitle": "La géométrie des pleins et vides",
         "audio_file": "Module-14.mp3",
         "coordinates": [4.25, 96.92]
       }

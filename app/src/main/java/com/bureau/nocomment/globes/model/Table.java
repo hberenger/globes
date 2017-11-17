@@ -5,6 +5,7 @@ import java.util.List;
 public class Table {
     private int         id;
     private String      title;
+    private String      subtitle;
     private String      audioFile;
     private List<Float> coordinates;
 
@@ -14,6 +15,10 @@ public class Table {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getSubTitle() {
+        return subtitle;
     }
 
     public String getAudioFile() {
