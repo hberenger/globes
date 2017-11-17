@@ -51,6 +51,7 @@ import static java.security.AccessController.getContext;
 public class HomeActivity extends AppCompatActivity implements ArchitectsFragment.ProjectSelectedObserver, RoutesFragment.RouteSelectedObserver {
 
     public static final String SHUTDOWN_INTENT = "com.nocomment.globes.homeactivity.SHUTDOWN";
+    private static final String TAG_CTX = "Home";
 
     public interface NfcTagMessageParser {
         public int readGlobeIdFromNdefMessage(NdefMessage message);
@@ -137,6 +138,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     protected void onStop() {
         super.onStop();
         mNotifBarHider.enableStatusBarExpansion(this);
+        Tagger.getInstance().tag(TAG_CTX, "stop");
         Tagger.getInstance().close();
         if (!norespawn) {
             startService(new Intent(this, KioskService.class)); // start KioskService
@@ -151,6 +153,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         stopService(new Intent(this, KioskService.class)); // start KioskService
         mNotifBarHider.preventStatusBarExpansion(this);
         Tagger.getInstance().start(getApplicationContext());
+        Tagger.getInstance().tag(TAG_CTX, "start");
 
         if (!receiverRegistered) {
             IntentFilter filter = new IntentFilter();
@@ -177,6 +180,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     @Override
     public void onBackPressed() {
         // Nothing - we want to disable back button
+        Tagger.getInstance().tag(TAG_CTX, "back");
     }
 
     @Override
@@ -192,6 +196,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_HOME || keyCode == KeyEvent.KEYCODE_MENU || keyCode == KeyEvent.KEYCODE_BACK) {
             // Caught
+            Tagger.getInstance().tag(TAG_CTX, "keydown");
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -208,6 +213,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
         int id = item.getItemId();
 
         if (id == R.id.switch_language) {
+            Tagger.getInstance().tag(TAG_CTX, "menu langues");
             presentLanguageMenu();
         }
 
@@ -225,8 +231,10 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == Locale.FRENCH.getMenuId()) {
                     changeLocale(Locale.FRENCH);
+                    Tagger.getInstance().tag(TAG_CTX, "switch to french");
                 } else if (item.getItemId() == Locale.ENGLISH.getMenuId()) {
                     changeLocale(Locale.ENGLISH);
+                    Tagger.getInstance().tag(TAG_CTX, "switch to english");
                 }
                 return false;
             }
@@ -292,16 +300,26 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
             // When a tag is detected by the ForegroundDispatcher, onNewIntent is called between
             // onPause and onResume (which pause and start the player). So we can hot-swap the
             // player source without bothering about threading or the progress refresher
-            // Les tables de l'expo commenence à 0
-            tableId += 1;
-            Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableId);
+            // Les tables de l'expo commencent à 0
 
-            getPagerAdapter().getMap().focusAndPlayTable(table);
-            return;
+            if (tableId < 0) {
+                Tagger.getInstance().tag(TAG_CTX, "nfc_id_invalid");
+            } else {
+                tableId += 1;
+                Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableId);
+
+                if (table != null) {
+                    Tagger.getInstance().tag(TAG_CTX, "nfc_play t" + tableId);
+                    getPagerAdapter().getMap().focusAndPlayTable(table);
+                } else {
+                    Tagger.getInstance().tag(TAG_CTX, "nfc_id_unknown");
+                }
+            }
         }
     }
 
     private void reset() {
+        Tagger.getInstance().tag(TAG_CTX, "reset");
         mViewPager.setCurrentItem(getPagerAdapter().getMapIndex(), false);
     }
 
