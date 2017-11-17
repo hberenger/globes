@@ -249,7 +249,7 @@ public class HomeActivity extends AppCompatActivity implements ArchitectsFragmen
 
     private void changeLocale(Locale locale) {
         if (!locale.setAsCurrent(this)) {
-            ModelRepository.getInstance().getItemLibrary().localeDidChange();
+            ModelRepository.getInstance().loadItemLibrary(getApplicationContext());
             this.recreate();
         }
     }
