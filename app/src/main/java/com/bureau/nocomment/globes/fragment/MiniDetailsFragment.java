@@ -81,7 +81,7 @@ public class MiniDetailsFragment extends BaseFragment {
         Table table = ModelRepository.getInstance().getItemLibrary().findTable(tableID);
         loadFromTable(table);
         if (playSound) {
-            Tagger.getInstance().tag(TAG_CTX, "autoplay");
+            Tagger.getInstance().tag(TAG_CTX, "autoplay t " + tableID);
             playSoundtrack();
         }
     }
@@ -108,7 +108,7 @@ public class MiniDetailsFragment extends BaseFragment {
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Tagger.getInstance().tag(TAG_CTX, "end_of_play");
+                Tagger.getInstance().tag(TAG_CTX, "end_of_play t " + loadedTrackId);
                 if (!mTrackCompletable) {
                     return;
                 }
@@ -225,13 +225,13 @@ public class MiniDetailsFragment extends BaseFragment {
 
     @OnClick(R.id.play_button)
     void onPlayButton(ImageButton button) {
-        Tagger.getInstance().tag(TAG_CTX, "manual_play");
+        Tagger.getInstance().tag(TAG_CTX, "manual_play t " + loadedTrackId);
         playSoundtrack();
     }
 
     @OnClick(R.id.pause_button)
     void onPauseButton(ImageButton button) {
-        Tagger.getInstance().tag(TAG_CTX, "manual_pause");
+        Tagger.getInstance().tag(TAG_CTX, "manual_pause t " + loadedTrackId);
         pauseSoundtrack();
     }
 
