@@ -2013,21 +2013,21 @@
       {
         "id": 1,
         "title": "Introduction",
-        "subtitle": "Ephemeris and Atlas",
+        "subtitle": "Ephemeris and atlas",
         "audio_file": "Module-01.mp3",
         "coordinates": [4.66, 2.65]
       },
       {
         "id": 2,
         "title": "Listening point #1",
-        "subtitle": "Categories of the world",
+        "subtitle": "The categories of the world",
         "audio_file": "Module-02.mp3",
         "coordinates": [4.78, 14.40]
       },
       {
         "id": 3,
         "title": "Listening point #2",
-        "subtitle": "Roundness of the sky and the earth",
+        "subtitle": "The roundness of the sky and the earth",
         "audio_file": "Module-03.mp3",
         "coordinates": [3.11, 15.89]
       },
@@ -2048,35 +2048,35 @@
       {
         "id": 6,
         "title": "Listening point #5",
-        "subtitle": "Rules of worldmaking",
+        "subtitle": "Towering ambitions",
         "audio_file": "Module-06.mp3",
         "coordinates": [2.99, 42.59]
       },
       {
         "id": 7,
         "title": "Listening point #6",
-        "subtitle": "Functions of the globe",
+        "subtitle": "The globe and its uses",
         "audio_file": "Module-07.mp3",
         "coordinates": [4.84, 44.32]
       },
       {
         "id": 8,
         "title": "Listening point #7",
-        "subtitle": "Epitomizing light",
+        "subtitle": "Embodied light",
         "audio_file": "Module-08.mp3",
         "coordinates": [4.94, 54.40]
       },
       {
         "id": 9,
         "title": "Listening point #8",
-        "subtitle": "Globe Theatres",
+        "subtitle": "Globe theatres",
         "audio_file": "Module-09.mp3",
         "coordinates": [3.10, 56.17]
       },
       {
         "id": 10,
         "title": "Listening point #9",
-        "subtitle": "Global work of art",
+        "subtitle": "The total work of art",
         "audio_file": "Module-10.mp3",
         "coordinates": [4.50, 67.65]
       },
@@ -2090,21 +2090,21 @@
       {
         "id": 12,
         "title": "Listening point #11",
-        "subtitle": "The perfect shape and the fatality of gravity",
+        "subtitle": "Ideal form and the force of gravity",
         "audio_file": "Module-12.mp3",
         "coordinates": [4.91, 83.27]
       },
       {
         "id": 13,
         "title": "Listening point #12",
-        "subtitle": "Building the center",
+        "subtitle": "Constructing the centre",
         "audio_file": "Module-13.mp3",
         "coordinates": [3.24, 85.05]
       },
       {
         "id": 14,
         "title": "Listening point #13",
-        "subtitle": "A geometry of void and full spaces",
+        "subtitle": "The geometry of solids and voids",
         "audio_file": "Module-14.mp3",
         "coordinates": [4.25, 96.92]
       }
