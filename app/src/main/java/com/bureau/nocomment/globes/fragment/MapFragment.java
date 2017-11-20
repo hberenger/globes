@@ -46,6 +46,8 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     private static final int kTABLE_ID_OFFSET = 2000;
     private static final float kMAP_HEIGHT = 100.f;      // see it at percent or meters
 
+    private static final String kMINI_DETAILS_TAG = "minidetails";
+
     private static final String TAG_CTX = "Map";
 
     @Bind(R.id.map)
@@ -190,9 +192,13 @@ public class MapFragment extends BaseFragment implements CMXFloorView.SelectionH
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MiniDetailsFragment childFragment = new MiniDetailsFragment();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.add(R.id.quick_view, childFragment).commit();
+        MiniDetailsFragment childFragment = (MiniDetailsFragment) getChildFragmentManager().findFragmentByTag(kMINI_DETAILS_TAG);
+        if (childFragment == null) {
+            childFragment = new MiniDetailsFragment();
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            transaction.add(R.id.quick_view, childFragment, kMINI_DETAILS_TAG);
+            transaction.commit();
+        }
         childFragment.setPlayerListener(this);
     }
 
